@@ -1,0 +1,37 @@
+// backdrop
+.root {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.4s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .window {
+    width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+
+    .title {
+      padding: 12px;
+    }
+
+    .content {
+      padding: 20px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}
