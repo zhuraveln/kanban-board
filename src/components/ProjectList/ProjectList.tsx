@@ -1,4 +1,5 @@
 import React from 'react'
+import { FormCreateProject } from '../FormCreateProject/FormCreateProject'
 
 import { Modal } from '../Modal/Modal'
 import { ProjectCard } from '../ProjectCard/ProjectCard'
@@ -6,7 +7,7 @@ import { Button } from '../UI/Button/Button'
 
 import classes from './ProjectList.module.scss'
 
-export const ProjectList = () => {
+export const ProjectList: React.FC = () => {
   // State for Modal window
   const [modalActive, setModalActive] = React.useState(false)
 
@@ -30,7 +31,7 @@ export const ProjectList = () => {
         active={modalActive}
         setActive={setModalActive}
       >
-        Content
+        <FormCreateProject />
       </Modal>
     </div>
   )
