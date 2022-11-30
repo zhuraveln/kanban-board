@@ -3,36 +3,18 @@ import React from 'react'
 import classes from './Input.module.scss'
 import { IInputProps } from './types'
 
-// export const Input: React.FC<IInputProps> = ({
-//   onChange,
-//   name,
-//   placeholder,
-//   value = ''
-// }) => {
-//   const [inputValue, setInputValue] = React.useState(value)
-
-//   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     setInputValue(event.target.value)
-//     onChange(event.target.value)
-//   }
-//   return (
-//     <input
-//       className={classes.root}
-//       onChange={event => onChangeHandler(event)}
-//       name={name}
-//       placeholder={placeholder}
-//       value={inputValue}
-//     />
-//   )
-// }
-
-export const Input: React.FC<IInputProps> = ({ label, ...props }) => {
-  const [inputValue, setInputValue] = React.useState(props.value)
+export const Input: React.FC<IInputProps> = ({
+  label,
+  handleChange,
+  ...props
+}) => {
+  const [inputValue, setInputValue] = React.useState('')
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(event)
     setInputValue(event.target.value)
-    // onChange(event.target.value)
   }
+
   return (
     <label>
       {label}
@@ -40,6 +22,7 @@ export const Input: React.FC<IInputProps> = ({ label, ...props }) => {
         className={classes.root}
         value={inputValue}
         onChange={event => onChangeHandler(event)}
+        autoComplete={'off'}
         {...props}
       />
     </label>

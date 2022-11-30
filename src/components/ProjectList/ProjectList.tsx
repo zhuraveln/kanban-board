@@ -9,7 +9,7 @@ import classes from './ProjectList.module.scss'
 
 export const ProjectList: React.FC = () => {
   // State for Modal window
-  const [modalActive, setModalActive] = React.useState(false)
+  const [modalActive, setModalActive] = React.useState(true)
 
   return (
     <div className={classes.root}>

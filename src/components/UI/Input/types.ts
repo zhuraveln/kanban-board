@@ -6,4 +6,5 @@ export interface IInputProps
     HTMLInputElement
   >
   label?: string
+  handleChange?: any
 }
