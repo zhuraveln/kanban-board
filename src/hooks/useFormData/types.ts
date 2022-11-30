@@ -1,2 +1,2 @@
-// Interface for Input FC
-export type useFormDataObj = {}
+// Interface for TextField FC
+export type useFormDataObj = Record<string, string>

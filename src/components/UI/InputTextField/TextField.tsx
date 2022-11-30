@@ -1,18 +1,18 @@
 import React from 'react'
 
-import classes from './Input.module.scss'
-import { IInputProps } from './types'
+import classes from './TextField.module.scss'
+import { ITextFieldProps } from './types'
 
-export const Input: React.FC<IInputProps> = ({
+export const TextField: React.FC<ITextFieldProps> = ({
   label,
   handleChange,
   ...props
 }) => {
-  const [inputValue, setInputValue] = React.useState('')
+  const [TextFieldValue, setTextFieldValue] = React.useState('')
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(event)
-    setInputValue(event.target.value)
+    setTextFieldValue(event.target.value)
   }
 
   return (
@@ -20,7 +20,7 @@ export const Input: React.FC<IInputProps> = ({
       {label}
       <input
         className={classes.root}
-        value={inputValue}
+        value={TextFieldValue}
         onChange={event => onChangeHandler(event)}
         autoComplete={'off'}
         {...props}

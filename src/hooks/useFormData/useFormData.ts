@@ -1,16 +1,22 @@
 import React from 'react'
+import { useFormDataObj } from './types'
 
-export const useFormData = () => {
-  const [state, setState] = React.useState({} as any)
+export const useFormData = (initialValues: any) => {
+  const [formValues, setFormValues] = React.useState(initialValues)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setState((state: any) => ({ ...state, [e.target.name]: e.target.value }))
+    setFormValues((formValues: any) => ({
+      ...formValues,
+      [e.target.name]: e.target.value
+    }))
   }
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    console.log(state)
+  const handleSubmit = (onSubmit: any) => {
+    return (e: any) => {
+      e.preventDefault()
+      onSubmit(formValues, e)
+    }
   }
 
-  return [state, handleChange, handleSubmit]
+  return [formValues, handleChange, handleSubmit]
 }

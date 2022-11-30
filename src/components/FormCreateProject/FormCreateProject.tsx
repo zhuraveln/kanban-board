@@ -1,38 +1,49 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { useFormData } from '../../hooks/useFormData/useFormData'
 import { Button } from '../UI/Button/Button'
 
 import { Form } from '../UI/Form/Form'
-import { Input } from '../UI/Input/Input'
+import { TextField } from '../UI/InputTextField/TextField'
 
 import classes from './FormCreateProject.module.scss'
 
 export const FormCreateProject: React.FC = () => {
-  // Custom Hook for collection all values in form fields
-  const [values, handleChange, handleSubmit] = useFormData()
+  const dispatch = useDispatch()
+  //@ts-ignore
+  const projectList = useSelector(state => state.project)
 
-  // console.log(values)
+  // Custom Hook for collection all values in form fields
+  const [values, handleChange, handleSubmit] = useFormData({
+    projectTitle: '',
+    projectDescription: ''
+  })
+
+  const onSubmit = (data: any) => {
+    dispatch({ type: 'CREATE_NEW_PROJECT', payload: data })
+    console.log(projectList)
+  }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {/* Input for title project */}
-      <Input
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* TextField for title project */}
+      <TextField
         required
         handleChange={handleChange}
         type='text'
         name='projectTitle'
         label={'Project Title '}
-        placeholder={'input title'}
+        placeholder={'TextField title'}
       />
 
-      {/* Input for description project */}
-      <Input
+      {/* TextField for description project */}
+      <TextField
         handleChange={handleChange}
         type='text'
         name='projectDescription'
         label={'Project Description '}
-        placeholder={'input description'}
+        placeholder={'TextField description'}
       />
 
       {/* Button for create new Project */}
