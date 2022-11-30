@@ -4,22 +4,10 @@ import { IButtonProps } from './types'
 
 import classes from './Button.module.scss'
 
-export const Button: React.FC<IButtonProps> = ({
-  styles,
-  children,
-  onClick
-}) => {
+export const Button: React.FC<IButtonProps> = ({ children, ...props }) => {
   return (
-    <button className={classes.root} style={{ ...styles }} onClick={onClick}>
+    <button className={classes.root} {...props}>
       {children}
     </button>
   )
 }
-
-// export const Button: React.FC<IButtonProps> = ({ children, props }) => {
-//   return (
-//     <button className={classes.root} {...props}>
-//       {children}
-//     </button>
-//   )
-// }

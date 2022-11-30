@@ -25,7 +25,7 @@ export const ProjectList: React.FC = () => {
         <ProjectCard />
       </div>
 
-      {/* Modal window */}
+      {/* Modal window for create new Project*/}
       <Modal
         title={'Create Project'}
         active={modalActive}

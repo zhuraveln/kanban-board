@@ -13,11 +13,10 @@ export const Modal: React.FC<IModalProps> = ({
   return (
     <div
       className={active ? `${classes.root} ${classes.active}` : classes.root}
-      // className={`${classes.root} ${classes.active}`}
       onClick={() => setActive(false)}
     >
       <div className={classes.window} onClick={e => e.stopPropagation()}>
-        {/* Title modal window */}
+        {/* Title for modal window */}
         <div className={classes.title}>{title}</div>
 
         {/* Content into modal window */}
