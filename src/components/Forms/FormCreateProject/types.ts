@@ -4,3 +4,8 @@ import { Dispatch, SetStateAction } from 'react'
 export interface IFormCreateProjectProps {
   setModalActive: Dispatch<SetStateAction<boolean>>
 }
+
+/** Types for fields in create project form */
+export type CreateTaskFormFields = {
+  projectName: string
+}

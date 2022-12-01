@@ -1,9 +1,3 @@
-// Project Actions Types
-export enum ProjectActionsTypes {
-  CREATE_NEW_PROJECT = 'CREATE_NEW_PROJECT',
-  CREATE_NEW_TASK = 'CREATE_NEW_TASK'
-}
-
 // Interface for Project State
 export interface ProjectState {
   projects: ProjectItem[]
@@ -22,6 +16,12 @@ export type TaskItem = {
   projectId: string
   title: string
   description: string
+}
+
+// Project Actions Types
+export enum ProjectActionsTypes {
+  CREATE_NEW_PROJECT = 'CREATE_NEW_PROJECT',
+  CREATE_NEW_TASK = 'CREATE_NEW_TASK'
 }
 
 // Types for Project Actions

@@ -52,8 +52,6 @@ export const createNewProject = (payload: ProjectItem) => ({
   payload
 })
 
-type createNewTaskPayload = {}
-
 export const createNewTask = (payload: TaskItem) => ({
   type: ProjectActionsTypes.CREATE_NEW_TASK,
   payload
