@@ -1,5 +1,5 @@
 // Types for Project Item
 export type Test = {
-  projectTitle: string
-  projectDescription: string
+  test: string
+  test1: string
 }

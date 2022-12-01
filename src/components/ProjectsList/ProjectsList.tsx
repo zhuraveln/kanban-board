@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { projectSelector } from '../../redux/selectors'
-import { FormCreateProject } from '../FormCreateProject/FormCreateProject'
+import { projectsSelector } from '../../redux/selectors'
+import { FormCreateProject } from '../Forms/FormCreateProject/FormCreateProject'
 
 import { Modal } from '../Modal/Modal'
 import { ProjectCard } from './ProjectCard/ProjectCard'
@@ -13,7 +13,7 @@ export const ProjectsList: React.FC = () => {
   // State for Modal window
   const [modalActive, setModalActive] = React.useState(false)
 
-  const { projects } = useSelector(projectSelector)
+  const { projects } = useSelector(projectsSelector)
 
   return (
     <div className={classes.root}>
@@ -24,8 +24,8 @@ export const ProjectsList: React.FC = () => {
 
       {/* Project list */}
       <div className={classes.projectList}>
-        {projects.map((project, index) => (
-          <ProjectCard {...project} key={index} />
+        {projects.map(project => (
+          <ProjectCard {...project} key={project.id} />
         ))}
       </div>
 

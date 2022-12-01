@@ -1,6 +1,7 @@
 .root {
   width: 200px;
   height: 200px;
+  background-color: beige;
   border: 1px solid rgb(132, 255, 202);
   border-radius: 10px;
   display: flex;
@@ -17,7 +18,4 @@
 
 .title {
   margin-top: 15px;
-}
-
-.description {
 }

@@ -5,18 +5,12 @@ import { ProjectItem } from '../../../redux/reducers/types'
 
 import classes from './ProjectCard.module.scss'
 
-export const ProjectCard: React.FC<ProjectItem> = ({
-  projectTitle,
-  projectDescription
-}) => {
+export const ProjectCard: React.FC<ProjectItem> = ({ projectName, id }) => {
   return (
-    <Link to={`/board/${'id'}`}>
+    <Link to={`/board/${id}`}>
       <div className={classes.root}>
         <div className={classes.title}>
-          <h4>{projectTitle}</h4>
-        </div>
-        <div className={classes.description}>
-          <p>{projectDescription}</p>
+          <h4>{projectName}</h4>
         </div>
       </div>
     </Link>

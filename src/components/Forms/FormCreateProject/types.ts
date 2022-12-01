@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-// Interface for Modal FC
+// Interface for Form Create Project Props
 export interface IFormCreateProjectProps {
   setModalActive: Dispatch<SetStateAction<boolean>>
 }
