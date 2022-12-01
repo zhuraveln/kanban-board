@@ -4,4 +4,9 @@
   border-radius: 10px;
   background-color: bisque;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: rgb(254, 208, 152);
+  }
 }

@@ -1,18 +1,8 @@
 import { createStore } from 'redux'
+import { rootReducer } from './reducers'
+import { useDispatch } from 'react-redux'
 
-const initialState = {
-  project: []
-}
-//@ts-ignore
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'CREATE_NEW_PROJECT':
-      return { ...state, project: [...state.project, action.payload] }
+export const store = createStore(rootReducer)
 
-    default:
-      return state
-  }
-}
-
-//@ts-ignore
-export const store = createStore(reducer)
+type AppDispatch = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatch>()

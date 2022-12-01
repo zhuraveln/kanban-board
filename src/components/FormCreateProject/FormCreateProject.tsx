@@ -1,18 +1,23 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { useFormData } from '../../hooks/useFormData/useFormData'
-import { Button } from '../UI/Button/Button'
 
+import { useAppDispatch } from '../../redux/store'
+import { createNewProject } from '../../redux/reducers/projectReducer'
+import { ProjectItem } from '../../redux/reducers/types'
+
+import { Button } from '../UI/Button/Button'
 import { Form } from '../UI/Form/Form'
 import { TextField } from '../UI/InputTextField/TextField'
 
+import { IFormCreateProjectProps } from './types'
+
 import classes from './FormCreateProject.module.scss'
 
-export const FormCreateProject: React.FC = () => {
-  const dispatch = useDispatch()
-  //@ts-ignore
-  const projectList = useSelector(state => state.project)
+export const FormCreateProject: React.FC<IFormCreateProjectProps> = ({
+  setModalActive
+}) => {
+  const dispatch = useAppDispatch()
 
   // Custom Hook for collection all values in form fields
   const [values, handleChange, handleSubmit] = useFormData({
@@ -20,9 +25,9 @@ export const FormCreateProject: React.FC = () => {
     projectDescription: ''
   })
 
-  const onSubmit = (data: any) => {
-    dispatch({ type: 'CREATE_NEW_PROJECT', payload: data })
-    console.log(projectList)
+  const onSubmit = (data: ProjectItem) => {
+    dispatch(createNewProject(data))
+    setModalActive(false)
   }
 
   return (

@@ -1,18 +1,29 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 import { NavBar } from './components/NavBar/NavBar'
-import { ProjectList } from './components/ProjectList/ProjectList'
+import { ProjectsList } from './components/ProjectsList/ProjectsList'
+import { ProjectBoard } from './components/ProjectBoard/ProjectBoard'
 
 import classes from './styles/App.module.scss'
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       {/* Navigation bar */}
       <NavBar />
+
       <div className={classes.container}>
-        {/* Project List */}
-        <ProjectList />
+        <Routes>
+          {/* Projects List */}
+          <Route path='/' element={<ProjectsList />} />
+
+          {/* Project Board */}
+          <Route path='/board/:id' element={<ProjectBoard />} />
+
+          {/* Page Not Found */}
+          <Route path='*' element={<h1>Not found</h1>} />
+        </Routes>
       </div>
     </>
   )
