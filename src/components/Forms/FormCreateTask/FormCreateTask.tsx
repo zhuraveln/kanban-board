@@ -15,7 +15,7 @@ import { CreateTaskFormFields, IFormCreateTaskProps } from './types'
 
 export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   setModalActive,
-  id
+  projectId
 }) => {
   const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   })
 
   const onSubmit = (data: CreateTaskFormFields) => {
-    dispatch(createNewTask({ ...data, id: uniqId(), projectId: id }))
+    dispatch(createNewTask({ ...data, id: uniqId(), projectId: projectId }))
     setModalActive(false)
   }
 

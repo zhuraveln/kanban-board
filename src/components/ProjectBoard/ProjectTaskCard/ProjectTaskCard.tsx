@@ -1,5 +1,5 @@
 import React from 'react'
-import { TaskItem } from '../../../redux/reducers/types'
+import { TaskItem } from '../../Forms/FormCreateProject/types'
 
 import classes from './ProjectTaskCard.module.scss'
 

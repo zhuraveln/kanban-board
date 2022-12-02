@@ -1,26 +1,13 @@
+import { Project } from '../../components/Forms/FormCreateProject/newProject'
 import {
-  ProjectAction,
-  ProjectActionsTypes,
   ProjectItem,
-  ProjectState,
   TaskItem
-} from './types'
+} from '../../components/Forms/FormCreateProject/types'
+import { ProjectAction, ProjectActionsTypes, ProjectState } from './types'
 
+const newProject = new Project('test Project')
 const initialState: ProjectState = {
-  projects: [
-    {
-      id: 'lb57o0r4dnc2apyt1qe',
-      projectName: 'test',
-      tasks: [
-        {
-          description: 'description for task 1',
-          id: 'lb57w7h8ostgupotncl',
-          projectId: 'lb57o0r4dnc2apyt1qe',
-          title: 'task 1'
-        }
-      ]
-    }
-  ]
+  projects: [newProject.startProject]
 }
 // as ProjectItem[]
 
@@ -34,11 +21,11 @@ export const projectReducer = (
 
     case ProjectActionsTypes.CREATE_NEW_TASK:
       const findProject = state.projects.find(
-        project => project.id === action.payload.projectId
+        project => project.projectId === action.payload.projectId
       )
 
       if (findProject) {
-        findProject.tasks.push(action.payload)
+        findProject.boards[0].tasks.push(action.payload)
       }
       return state
 

@@ -31,25 +31,17 @@ export const ProjectBoard: React.FC = () => {
       {/* Button for Create new Task */}
       <Button onClick={() => setModalActive(true)}>Create new Task</Button>
 
-      {/* Board for tasks */}
-      <div className={classes.board}>
-        {/* Queue Column*/}
-        <div className={classes.tasksColumn}>
-          <h2>Queue</h2>
-          {project?.tasks?.map(task => (
-            <ProjectTaskCard {...task} key={task.id} />
-          ))}
-        </div>
-
-        {/* Development Column*/}
-        <div className={classes.tasksColumn}>
-          <h2>Development</h2>
-        </div>
-
-        {/* Done Column */}
-        <div className={classes.tasksColumn}>
-          <h2>Done</h2>
-        </div>
+      {/* Boards for tasks */}
+      <div className={classes.boards}>
+        {/* Board Column*/}
+        {project?.boards?.map(board => (
+          <div className={classes.tasksColumn} key={board.id}>
+            <h2>{board.boardName}</h2>
+            {board.tasks?.map(task => (
+              <ProjectTaskCard {...task} key={task.id} />
+            ))}
+          </div>
+        ))}
       </div>
 
       {/* Modal window for create new Task*/}
@@ -58,11 +50,8 @@ export const ProjectBoard: React.FC = () => {
         active={modalActive}
         setActive={setModalActive}
       >
-        <FormCreateTask setModalActive={setModalActive} id={id} />
+        <FormCreateTask setModalActive={setModalActive} projectId={id} />
       </Modal>
     </div>
   )
-}
-function tasksSelector(id: string): (state: unknown) => unknown {
-  throw new Error('Function not implemented.')
 }

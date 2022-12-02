@@ -1,21 +1,11 @@
+import {
+  ProjectItem,
+  TaskItem
+} from '../../components/Forms/FormCreateProject/types'
+
 // Interface for Project State
 export interface ProjectState {
   projects: ProjectItem[]
-}
-
-// Types for Project Item
-export type ProjectItem = {
-  id: string
-  projectName: string
-  tasks: TaskItem[]
-}
-
-// Types for Task Item
-export type TaskItem = {
-  id: string
-  projectId: string
-  title: string
-  description: string
 }
 
 // Project Actions Types

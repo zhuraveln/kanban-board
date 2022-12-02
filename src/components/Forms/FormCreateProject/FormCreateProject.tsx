@@ -9,9 +9,8 @@ import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'
 import { TextField } from '../../UI/InputTextField/TextField'
 
-import { uniqId } from '../../../utils/uniqId'
-
 import { CreateTaskFormFields, IFormCreateProjectProps } from './types'
+import { Project } from './newProject'
 
 export const FormCreateProject: React.FC<IFormCreateProjectProps> = ({
   setModalActive
@@ -23,7 +22,9 @@ export const FormCreateProject: React.FC<IFormCreateProjectProps> = ({
     projectName: ''
   })
   const onSubmit = (data: CreateTaskFormFields) => {
-    dispatch(createNewProject({ ...data, id: uniqId(), tasks: [] }))
+    const newProject = new Project(data.projectName)
+
+    dispatch(createNewProject(newProject.startProject))
     setModalActive(false)
   }
 

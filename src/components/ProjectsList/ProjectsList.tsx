@@ -25,7 +25,7 @@ export const ProjectsList: React.FC = () => {
       {/* Project list */}
       <div className={classes.projectList}>
         {projects.map(project => (
-          <ProjectCard {...project} key={project.id} />
+          <ProjectCard {...project} key={project.projectId} />
         ))}
       </div>
 
