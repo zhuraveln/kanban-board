@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useFormData } from '../../../hooks/useFormData/useFormData'
 
-import { createNewProject } from '../../../redux/reducers/projectReducer'
+import { createNewProject } from '../../../redux/actions'
 
 import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'

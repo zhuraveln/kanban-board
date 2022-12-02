@@ -1,4 +1,4 @@
-import { RootState } from './reducers/index'
+import { RootState } from './rootReducer'
 
 /** Selector for getting all project from state */
 export const projectsSelector = (state: RootState) => state.projects

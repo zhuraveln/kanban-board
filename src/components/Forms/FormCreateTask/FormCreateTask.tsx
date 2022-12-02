@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useFormData } from '../../../hooks/useFormData/useFormData'
 
-import { createNewTask } from '../../../redux/reducers/projectReducer'
+import { createNewTask } from '../../../redux/actions'
 
 import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'
@@ -19,7 +19,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
 }) => {
   const dispatch = useDispatch()
 
-  // Custom Hook for collection all values in form fields
+  // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
     title: '',
     description: ''
@@ -44,7 +44,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
 
       {/* TextField for description task */}
       <TextField
-        required
+        // required
         handleChange={handleChange}
         type='text'
         name='description'
