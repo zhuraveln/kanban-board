@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-direction: column;
+
+  .columns {
+    display: flex;
+    justify-content: space-between;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+
+      .tasksList {
+        width: 220px;
+        min-height: 105px;
+        border: 2px solid rgb(67, 49, 255);
+      }
+    }
+  }
+}

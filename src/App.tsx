@@ -2,8 +2,8 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { NavBar } from './components/NavBar/NavBar'
-import { ProjectsList } from './components/ProjectsList/ProjectsList'
-import { ProjectBoard } from './components/ProjectBoard/ProjectBoard'
+import { BoardsList } from './components/BoardsList/BoardsList/BoardsList'
+import { Board } from './components/Board/Board/Board'
 
 import classes from './styles/App.module.scss'
 
@@ -15,11 +15,11 @@ const App: React.FC = () => {
 
       <div className={classes.container}>
         <Routes>
-          {/* Projects List */}
-          <Route path='/' element={<ProjectsList />} />
+          {/* Boards List */}
+          <Route path='/' element={<BoardsList />} />
 
-          {/* Project Board */}
-          <Route path='/board/:id' element={<ProjectBoard />} />
+          {/* Board */}
+          <Route path='/board/:id' element={<Board />} />
 
           {/* Page Not Found */}
           <Route path='*' element={<h1>Not found</h1>} />

@@ -1,6 +1,6 @@
 import React from 'react'
-import { useFormDataObj } from './types'
 
+/** Custom Hook for collection all values in form fields  */
 export const useFormData = (initialValues: any) => {
   const [formValues, setFormValues] = React.useState(initialValues)
 

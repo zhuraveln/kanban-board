@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { projectReducer } from './projectReducer'
+import { boardReducer } from './boardReducer'
 
-export const rootReducer = combineReducers({ projects: projectReducer })
+export const rootReducer = combineReducers({ boards: boardReducer })
 
 export type RootState = ReturnType<typeof rootReducer>

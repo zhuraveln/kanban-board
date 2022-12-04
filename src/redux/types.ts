@@ -1,40 +1,47 @@
-import {
-  ProjectItem,
-  TaskItem
-} from '../components/Forms/FormCreateProject/types'
+import { DropResult } from 'react-beautiful-dnd'
+import { BoardItem, TaskItem } from '../components/Forms/FormCreateBoard/types'
 
-// Interface for Project State
-export interface ProjectState {
-  projects: ProjectItem[]
+// Interface for Board State
+export interface BoardState {
+  boards: BoardItem[]
+  currentBoardIndex: null | number
 }
 
-// Project Actions Types
-export enum ProjectActionsTypes {
-  CREATE_NEW_PROJECT = 'CREATE_NEW_PROJECT',
+// Board Actions Types
+export enum BoardActionsTypes {
+  CREATE_NEW_BOARD = 'CREATE_NEW_BOARD',
+  SET_CURRENT_BOARD_INDEX = 'SET_CURRENT_BOARD_INDEX',
   CREATE_NEW_TASK = 'CREATE_NEW_TASK',
-  DRAG_HAPPENED = 'DRAG_HAPPENED'
+  REORDER_TASKS_ON_DRAG_DROP = 'REORDER_TASKS_ON_DRAG_DROP'
 }
 
-// Types for Project Actions
-export type ProjectAction =
-  | CreateNewProjectAction
+// Types for Board Actions
+export type BoardAction =
+  | CreateNewBoardAction
+  | SetcurrentBoardIndexAction
   | CreateNewTaskAction
-  | SortDroppableTasksAction
+  | ReorderTasksOnDragDropAction
 
-// Interface for Create a new Project Action
-export interface CreateNewProjectAction {
-  type: ProjectActionsTypes.CREATE_NEW_PROJECT
-  payload: ProjectItem
+// Interface for Create a new Board Action
+export interface CreateNewBoardAction {
+  type: BoardActionsTypes.CREATE_NEW_BOARD
+  payload: BoardItem
+}
+
+// Interface for Set Current Board Index Action
+export interface SetcurrentBoardIndexAction {
+  type: BoardActionsTypes.SET_CURRENT_BOARD_INDEX
+  payload: BoardState['currentBoardIndex']
 }
 
 // Interface for Create a new Task Action
 export interface CreateNewTaskAction {
-  type: ProjectActionsTypes.CREATE_NEW_TASK
+  type: BoardActionsTypes.CREATE_NEW_TASK
   payload: TaskItem
 }
 
-// Interface for Sort a Task Action
-export interface SortDroppableTasksAction {
-  type: ProjectActionsTypes.DRAG_HAPPENED
-  payload: any
+// Interface for Reorder Tasks by Drag and Drop Action
+export interface ReorderTasksOnDragDropAction {
+  type: BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP
+  payload: DropResult
 }

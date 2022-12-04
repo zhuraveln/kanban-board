@@ -1,8 +1,8 @@
 import { RootState } from './rootReducer'
 
-/** Selector for getting all project from state */
-export const projectsSelector = (state: RootState) => state.projects
+/** Selector for getting all boards from state */
+export const boardsSelector = (state: RootState) => state.boards
 
-/** Selector for getting the one project by id from state */
-export const projectSelector = (projectId: string) => (state: RootState) =>
-  state.projects.projects.find(project => project.projectId === projectId)
+/** Selector for getting the one board by index from state */
+export const boardSelector = () => (state: RootState) =>
+  state.boards.boards[Number(state.boards.currentBoardIndex)]

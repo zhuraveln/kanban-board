@@ -1,37 +1,39 @@
-import {
-  ProjectItem,
-  TaskItem
-} from '../components/Forms/FormCreateProject/types'
-import { ProjectActionsTypes } from './types'
+import { DropResult } from 'react-beautiful-dnd'
+import { BoardItem, TaskItem } from '../components/Forms/FormCreateBoard/types'
 
-// Action for create a new project
-export const createNewProject = (payload: ProjectItem) => ({
-  type: ProjectActionsTypes.CREATE_NEW_PROJECT,
+import {
+  CreateNewBoardAction,
+  CreateNewTaskAction,
+  BoardActionsTypes,
+  ReorderTasksOnDragDropAction,
+  SetcurrentBoardIndexAction,
+  BoardState
+} from './types'
+
+// Action for create a new board
+export const createNewBoard = (payload: BoardItem): CreateNewBoardAction => ({
+  type: BoardActionsTypes.CREATE_NEW_BOARD,
+  payload
+})
+
+// Action for set Current Board index
+export const setcurrentBoardIndex = (
+  payload: BoardState['currentBoardIndex']
+): SetcurrentBoardIndexAction => ({
+  type: BoardActionsTypes.SET_CURRENT_BOARD_INDEX,
   payload
 })
 
 // Action for create a new task
-export const createNewTask = (payload: TaskItem) => ({
-  type: ProjectActionsTypes.CREATE_NEW_TASK,
+export const createNewTask = (payload: TaskItem): CreateNewTaskAction => ({
+  type: BoardActionsTypes.CREATE_NEW_TASK,
   payload
 })
 
-// Action for sort a tasks
-export const sortDroppableTasks = (
-  projectId: string,
-  droppableIdStart: string,
-  droppableIdEnd: string,
-  droppableIndexStart: number,
-  droppableIndexEnd: number,
-  draggableId: string
-) => ({
-  type: ProjectActionsTypes.DRAG_HAPPENED,
-  payload: {
-    projectId,
-    droppableIdStart,
-    droppableIdEnd,
-    droppableIndexStart,
-    droppableIndexEnd,
-    draggableId
-  }
+// Action for reorder tasks by Drag and drop
+export const reorderTasksOnDragDrop = (
+  payload: DropResult
+): ReorderTasksOnDragDropAction => ({
+  type: BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP,
+  payload
 })

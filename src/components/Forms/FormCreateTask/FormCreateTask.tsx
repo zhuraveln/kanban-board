@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-import { useFormData } from '../../../hooks/useFormData/useFormData'
+import { useAppDispatch } from '../../../hooks/useAppDispatch'
+
+import { useFormData } from '../../../hooks/useFormData'
 
 import { createNewTask } from '../../../redux/actions'
 
@@ -14,10 +15,9 @@ import { uniqId } from '../../../utils/uniqId'
 import { CreateTaskFormFields, IFormCreateTaskProps } from './types'
 
 export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
-  setModalActive,
-  projectId
+  setModalActive
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
@@ -26,7 +26,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   })
 
   const onSubmit = (data: CreateTaskFormFields) => {
-    dispatch(createNewTask({ ...data, id: uniqId(), projectId: projectId }))
+    dispatch(createNewTask({ ...data, id: uniqId() }))
     setModalActive(false)
   }
 

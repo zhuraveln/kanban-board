@@ -1,11 +1,11 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 
-import { IProjectTaskCardProps } from './typex'
+import { ITaskCardProps } from './typex'
 
-import classes from './ProjectTaskCard.module.scss'
+import classes from './TaskCard.module.scss'
 
-export const ProjectTaskCard: React.FC<IProjectTaskCardProps> = ({
+export const TaskCard: React.FC<ITaskCardProps> = ({
   index,
   id,
   title,

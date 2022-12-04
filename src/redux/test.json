@@ -1,40 +1,37 @@
 [
   {
-    "projectId": "lb57o0r4dnc2apyt1qe",
-    "projectName": "test",
+    "id": "lb57o0r4dnc2apyt1qe",
+    "name": "test",
     "boards": [
       {
-        "id": "lb57w7h8ostgupotncl",
-        "boardName": "Queue",
+        "id": "lbasdgvaw7h8ostgupotncl",
+        "name": "Queue",
         "tasks": [
           {
             "description": "description for task 1",
-            "id": "lb57w7h8ostgupotncl",
-            "projectId": "lb57o0r4dnc2apyt1qe",
+            "id": "lb57w721tstgupfdbfotncl",
             "title": "task in Queue"
           }
         ]
       },
       {
-        "id": "lb57w723tbostgupotncl",
-        "boardName": "Development",
+        "id": "lasvasv7w723tbostgupotncl",
+        "name": "Development",
         "tasks": [
           {
             "description": "description for task 1",
-            "id": "lb57w7h8ostgupotncl",
-            "projectId": "lb57o0r4dnc2apyt1qe",
+            "id": "lb57w7h8ostgsdvsdbotncl",
             "title": "task in Development"
           }
         ]
       },
       {
-        "id": "lb57w7h8ostgupsdv1cl",
-        "boardName": "Done",
+        "id": "lb57w7h8ostgupasvvaasvqwg1cl",
+        "name": "Done",
         "tasks": [
           {
             "description": "description for task 1",
-            "id": "lb57w7h8ostgupotncl",
-            "projectId": "lb57o0r4dnc2apyt1qe",
+            "id": "lb571ngf8ostgupotncl",
             "title": "task in Done"
           }
         ]
