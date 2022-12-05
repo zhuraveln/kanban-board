@@ -12,10 +12,12 @@ import { createNewTask } from '../../../redux/actions'
 import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'
 import { TextField } from '../../UI/InputTextField/TextField'
+import { Select } from '../../UI/Select/Select'
 
 import { CreateTaskFormFields, IFormCreateTaskProps } from './types'
+import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
+
 import { Task } from './newTask'
-import { TaskItem } from '../FormCreateBoard/types'
 
 export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   setModalActive
@@ -27,7 +29,8 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   const [values, handleChange, handleSubmit] = useFormData({
     title: '',
     description: '',
-    targetDate: dayjs('01.01.2023 09:00')
+    targetDate: dayjs('01.01.2023 09:00'),
+    priority: PriorityTypes.LOW
   })
 
   // Handler for submit form
@@ -68,6 +71,14 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
         type='datetime-local'
         name='targetDate'
         label={'Target Date '}
+      />
+
+      {/* Select for choice priority for task */}
+      <Select
+        handleChange={handleChange}
+        name='priority'
+        options={PriorityTypes}
+        label={'Priority'}
       />
 
       {/* Button for create new Task */}

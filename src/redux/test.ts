@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { PriorityTypes } from '../components/Forms/FormCreateBoard/types'
 
 export const testBoard = [
   {
@@ -16,7 +17,8 @@ export const testBoard = [
             title: 'task in Queue',
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm')
+            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
+            priority: PriorityTypes.LOW
           }
         ]
       },
@@ -30,7 +32,8 @@ export const testBoard = [
             number: 2,
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm')
+            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
+            priority: PriorityTypes.LOW
           }
         ]
       },
@@ -44,7 +47,8 @@ export const testBoard = [
             title: 'task in Done',
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm')
+            targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
+            priority: PriorityTypes.LOW
           }
         ]
       }

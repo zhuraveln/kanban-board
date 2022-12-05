@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 
 import { uniqId } from '../../../utils/uniqId'
 
-import { ColumnItem, CreateBoardFormFields } from './types'
+import { ColumnItem, CreateBoardFormFields, PriorityTypes } from './types'
 
 export class Board {
   readonly id: string = uniqId()
@@ -19,7 +19,8 @@ export class Board {
           title: 'task 1',
           description: 'description for task',
           dateCreation: dayjs('01/12/2022 18:00'),
-          targetDate: dayjs('05/12/2022 18:00')
+          targetDate: dayjs('05/12/2022 18:00'),
+          priority: PriorityTypes.LOW
         }
       ]
     },
@@ -33,7 +34,8 @@ export class Board {
           title: 'task 2',
           description: 'description for task',
           dateCreation: dayjs('01/12/2022 18:00'),
-          targetDate: dayjs('05/12/2022 18:00')
+          targetDate: dayjs('05/12/2022 18:00'),
+          priority: PriorityTypes.LOW
         }
       ]
     },
@@ -47,7 +49,8 @@ export class Board {
           title: 'task 3',
           description: 'description for task',
           dateCreation: dayjs('01/12/2022 18:00'),
-          targetDate: dayjs('05/12/2022 18:00')
+          targetDate: dayjs('05/12/2022 18:00'),
+          priority: PriorityTypes.LOW
         }
       ]
     }

@@ -34,4 +34,12 @@ export type TaskItem = {
   description: string
   dateCreation: Dayjs
   targetDate: Dayjs
+  priority: PriorityTypes
+}
+
+// Priority Types
+export enum PriorityTypes {
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH'
 }
