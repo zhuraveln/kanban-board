@@ -29,7 +29,7 @@ export const BoardsList: React.FC = () => {
         ))}
       </div>
 
-      {/* Modal window for create new Board*/}
+      {/* Modal window for create new Board */}
       <Modal
         title={'Create Board'}
         active={modalActive}

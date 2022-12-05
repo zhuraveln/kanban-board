@@ -1,4 +1,4 @@
-/** Custom class for immutable work with array*/
+/** Custom class for immutable work with array */
 export class immArr {
   /** Immutable inserts value in array
    * @return new array
@@ -8,6 +8,7 @@ export class immArr {
     value,
     ...array.slice(index)
   ]
+
   /** Immutable remove value in array
    * @return new array
    */
@@ -16,10 +17,17 @@ export class immArr {
     ...array.slice(index + 1)
   ]
 
+  /** Immutable replace element in array
+   * @return new array
+   */
+  static replace = (array: any[], index: number, value: any) => [
+    ...this.insert(this.remove(array, index), index, value)
+  ]
+
   /** Immutable change positions for two values in array
    * @return new array
    */
-  static changePositions = (
+  static swap = (
     array: any[],
     sourceIndex: number,
     destinationIndex: number,
