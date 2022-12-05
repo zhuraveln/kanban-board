@@ -1,4 +1,5 @@
 import { testBoard } from './test'
+
 import { BoardAction, BoardActionsTypes, BoardState } from './types'
 
 const initialState: BoardState = {
@@ -50,7 +51,8 @@ export const boardReducer = (
                       return column
                     }
                   })
-                ]
+                ],
+                tasksCounter: board.tasksCounter + 1
               }
             } else {
               return board

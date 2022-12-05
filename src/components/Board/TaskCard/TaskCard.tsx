@@ -8,7 +8,8 @@ import classes from './TaskCard.module.scss'
 
 export const TaskCard: React.FC<ITaskCardProps> = props => {
   // Destructuring props
-  const { index, id, title, description, dateCreation, targetDate } = props
+  const { index, id, number, title, description, dateCreation, targetDate } =
+    props
   return (
     <Draggable draggableId={id} index={index}>
       {provided => (
@@ -18,7 +19,9 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className={classes.title}>{title}</div>
+          <div className={classes.title}>
+            {title} №{number}
+          </div>
           <div className={classes.decription}>{description}</div>
           <div>
             Date Creation: {dayjs(dateCreation).format('DD.MM.YYYY H:mm')}

@@ -16,6 +16,7 @@ export type BoardItem = {
   id: string
   name: string
   columns: ColumnItem[]
+  tasksCounter: number
 }
 
 /** Types for Column Item */
@@ -28,6 +29,7 @@ export type ColumnItem = {
 /** Types for Task Item */
 export type TaskItem = {
   id: string
+  number: number
   title: string
   description: string
   dateCreation: Dayjs

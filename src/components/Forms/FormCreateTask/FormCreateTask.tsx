@@ -1,7 +1,9 @@
 import React from 'react'
 import dayjs from 'dayjs'
 
+import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
+import { boardSelector } from '../../../redux/selectors'
 
 import { useFormData } from '../../../hooks/useFormData'
 
@@ -19,6 +21,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   setModalActive
 }) => {
   const dispatch = useAppDispatch()
+  const board = useSelector(boardSelector())
 
   // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
@@ -29,7 +32,8 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
 
   // Handler for submit form
   const onSubmit = (data: CreateTaskFormFields) => {
-    const newTask: TaskItem = new Task(data)
+    const taskNumber = board.tasksCounter
+    const newTask: TaskItem = new Task(data, taskNumber)
 
     dispatch(createNewTask(newTask))
     setModalActive(false)
