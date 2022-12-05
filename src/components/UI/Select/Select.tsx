@@ -1,5 +1,8 @@
 import React from 'react'
+
 import { ISelectProps } from './types'
+
+import classes from './Select.module.scss'
 
 export const Select: React.FC<ISelectProps> = ({
   options,
@@ -18,13 +21,17 @@ export const Select: React.FC<ISelectProps> = ({
   }
 
   return (
-    <>
+    <div className={classes.root}>
       <p>{label}</p>
-      <select {...props} onChange={event => onChangeHandler(event)}>
+      <select
+        {...props}
+        className={classes.select}
+        onChange={event => onChangeHandler(event)}
+      >
         {optionsValues.map((option, index) => (
           <option key={index}>{option}</option>
         ))}
       </select>
-    </>
+    </div>
   )
 }

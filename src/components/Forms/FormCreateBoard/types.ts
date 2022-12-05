@@ -35,6 +35,7 @@ export type TaskItem = {
   dateCreation: Dayjs
   targetDate: Dayjs
   priority: PriorityTypes
+  status: string
 }
 
 // Priority Types

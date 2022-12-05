@@ -1,7 +1,8 @@
 import React from 'react'
 
-import classes from './TextField.module.scss'
 import { ITextFieldProps } from './types'
+
+import classes from './TextField.module.scss'
 
 export const TextField: React.FC<ITextFieldProps> = ({
   label,
@@ -16,15 +17,15 @@ export const TextField: React.FC<ITextFieldProps> = ({
   }
 
   return (
-    <label>
-      {label}
+    <div className={classes.root}>
+      <p>{label}</p>
       <input
-        className={classes.root}
+        className={classes.input}
         value={TextFieldValue}
         onChange={event => onChangeHandler(event)}
         autoComplete={'off'}
         {...props}
       />
-    </label>
+    </div>
   )
 }

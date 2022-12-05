@@ -51,7 +51,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
         type='text'
         name='title'
         label={'Task title '}
-        placeholder={'TextField title'}
+        placeholder={'title'}
       />
 
       {/* TextField for description task */}
@@ -61,7 +61,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
         type='text'
         name='description'
         label={'Task description '}
-        placeholder={'TextField title'}
+        placeholder={'title'}
       />
 
       {/* TextField for target date task */}
@@ -73,7 +73,7 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
         label={'Target Date '}
       />
 
-      {/* Select for choice priority for task */}
+      {/* Select priority for task */}
       <Select
         handleChange={handleChange}
         name='priority'

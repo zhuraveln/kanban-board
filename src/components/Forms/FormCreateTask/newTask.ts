@@ -13,6 +13,7 @@ export class Task {
   readonly dateCreation: Dayjs = dayjs()
   public targetDate: Dayjs
   public priority: PriorityTypes
+  public status: string = 'Queue'
 
   constructor(data: CreateTaskFormFields, number: number) {
     this.number = number + 1

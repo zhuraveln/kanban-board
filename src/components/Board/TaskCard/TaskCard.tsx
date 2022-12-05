@@ -16,7 +16,8 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
     description,
     dateCreation,
     targetDate,
-    priority
+    priority,
+    status
   } = props
 
   // Calculation days and hours in work
@@ -42,6 +43,7 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
           <div>Target Date: {dayjs(targetDate).format('DD.MM.YYYY H:mm')}</div>
           <div>Day in work: {timeInWork}</div>
           <div>Priority: {priority}</div>
+          <div>Status: {status}</div>
         </div>
       )}
     </Draggable>

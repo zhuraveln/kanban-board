@@ -18,7 +18,8 @@ export const testBoard = [
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.LOW
+            priority: PriorityTypes.LOW,
+            status: 'Queue'
           }
         ]
       },
@@ -33,7 +34,8 @@ export const testBoard = [
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.LOW
+            priority: PriorityTypes.MEDIUM,
+            status: 'Development'
           }
         ]
       },
@@ -48,7 +50,8 @@ export const testBoard = [
             description: 'description for task 1',
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.LOW
+            priority: PriorityTypes.HIGH,
+            status: 'Done'
           }
         ]
       }
