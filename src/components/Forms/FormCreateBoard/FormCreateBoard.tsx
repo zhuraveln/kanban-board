@@ -6,7 +6,11 @@ import { useFormData } from '../../../hooks/useFormData'
 import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'
 import { TextField } from '../../UI/InputTextField/TextField'
-import { CreateBoardFormFields, IFormCreateBoardProps } from './types'
+import {
+  BoardItem,
+  CreateBoardFormFields,
+  IFormCreateBoardProps
+} from './types'
 
 export const FormCreateBoard: React.FC<IFormCreateBoardProps> = ({
   setModalActive
@@ -18,9 +22,9 @@ export const FormCreateBoard: React.FC<IFormCreateBoardProps> = ({
     name: ''
   })
   const onSubmit = (data: CreateBoardFormFields) => {
-    const newBoard = new Board(data.name)
+    const newBoard: BoardItem = new Board(data)
 
-    dispatch(createNewBoard(newBoard.startBoard))
+    dispatch(createNewBoard(newBoard))
     setModalActive(false)
   }
 

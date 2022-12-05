@@ -1,3 +1,4 @@
+import { Dayjs } from 'dayjs'
 import { Dispatch, SetStateAction } from 'react'
 
 /** Interface for Form Create Board Props */
@@ -29,4 +30,6 @@ export type TaskItem = {
   id: string
   title: string
   description: string
+  dateCreation: Dayjs
+  targetDate: Dayjs
 }

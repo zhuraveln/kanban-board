@@ -1,3 +1,4 @@
+import { Dayjs } from 'dayjs'
 import { Dispatch, SetStateAction } from 'react'
 
 // Interface for Modal FC
@@ -9,4 +10,5 @@ export interface IFormCreateTaskProps {
 export type CreateTaskFormFields = {
   title: string
   description: string
+  targetDate: Dayjs
 }

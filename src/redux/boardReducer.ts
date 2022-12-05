@@ -1,48 +1,8 @@
-import { TaskItem } from '../components/Forms/FormCreateBoard/types'
+import { testBoard } from './test'
 import { BoardAction, BoardActionsTypes, BoardState } from './types'
 
 const initialState: BoardState = {
-  boards: [
-    {
-      id: 'lb57o0r4dnc2apyt1qe',
-      name: 'test',
-      columns: [
-        {
-          id: 'lbasdgvaw7h8ostgupotncl',
-          name: 'Queue',
-          tasks: [
-            {
-              description: 'description for task 1',
-              id: 'lb57w721tstgupfdbfotncl',
-              title: 'task in Queue'
-            }
-          ]
-        },
-        {
-          id: 'lasvasv7w723tbostgupotncl',
-          name: 'Development',
-          tasks: [
-            {
-              description: 'description for task 1',
-              id: 'lb57w7h8ostgsdvsdbotncl',
-              title: 'task in Development'
-            }
-          ]
-        },
-        {
-          id: 'lb57w7h8ostgupasvvaasvqwg1cl',
-          name: 'Done',
-          tasks: [
-            {
-              description: 'description for task 1',
-              id: 'lb571ngf8ostgupotncl',
-              title: 'task in Done'
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  boards: testBoard,
   currentBoardIndex: 0
 }
 

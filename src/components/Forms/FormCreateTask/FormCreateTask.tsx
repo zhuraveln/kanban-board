@@ -1,4 +1,5 @@
 import React from 'react'
+import dayjs from 'dayjs'
 
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 
@@ -10,9 +11,9 @@ import { Button } from '../../UI/Button/Button'
 import { Form } from '../../UI/Form/Form'
 import { TextField } from '../../UI/InputTextField/TextField'
 
-import { uniqId } from '../../../utils/uniqId'
-
 import { CreateTaskFormFields, IFormCreateTaskProps } from './types'
+import { Task } from './newTask'
+import { TaskItem } from '../FormCreateBoard/types'
 
 export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   setModalActive
@@ -22,11 +23,15 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
   // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
     title: '',
-    description: ''
+    description: '',
+    targetDate: dayjs('01.01.2023 09:00')
   })
 
+  // Handler for submit form
   const onSubmit = (data: CreateTaskFormFields) => {
-    dispatch(createNewTask({ ...data, id: uniqId() }))
+    const newTask: TaskItem = new Task(data)
+
+    dispatch(createNewTask(newTask))
     setModalActive(false)
   }
 
@@ -50,6 +55,15 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
         name='description'
         label={'Task description '}
         placeholder={'TextField title'}
+      />
+
+      {/* TextField for target date task */}
+      <TextField
+        // required
+        handleChange={handleChange}
+        type='datetime-local'
+        name='targetDate'
+        label={'Target Date '}
       />
 
       {/* Button for create new Task */}

@@ -1,5 +1,8 @@
+import dayjs from 'dayjs'
+
 import { uniqId } from '../../../utils/uniqId'
-import { BoardItem, ColumnItem } from './types'
+
+import { ColumnItem, CreateBoardFormFields } from './types'
 
 export class Board {
   readonly id: string = uniqId()
@@ -12,7 +15,9 @@ export class Board {
         {
           id: uniqId(),
           title: 'task 1',
-          description: 'description for task'
+          description: 'description for task',
+          dateCreation: dayjs('01/12/2022 18:00'),
+          targetDate: dayjs('05/12/2022 18:00')
         }
       ]
     },
@@ -23,7 +28,9 @@ export class Board {
         {
           id: uniqId(),
           title: 'task 2',
-          description: 'description for task'
+          description: 'description for task',
+          dateCreation: dayjs('01/12/2022 18:00'),
+          targetDate: dayjs('05/12/2022 18:00')
         }
       ]
     },
@@ -34,21 +41,15 @@ export class Board {
         {
           id: uniqId(),
           title: 'task 3',
-          description: 'description for task'
+          description: 'description for task',
+          dateCreation: dayjs('01/12/2022 18:00'),
+          targetDate: dayjs('05/12/2022 18:00')
         }
       ]
     }
   ]
 
-  constructor(name: string) {
-    this.name = name
-  }
-
-  get startBoard(): BoardItem {
-    return {
-      id: this.id,
-      name: this.name,
-      columns: this.columns
-    }
+  constructor(data: CreateBoardFormFields) {
+    this.name = data.name
   }
 }
