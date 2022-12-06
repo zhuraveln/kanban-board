@@ -1,16 +1,16 @@
-import { immArr } from '../utils/immArr'
+import { immArr } from './immArr'
 import {
   BoardState,
   CreateNewTaskAction,
   ReorderTasksOnDragDropAction
-} from './types'
+} from '../redux/board/types'
 
 /** Custom class for immutable work with Board state */
 export class immBoard {
   /** Return immutable Boards with new Task */
   static createNewTask = (state: BoardState, action: CreateNewTaskAction) => {
-    const boards = state.boards
-    const index = Number(state.currentBoardIndex)
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // Current board index
 
     return [
       ...immArr.replace(boards, index, {

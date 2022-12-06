@@ -1,4 +1,4 @@
-import { immBoard } from './immBoard'
+import { immBoard } from '../../utils/immBoard'
 import { testBoard } from './test'
 
 import { BoardAction, BoardActionsTypes, BoardState } from './types'

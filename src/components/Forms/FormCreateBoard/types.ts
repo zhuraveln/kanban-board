@@ -1,10 +1,4 @@
 import { Dayjs } from 'dayjs'
-import { Dispatch, SetStateAction } from 'react'
-
-/** Interface for Form Create Board Props */
-export interface IFormCreateBoardProps {
-  setModalActive: Dispatch<SetStateAction<boolean>>
-}
 
 /** Types for fields for create board form */
 export type CreateBoardFormFields = {

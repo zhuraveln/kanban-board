@@ -1,9 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import { NavBar } from './components/NavBar/NavBar'
-import { BoardsList } from './components/BoardsList/BoardsList/BoardsList'
-import { Board } from './components/Board/Board/Board'
+import { Board, BoardsList, Modal, NavBar } from './components'
 
 import classes from './styles/App.module.scss'
 
@@ -25,6 +23,9 @@ const App: React.FC = () => {
           <Route path='*' element={<h1>Not found</h1>} />
         </Routes>
       </div>
+
+      {/* Modal window */}
+      <Modal />
     </>
   )
 }

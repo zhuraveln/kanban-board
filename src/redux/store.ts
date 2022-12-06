@@ -5,5 +5,7 @@ import { rootReducer } from './rootReducer'
 // Redux store
 export const store = createStore(rootReducer, composeWithDevTools())
 
-// Types of actions for dispatch
+// RootState types
+export type RootState = ReturnType<typeof store.getState>
+// Actions types
 export type AppDispatch = typeof store.dispatch

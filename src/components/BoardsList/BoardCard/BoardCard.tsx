@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import { setcurrentBoardIndex } from '../../../redux/actions'
+import { setCurrentBoardIndex } from '../../../redux/board/actions'
 
 import { BoardCardProps } from './types'
 
@@ -15,7 +15,7 @@ export const BoardCard: React.FC<BoardCardProps> = ({ name, boardIndex }) => {
   // Handler for click on Board Card
   const onClickBoardCardHandler = () => {
     navigate(`/board/${name}`)
-    dispatch(setcurrentBoardIndex(boardIndex))
+    dispatch(setCurrentBoardIndex(boardIndex))
   }
 
   return (

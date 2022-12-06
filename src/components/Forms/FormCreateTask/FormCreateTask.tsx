@@ -1,29 +1,23 @@
 import React from 'react'
 import dayjs from 'dayjs'
 
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import { boardSelector } from '../../../redux/selectors'
+import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
 
-import { useFormData } from '../../../hooks/useFormData'
+import { tasksCounterSelector } from '../../../redux/board/selectors'
+import { createNewTask } from '../../../redux/board/actions'
 
-import { createNewTask } from '../../../redux/actions'
+import { Button, Form, Select, TextField } from '../..'
 
-import { Button } from '../../UI/Button/Button'
-import { Form } from '../../UI/Form/Form'
-import { TextField } from '../../UI/InputTextField/TextField'
-import { Select } from '../../UI/Select/Select'
-
-import { CreateTaskFormFields, IFormCreateTaskProps } from './types'
+import { CreateTaskFormFields } from './types'
 import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
 
 import { Task } from './newTask'
+import { closeModal } from '../../../redux/modal/actions'
 
-export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
-  setModalActive
-}) => {
+export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()
-  const board = useSelector(boardSelector())
+  // Getting tasks counter in current board from Redux
+  const { tasksCounter } = useAppSelector(tasksCounterSelector())
 
   // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
@@ -35,11 +29,10 @@ export const FormCreateTask: React.FC<IFormCreateTaskProps> = ({
 
   // Handler for submit form
   const onSubmit = (data: CreateTaskFormFields) => {
-    const taskNumber = board.tasksCounter
-    const newTask: TaskItem = new Task(data, taskNumber)
-
+    // Create new Task object
+    const newTask: TaskItem = new Task(data, tasksCounter)
     dispatch(createNewTask(newTask))
-    setModalActive(false)
+    dispatch(closeModal())
   }
 
   return (

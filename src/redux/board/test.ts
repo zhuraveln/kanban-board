@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { PriorityTypes } from '../components/Forms/FormCreateBoard/types'
+import { PriorityTypes } from '../../components/Forms/FormCreateBoard/types'
 
 export const testBoard = [
   {

@@ -1,12 +1,15 @@
 import { DropResult } from 'react-beautiful-dnd'
-import { BoardItem, TaskItem } from '../components/Forms/FormCreateBoard/types'
+import {
+  BoardItem,
+  TaskItem
+} from '../../components/Forms/FormCreateBoard/types'
 
 import {
   CreateNewBoardAction,
   CreateNewTaskAction,
   BoardActionsTypes,
   ReorderTasksOnDragDropAction,
-  SetcurrentBoardIndexAction,
+  SetCurrentBoardIndexAction,
   BoardState
 } from './types'
 
@@ -17,9 +20,9 @@ export const createNewBoard = (payload: BoardItem): CreateNewBoardAction => ({
 })
 
 // Action for set Current Board index
-export const setcurrentBoardIndex = (
+export const setCurrentBoardIndex = (
   payload: BoardState['currentBoardIndex']
-): SetcurrentBoardIndexAction => ({
+): SetCurrentBoardIndexAction => ({
   type: BoardActionsTypes.SET_CURRENT_BOARD_INDEX,
   payload
 })

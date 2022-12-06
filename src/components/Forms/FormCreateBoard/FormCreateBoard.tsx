@@ -1,20 +1,16 @@
 import React from 'react'
+
 import { Board } from './newBoard'
-import { createNewBoard } from '../../../redux/actions'
+import { createNewBoard } from '../../../redux/board/actions'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { useFormData } from '../../../hooks/useFormData'
-import { Button } from '../../UI/Button/Button'
-import { Form } from '../../UI/Form/Form'
-import { TextField } from '../../UI/InputTextField/TextField'
-import {
-  BoardItem,
-  CreateBoardFormFields,
-  IFormCreateBoardProps
-} from './types'
 
-export const FormCreateBoard: React.FC<IFormCreateBoardProps> = ({
-  setModalActive
-}) => {
+import { Button, Form, TextField } from '../..'
+
+import { BoardItem, CreateBoardFormFields } from './types'
+import { closeModal } from '../../../redux/modal/actions'
+
+export const FormCreateBoard: React.FC = () => {
   const dispatch = useAppDispatch()
 
   // Custom Hook for collection all values in form fields
@@ -22,10 +18,10 @@ export const FormCreateBoard: React.FC<IFormCreateBoardProps> = ({
     name: ''
   })
   const onSubmit = (data: CreateBoardFormFields) => {
+    // Create new Board
     const newBoard: BoardItem = new Board(data)
-
     dispatch(createNewBoard(newBoard))
-    setModalActive(false)
+    dispatch(closeModal())
   }
 
   return (
