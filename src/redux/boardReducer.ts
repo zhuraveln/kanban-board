@@ -1,8 +1,7 @@
-import { immArr } from '../utils/immArr'
+import { immBoard } from './immBoard'
 import { testBoard } from './test'
 
 import { BoardAction, BoardActionsTypes, BoardState } from './types'
-import { utilsReducer } from './utilsReducer'
 
 const initialState: BoardState = {
   boards: testBoard,
@@ -30,15 +29,13 @@ export const boardReducer = (
 
     // CREATE A NEW TASK
     case BoardActionsTypes.CREATE_NEW_TASK:
-      return utilsReducer.createNewTask(state, action)
+      return { ...state, boards: [...immBoard.createNewTask(state, action)] }
 
     //----------------------------------------------------------------
 
     // REORDER TASKS BY DRAG AND DROP
     case BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP:
-      // Draggable location parameters from 'beautiful drag and drop'
-
-      return utilsReducer.reorderTask(state, action)
+      return { ...state, boards: [...immBoard.reorderTask(state, action)] }
 
     //----------------------------------------------------------------
 

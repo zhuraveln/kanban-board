@@ -1,38 +1,37 @@
 /** Custom class for immutable work with array */
 export class immArr {
-  /** Immutable inserts value in array
+  /** Immutable inserts element into array
    * @return new array
    */
-  static insert = (array: any[], index: number, value: any) => [
-    ...array.slice(0, index),
-    value,
-    ...array.slice(index)
-  ]
+  static insert<Type>(array: Type[], index: number, element: Type): Type[] {
+    return [...array.slice(0, index), element, ...array.slice(index)]
+  }
 
-  /** Immutable remove value in array
+  /** Immutable remove element from array
    * @return new array
    */
-  static remove = (array: any[], index: number) => [
-    ...array.slice(0, index),
-    ...array.slice(index + 1)
-  ]
+  static remove<Type>(array: Type[], index: number): Type[] {
+    return [...array.slice(0, index), ...array.slice(index + 1)]
+  }
 
   /** Immutable replace element in array
    * @return new array
    */
-  static replace = (array: any[], index: number, value: any) => [
-    ...this.insert(this.remove(array, index), index, value)
-  ]
+  static replace<Type>(array: Type[], index: number, element: Type): Type[] {
+    return [...this.insert(this.remove(array, index), index, element)]
+  }
 
-  /** Immutable change positions for two values in array
+  /** Immutable change positions for two elements in array
    * @return new array
    */
-  static swap = (
-    array: any[],
+  static swap<Type>(
+    array: Type[],
     sourceIndex: number,
     destinationIndex: number,
-    value: any
-  ) => [
-    ...this.insert(this.remove(array, sourceIndex), destinationIndex, value)
-  ]
+    element: Type
+  ): Type[] {
+    return [
+      ...this.insert(this.remove(array, sourceIndex), destinationIndex, element)
+    ]
+  }
 }
