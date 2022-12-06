@@ -10,7 +10,8 @@ import {
   BoardActionsTypes,
   ReorderTasksOnDragDropAction,
   SetCurrentBoardIndexAction,
-  BoardState
+  BoardState,
+  SetCurrentTaskAction
 } from './types'
 
 // Action for create a new board
@@ -38,5 +39,11 @@ export const reorderTasksOnDragDrop = (
   payload: DropResult
 ): ReorderTasksOnDragDropAction => ({
   type: BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP,
+  payload
+})
+
+// Action for set current Task
+export const setCurrentTask = (payload: TaskItem): SetCurrentTaskAction => ({
+  type: BoardActionsTypes.SET_CURRENT_TASK,
   payload
 })

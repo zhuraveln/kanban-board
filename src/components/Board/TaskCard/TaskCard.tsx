@@ -1,29 +1,26 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import dayjs from 'dayjs'
 
 import { ITaskCardProps } from './typex'
 
 import classes from './TaskCard.module.scss'
+import { useAppDispatch } from '../../../hooks'
+import {
+  ModalContentTypes,
+  setModalContent
+} from '../../../redux/modal/actions'
+import { setCurrentTask } from '../../../redux/board/actions'
 
 export const TaskCard: React.FC<ITaskCardProps> = props => {
+  const dispatch = useAppDispatch()
   // Destructuring props
-  const {
-    index,
-    id,
-    number,
-    title,
-    description,
-    dateCreation,
-    targetDate,
-    priority,
-    status
-  } = props
+  const { index, id, number, title, priority } = props
 
-  // Calculation days and hours in work
-  const daysInWork = dayjs().diff(dateCreation, 'day')
-  const hoursInWork = dayjs().diff(dateCreation, 'hour')
-  const timeInWork = `${daysInWork} d ${hoursInWork - daysInWork * 24} h`
+  // Handler for click on Task card
+  const onClickTaskCardHandler = () => {
+    dispatch(setCurrentTask(props))
+    dispatch(setModalContent(ModalContentTypes.FULL_TASK))
+  }
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -31,19 +28,13 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
         <div
           className={classes.root}
           ref={provided.innerRef}
+          onClick={onClickTaskCardHandler}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
           <div className={classes.title}>#{number}</div>
           <div className={classes.title}>{title}</div>
-          <div className={classes.decription}>{description}</div>
-          <div>
-            Date Creation: {dayjs(dateCreation).format('DD.MM.YYYY H:mm')}
-          </div>
-          <div>Target Date: {dayjs(targetDate).format('DD.MM.YYYY H:mm')}</div>
-          <div>Day in work: {timeInWork}</div>
           <div>Priority: {priority}</div>
-          <div>Status: {status}</div>
         </div>
       )}
     </Draggable>

@@ -3,11 +3,14 @@ import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { boardsSelector } from '../../../redux/board/selectors'
 
-import { BoardCard, Button, FormCreateBoard, Modal } from '../..'
+import { BoardCard, Button } from '../..'
+
+import {
+  ModalContentTypes,
+  setModalContent
+} from '../../../redux/modal/actions'
 
 import classes from './BoardsList.module.scss'
-import { setModalContent } from '../../../redux/modal/actions'
-import { ModalContentTypes } from '../../Modal/defineModalEl'
 
 export const BoardsList: React.FC = () => {
   const dispatch = useAppDispatch()

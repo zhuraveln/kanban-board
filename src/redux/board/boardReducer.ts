@@ -5,7 +5,8 @@ import { BoardAction, BoardActionsTypes, BoardState } from './types'
 
 const initialState: BoardState = {
   boards: testBoard,
-  currentBoardIndex: 0
+  currentBoardIndex: 0,
+  currentTask: null
 }
 
 export const boardReducer = (
@@ -15,7 +16,7 @@ export const boardReducer = (
   switch (action.type) {
     //----------------------------------------------------------------
 
-    // CREACTE A NEW BOARD
+    // CREATE A NEW BOARD
     case BoardActionsTypes.CREATE_NEW_BOARD:
       return { ...state, boards: [...state.boards, action.payload] }
 
@@ -36,6 +37,12 @@ export const boardReducer = (
     // REORDER TASKS BY DRAG AND DROP
     case BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP:
       return { ...state, boards: [...immBoard.reorderTask(state, action)] }
+
+    //----------------------------------------------------------------
+
+    // SET CURRENT TASK
+    case BoardActionsTypes.SET_CURRENT_TASK:
+      return { ...state, currentTask: action.payload }
 
     //----------------------------------------------------------------
 

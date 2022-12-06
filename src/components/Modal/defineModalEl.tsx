@@ -1,10 +1,5 @@
-import { FormCreateBoard, FormCreateTask } from '..'
-
-// Modal Content Types
-export enum ModalContentTypes {
-  FORM_CREATE_BOARD = 'FORM_CREATE_BOARD',
-  FORM_CREATE_TASK = 'FORM_CREATE_TASK'
-}
+import { FormCreateBoard, FormCreateTask, FullTask } from '..'
+import { ModalContentTypes } from '../../redux/modal/actions'
 
 export const defineModalEl = (
   modalContentTypes: ModalContentTypes | null
@@ -16,6 +11,9 @@ export const defineModalEl = (
       break
     case ModalContentTypes.FORM_CREATE_TASK:
       modalEl = <FormCreateTask />
+      break
+    case ModalContentTypes.FULL_TASK:
+      modalEl = <FullTask />
       break
 
     default:

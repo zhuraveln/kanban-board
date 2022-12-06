@@ -20,7 +20,7 @@ export const modalReducer = (
 
     // CLOSE MODAL
     case ModalActionsTypes.CLOSE_MODAL:
-      return { ...state, modalContent: null, isModalOpen: false }
+      return { ...state, isModalOpen: false }
 
     //----------------------------------------------------------------
 
