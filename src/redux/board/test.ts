@@ -40,11 +40,13 @@ export const testBoard = [
             subtasks: [
               {
                 id: 'lb5dsv1ngf8ostgupjkcl',
-                title: 'new subtask 1'
+                title: 'new subtask 1',
+                isComplete: false
               },
               {
                 id: 'lb2hsv1n8ostgupjkcl',
-                title: 'new subtask 2'
+                title: 'new subtask 2',
+                isComplete: false
               }
             ]
           }

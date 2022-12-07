@@ -4,7 +4,7 @@ import React from 'react'
 export const useFormData = (initialValues: any) => {
   const [values, setValues] = React.useState(initialValues)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     setValues((formValues: any) => ({
       ...formValues,
       [e.target.name]: e.target.value
@@ -12,11 +12,11 @@ export const useFormData = (initialValues: any) => {
   }
 
   const handleSubmit = (onSubmit: (data: any) => void) => {
-    return (e: React.ChangeEvent<HTMLInputElement>) => {
+    return (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       onSubmit(values)
     }
   }
 
-  return [values, handleChange, handleSubmit]
+  return { values, handleChange, handleSubmit }
 }

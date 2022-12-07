@@ -28,6 +28,12 @@ export const boardReducer = (
 
     //----------------------------------------------------------------
 
+    // CREATE A NEW SUBTASK
+    case BoardActionsTypes.CREATE_NEW_SUBTASK:
+      return { ...state, boards: [...immBoard.createNewSubTask(state, action)] }
+
+    //----------------------------------------------------------------
+
     // UPDATE TASK
     case BoardActionsTypes.UPDATE_TASK:
       return { ...state, boards: [...immBoard.updateTask(state, action)] }

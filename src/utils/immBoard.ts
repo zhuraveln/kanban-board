@@ -1,6 +1,7 @@
 import { immArr } from './immArr'
 import {
   BoardState,
+  CreateNewSubTaskAction,
   CreateNewTaskAction,
   ReorderTasksOnDragDropAction,
   UpdateTaskAction
@@ -25,6 +26,45 @@ export class immBoard {
           ...immArr.replace(boards[index].columns, 0, {
             ...boards[index].columns[0],
             tasks: [...boards[index].columns[0].tasks, action.payload]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with new SubTask */
+  static createNewSubTask = (
+    state: BoardState,
+    action: CreateNewSubTaskAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+    const indexCurrentColumn = Number(state.currentTask?.columnIndex) // current column index
+    const indexCurrentTask = Number(state.currentTask?.index) // current task index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          ...immArr.replace(boards[index].columns, indexCurrentColumn, {
+            ...boards[index].columns[indexCurrentColumn],
+            tasks: [
+              ...immArr.replace(
+                boards[index].columns[indexCurrentColumn].tasks,
+                indexCurrentTask,
+                {
+                  ...boards[index].columns[indexCurrentColumn].tasks[
+                    indexCurrentTask
+                  ],
+                  subtasks: [
+                    ...boards[index].columns[indexCurrentColumn].tasks[
+                      indexCurrentTask
+                    ].subtasks,
+                    action.payload
+                  ]
+                }
+              )
+            ]
           })
         ]
       })

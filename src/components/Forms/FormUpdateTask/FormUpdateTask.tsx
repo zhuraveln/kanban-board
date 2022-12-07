@@ -22,8 +22,8 @@ export const FormUpdateTask: React.FC = () => {
   const task = useAppSelector(currentTaskSelector())
 
   // Custom Hook for collect all values from form fields
-  const [values, handleChange, handleSubmit] = useFormData({
-    title: task?.title,
+  const { handleChange, handleSubmit } = useFormData({
+    title: task?.title, // initial values for hook
     description: task?.description,
     targetDate: dayjs(task?.targetDate).format('YYYY-MM-DDThh:mm'),
     priority: task?.priority
@@ -33,15 +33,15 @@ export const FormUpdateTask: React.FC = () => {
   const onSubmit = (data: UpdateTaskFormFields) => {
     if (task) {
       const newUpdatedTask: CurrentTaskItem = new updatedTask(data, task) // create updated Task object
-      dispatch(updateTask(newUpdatedTask)) // update Task in state
-      dispatch(setCurrentTask(newUpdatedTask)) // set updated Task to 'CurrentTask' in state
+      dispatch(updateTask(newUpdatedTask)) // update Task in Redux state
+      dispatch(setCurrentTask(newUpdatedTask)) // set updated Task to 'CurrentTask' in Redux state
       dispatch(setModalContent(ModalContentTypes.FULL_TASK)) // open modal window with updated Task
     }
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* TextField for title task */}
+      {/* Input for title task */}
       <TextField
         required
         onChange={handleChange}
@@ -52,17 +52,17 @@ export const FormUpdateTask: React.FC = () => {
         placeholder={'title'}
       />
 
-      {/* TextField for description task */}
+      {/* Input for description task */}
       <TextField
         onChange={handleChange}
-        defaultValue={task?.description}
+        defaultValue={task?.description || ''}
         type='text'
         name='description'
         label={'Task description '}
         placeholder={'title'}
       />
 
-      {/* TextField for target date task */}
+      {/* Input for target date task */}
       <TextField
         onChange={handleChange}
         defaultValue={dayjs(task?.targetDate).format('YYYY-MM-DDThh:mm')}

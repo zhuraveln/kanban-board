@@ -1,9 +1,9 @@
 import React from 'react'
-import dayjs from 'dayjs'
 
 import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
 
 import { tasksCounterSelector } from '../../../redux/board/selectors'
+import { closeModal } from '../../../redux/modal/actions'
 import { createNewTask } from '../../../redux/board/actions'
 
 import { Button, Form, Select, TextField } from '../..'
@@ -12,32 +12,31 @@ import { CreateTaskFormFields } from './types'
 import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
 
 import { Task } from './newTask'
-import { closeModal } from '../../../redux/modal/actions'
 
 export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()
-  // Getting tasks counter in current board from Redux
+
+  // Getting tasks counter for current board from Redux
   const { tasksCounter } = useAppSelector(tasksCounterSelector())
 
   // Custom Hook for collect all values from form fields
-  const [values, handleChange, handleSubmit] = useFormData({
-    title: '',
-    description: '',
-    targetDate: dayjs('01.01.2023 09:00'),
+  const { handleChange, handleSubmit } = useFormData({
+    title: '', // initial values for hook
+    description: null,
+    targetDate: null,
     priority: PriorityTypes.LOW
   })
 
   // Handler for submit form
   const onSubmit = (data: CreateTaskFormFields) => {
-    // Create new Task object
-    const newTask: TaskItem = new Task(data, tasksCounter)
-    dispatch(createNewTask(newTask))
-    dispatch(closeModal())
+    const newTask: TaskItem = new Task(data, tasksCounter) // create new Task object
+    dispatch(createNewTask(newTask)) // create Task in Redux state
+    dispatch(closeModal()) // close modal
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* TextField for title task */}
+      {/* Input for title task */}
       <TextField
         required
         onChange={handleChange}
@@ -47,9 +46,8 @@ export const FormCreateTask: React.FC = () => {
         placeholder={'title'}
       />
 
-      {/* TextField for description task */}
+      {/* Input for description task */}
       <TextField
-        // required
         onChange={handleChange}
         type='text'
         name='description'
@@ -57,9 +55,8 @@ export const FormCreateTask: React.FC = () => {
         placeholder={'title'}
       />
 
-      {/* TextField for target date task */}
+      {/* Input for target date task */}
       <TextField
-        // required
         onChange={handleChange}
         type='datetime-local'
         name='targetDate'

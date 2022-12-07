@@ -14,3 +14,9 @@ export const tasksCounterSelector = () => (state: RootState) =>
 /** Selector for getting current task from state */
 export const currentTaskSelector = () => (state: RootState) =>
   state.board.currentTask
+
+/** Selector for getting task from state */
+export const getTaskSelector = () => (state: RootState) =>
+  state.board.boards[Number(state.board.currentBoardIndex)].columns[
+    Number(state.board.currentTask?.columnIndex)
+  ].tasks[Number(state.board.currentTask?.index)]

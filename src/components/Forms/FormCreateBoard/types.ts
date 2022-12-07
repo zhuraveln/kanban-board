@@ -25,9 +25,9 @@ export type TaskItem = {
   id: string
   number: number
   title: string
-  description: string
+  description: string | null
   dateCreation: Dayjs
-  targetDate: Dayjs
+  targetDate: Dayjs | null
   priority: PriorityTypes
   status: string
   subtasks: SubTaskItem[]
@@ -36,6 +36,7 @@ export type TaskItem = {
 export type SubTaskItem = {
   id: string
   title: string
+  isComplete: boolean
 }
 
 /**  Priority Types */

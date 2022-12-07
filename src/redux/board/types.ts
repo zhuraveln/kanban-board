@@ -1,6 +1,7 @@
 import { DropResult } from 'react-beautiful-dnd'
 import {
   BoardItem,
+  SubTaskItem,
   TaskItem
 } from '../../components/Forms/FormCreateBoard/types'
 
@@ -20,6 +21,7 @@ export type CurrentTaskItem = TaskItem & {
 export enum BoardActionsTypes {
   CREATE_NEW_BOARD = 'CREATE_NEW_BOARD',
   CREATE_NEW_TASK = 'CREATE_NEW_TASK',
+  CREATE_NEW_SUBTASK = 'CREATE_NEW_SUBTASK',
   UPDATE_TASK = 'UPDATE_TASK',
   SET_CURRENT_BOARD_INDEX = 'SET_CURRENT_BOARD_INDEX',
   SET_CURRENT_TASK = 'SET_CURRENT_TASK',
@@ -30,6 +32,7 @@ export enum BoardActionsTypes {
 export type BoardAction =
   | CreateNewBoardAction
   | CreateNewTaskAction
+  | CreateNewSubTaskAction
   | UpdateTaskAction
   | SetCurrentBoardIndexAction
   | SetCurrentTaskAction
@@ -45,6 +48,12 @@ export interface CreateNewBoardAction {
 export interface CreateNewTaskAction {
   type: BoardActionsTypes.CREATE_NEW_TASK
   payload: TaskItem
+}
+
+// Interface for create a new SubTask Action
+export interface CreateNewSubTaskAction {
+  type: BoardActionsTypes.CREATE_NEW_SUBTASK
+  payload: SubTaskItem
 }
 
 // Interface for update Task Action

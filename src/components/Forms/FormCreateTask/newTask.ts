@@ -12,7 +12,7 @@ export class Task {
   public title: string
   public description: string
   readonly dateCreation: Dayjs = dayjs()
-  public targetDate: Dayjs
+  public targetDate: Dayjs | null
   public priority: PriorityTypes
   public status: string = 'Queue'
   public subtasks: SubTaskItem[] = []

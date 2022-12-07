@@ -14,19 +14,18 @@ export const FormCreateBoard: React.FC = () => {
   const dispatch = useAppDispatch()
 
   // Custom Hook for collection all values in form fields
-  const [values, handleChange, handleSubmit] = useFormData({
-    name: ''
+  const { handleChange, handleSubmit } = useFormData({
+    name: '' // initial values for hook
   })
   const onSubmit = (data: CreateBoardFormFields) => {
-    // Create new Board
-    const newBoard: BoardItem = new Board(data)
-    dispatch(createNewBoard(newBoard))
-    dispatch(closeModal())
+    const newBoard: BoardItem = new Board(data) // create new Board object
+    dispatch(createNewBoard(newBoard)) // create Board in Redux state
+    dispatch(closeModal()) // close modal
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* TextField for title board */}
+      {/* Input for name board */}
       <TextField
         required
         onChange={handleChange}

@@ -1,6 +1,7 @@
 import { DropResult } from 'react-beautiful-dnd'
 import {
   BoardItem,
+  SubTaskItem,
   TaskItem
 } from '../../components/Forms/FormCreateBoard/types'
 
@@ -13,18 +14,27 @@ import {
   BoardState,
   SetCurrentTaskAction,
   UpdateTaskAction,
-  CurrentTaskItem
+  CurrentTaskItem,
+  CreateNewSubTaskAction
 } from './types'
 
-// Action for create a new board
+// Action for create a new Board
 export const createNewBoard = (payload: BoardItem): CreateNewBoardAction => ({
   type: BoardActionsTypes.CREATE_NEW_BOARD,
   payload
 })
 
-// Action for create a new task
+// Action for create a new Task
 export const createNewTask = (payload: TaskItem): CreateNewTaskAction => ({
   type: BoardActionsTypes.CREATE_NEW_TASK,
+  payload
+})
+
+// Action for create a new Subtask
+export const createNewSubTask = (
+  payload: SubTaskItem
+): CreateNewSubTaskAction => ({
+  type: BoardActionsTypes.CREATE_NEW_SUBTASK,
   payload
 })
 
