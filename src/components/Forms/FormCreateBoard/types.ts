@@ -30,9 +30,15 @@ export type TaskItem = {
   targetDate: Dayjs
   priority: PriorityTypes
   status: string
+  subtasks: SubTaskItem[]
 }
 
-// Priority Types
+export type SubTaskItem = {
+  id: string
+  title: string
+}
+
+/**  Priority Types */
 export enum PriorityTypes {
   LOW = 'LOW',
   MEDIUM = 'MEDIUM',

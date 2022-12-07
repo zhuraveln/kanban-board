@@ -10,6 +10,7 @@ import classes from './Column.module.scss'
 export const Column: React.FC<IColumnProps> = props => {
   // Destructuring props
   const { index, name, tasks } = props
+  const columnIndex = index
   return (
     <div className={classes.container}>
       {/* Column name */}
@@ -22,7 +23,12 @@ export const Column: React.FC<IColumnProps> = props => {
             {...provided.droppableProps}
           >
             {tasks?.map((task, index) => (
-              <TaskCard {...task} index={index} key={task.id} />
+              <TaskCard
+                {...task}
+                index={index}
+                columnIndex={columnIndex}
+                key={task.id}
+              />
             ))}
             {provided.placeholder}
           </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 
-import { ITaskCardProps } from './typex'
+import { ITaskCardProps } from './types'
 
 import classes from './TaskCard.module.scss'
 import { useAppDispatch } from '../../../hooks'
@@ -17,7 +17,7 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
   const { index, id, number, title, priority } = props
 
   // Handler for click on Task card
-  const onClickTaskCardHandler = () => {
+  const onClickTaskCard = () => {
     dispatch(setCurrentTask(props))
     dispatch(setModalContent(ModalContentTypes.FULL_TASK))
   }
@@ -28,7 +28,7 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
         <div
           className={classes.root}
           ref={provided.innerRef}
-          onClick={onClickTaskCardHandler}
+          onClick={onClickTaskCard}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >

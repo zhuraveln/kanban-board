@@ -13,13 +13,13 @@ export const BoardCard: React.FC<BoardCardProps> = ({ name, boardIndex }) => {
   const dispatch = useAppDispatch()
 
   // Handler for click on Board Card
-  const onClickBoardCardHandler = () => {
+  const onClickBoardCard = () => {
     navigate(`/board/${name}`)
     dispatch(setCurrentBoardIndex(boardIndex))
   }
 
   return (
-    <div className={classes.root} onClick={onClickBoardCardHandler}>
+    <div className={classes.root} onClick={onClickBoardCard}>
       <div className={classes.title}>
         <h4>{name}</h4>
       </div>

@@ -26,9 +26,14 @@ export const Board: React.FC = () => {
   const board = useAppSelector(currentBoardSelector())
 
   // Handler for click on 'return to Board list' button
-  const onClickReturnToBoardListHandler = () => {
+  const onClickReturnToBoardList = () => {
     navigate('/')
     dispatch(setCurrentBoardIndex(null))
+  }
+
+  // Handler for click 'create new Task' button
+  const onClickCreateNewTask = () => {
+    dispatch(setModalContent(ModalContentTypes.FORM_CREATE_TASK))
   }
 
   // Handler for Drag and drop Tasks
@@ -40,18 +45,10 @@ export const Board: React.FC = () => {
   return (
     <div className={classes.root}>
       {/* Button for return to Boards list */}
-      <Button onClick={onClickReturnToBoardListHandler}>
-        Back to Board List
-      </Button>
+      <Button onClick={onClickReturnToBoardList}>Back to Board List</Button>
 
-      {/* Button for Create new Task */}
-      <Button
-        onClick={() =>
-          dispatch(setModalContent(ModalContentTypes.FORM_CREATE_TASK))
-        }
-      >
-        Create new Task
-      </Button>
+      {/* Button for create new Task, open modal window */}
+      <Button onClick={onClickCreateNewTask}>Create new Task</Button>
 
       {/* Board's columns */}
       <DragDropContext onDragEnd={onDragEndHandler}>

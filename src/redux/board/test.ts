@@ -19,7 +19,8 @@ export const testBoard = [
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.LOW,
-            status: 'Queue'
+            status: 'Queue',
+            subtasks: []
           }
         ]
       },
@@ -35,7 +36,17 @@ export const testBoard = [
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.MEDIUM,
-            status: 'Development'
+            status: 'Development',
+            subtasks: [
+              {
+                id: 'lb5dsv1ngf8ostgupjkcl',
+                title: 'new subtask 1'
+              },
+              {
+                id: 'lb2hsv1n8ostgupjkcl',
+                title: 'new subtask 2'
+              }
+            ]
           }
         ]
       },
@@ -51,7 +62,8 @@ export const testBoard = [
             dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.HIGH,
-            status: 'Done'
+            status: 'Done',
+            subtasks: []
           }
         ]
       }

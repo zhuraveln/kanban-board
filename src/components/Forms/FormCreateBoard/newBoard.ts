@@ -21,7 +21,8 @@ export class Board {
           dateCreation: dayjs('01/12/2022 18:00'),
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
-          status: 'Queue'
+          status: 'Queue',
+          subtasks: []
         }
       ]
     },
@@ -37,7 +38,8 @@ export class Board {
           dateCreation: dayjs('01/12/2022 18:00'),
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
-          status: 'Development'
+          status: 'Development',
+          subtasks: []
         }
       ]
     },
@@ -53,7 +55,8 @@ export class Board {
           dateCreation: dayjs('01/12/2022 18:00'),
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
-          status: 'Done'
+          status: 'Done',
+          subtasks: []
         }
       ]
     }

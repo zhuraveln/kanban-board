@@ -1,5 +1,4 @@
 import { Dayjs } from 'dayjs'
-import { Dispatch, SetStateAction } from 'react'
 import { PriorityTypes } from '../FormCreateBoard/types'
 
 /** Types for fields in create task form */

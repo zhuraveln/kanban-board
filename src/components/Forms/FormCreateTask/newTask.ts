@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs'
 
 import { uniqId } from '../../../utils/uniqId'
-import { PriorityTypes } from '../FormCreateBoard/types'
+import { PriorityTypes, SubTaskItem } from '../FormCreateBoard/types'
 
 import { CreateTaskFormFields } from './types'
 
@@ -14,6 +14,7 @@ export class Task {
   public targetDate: Dayjs
   public priority: PriorityTypes
   public status: string = 'Queue'
+  public subtasks: SubTaskItem[] = []
 
   constructor(data: CreateTaskFormFields, number: number) {
     this.number = number + 1

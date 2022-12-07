@@ -22,7 +22,7 @@ export const BoardsList: React.FC = () => {
     <div className={classes.root}>
       {/* Create board area */}
       <div className={classes.createArea}>
-        {/* <Button onClick={() => setModalActive(true)}>Create board +</Button> */}
+        {/* Button for Create new Board, open modal window */}
         <Button
           onClick={() =>
             dispatch(setModalContent(ModalContentTypes.FORM_CREATE_BOARD))
@@ -34,7 +34,7 @@ export const BoardsList: React.FC = () => {
 
       {/* Board list */}
       <div className={classes.boardList}>
-        {boards.map((board, index) => (
+        {boards?.map((board, index) => (
           <BoardCard {...board} key={board.id} boardIndex={index} />
         ))}
       </div>

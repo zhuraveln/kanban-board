@@ -22,27 +22,33 @@ export const boardReducer = (
 
     //----------------------------------------------------------------
 
-    // SET CURRENT BOARD INDEX
-    case BoardActionsTypes.SET_CURRENT_BOARD_INDEX:
-      return { ...state, currentBoardIndex: action.payload }
-
-    //----------------------------------------------------------------
-
     // CREATE A NEW TASK
     case BoardActionsTypes.CREATE_NEW_TASK:
       return { ...state, boards: [...immBoard.createNewTask(state, action)] }
 
     //----------------------------------------------------------------
 
-    // REORDER TASKS BY DRAG AND DROP
-    case BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP:
-      return { ...state, boards: [...immBoard.reorderTask(state, action)] }
+    // UPDATE TASK
+    case BoardActionsTypes.UPDATE_TASK:
+      return { ...state, boards: [...immBoard.updateTask(state, action)] }
+
+    //----------------------------------------------------------------
+
+    // SET CURRENT BOARD INDEX
+    case BoardActionsTypes.SET_CURRENT_BOARD_INDEX:
+      return { ...state, currentBoardIndex: action.payload }
 
     //----------------------------------------------------------------
 
     // SET CURRENT TASK
     case BoardActionsTypes.SET_CURRENT_TASK:
       return { ...state, currentTask: action.payload }
+
+    //----------------------------------------------------------------
+
+    // REORDER TASKS BY DRAG AND DROP
+    case BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP:
+      return { ...state, boards: [...immBoard.reorderTask(state, action)] }
 
     //----------------------------------------------------------------
 
