@@ -2,21 +2,21 @@ import React from 'react'
 
 /** Custom Hook for collection all values in form fields  */
 export const useFormData = (initialValues: any) => {
-  const [formValues, setFormValues] = React.useState(initialValues)
+  const [values, setValues] = React.useState(initialValues)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormValues((formValues: any) => ({
+    setValues((formValues: any) => ({
       ...formValues,
       [e.target.name]: e.target.value
     }))
   }
 
-  const handleSubmit = (onSubmit: any) => {
-    return (e: any) => {
+  const handleSubmit = (onSubmit: (data: any) => void) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
-      onSubmit(formValues, e)
+      onSubmit(values)
     }
   }
 
-  return [formValues, handleChange, handleSubmit]
+  return [values, handleChange, handleSubmit]
 }

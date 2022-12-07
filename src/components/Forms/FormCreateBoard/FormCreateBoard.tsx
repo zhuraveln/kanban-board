@@ -29,7 +29,7 @@ export const FormCreateBoard: React.FC = () => {
       {/* TextField for title board */}
       <TextField
         required
-        handleChange={handleChange}
+        onChange={handleChange}
         type='text'
         name='name'
         label={'Board Name '}

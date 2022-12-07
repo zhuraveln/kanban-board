@@ -4,6 +4,7 @@ import { uniqId } from '../../../utils/uniqId'
 
 import { ColumnItem, CreateBoardFormFields, PriorityTypes } from './types'
 
+/** Class for create new Board */
 export class Board {
   readonly id: string = uniqId()
   public name: string

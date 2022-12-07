@@ -1,9 +1,10 @@
 import { Dayjs } from 'dayjs'
 import { CurrentTaskItem } from '../../../redux/board/types'
 
-import { PriorityTypes, SubTaskItem, TaskItem } from '../FormCreateBoard/types'
+import { PriorityTypes, SubTaskItem } from '../FormCreateBoard/types'
 import { UpdateTaskFormFields } from './types'
 
+/** Class for create updated Task */
 export class updatedTask {
   readonly id: string
   readonly index: number

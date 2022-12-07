@@ -5,6 +5,7 @@ import { PriorityTypes, SubTaskItem } from '../FormCreateBoard/types'
 
 import { CreateTaskFormFields } from './types'
 
+/** Class for create new Task */
 export class Task {
   readonly id: string = uniqId()
   readonly number: number

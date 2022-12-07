@@ -40,7 +40,7 @@ export const FormCreateTask: React.FC = () => {
       {/* TextField for title task */}
       <TextField
         required
-        handleChange={handleChange}
+        onChange={handleChange}
         type='text'
         name='title'
         label={'Task title '}
@@ -50,7 +50,7 @@ export const FormCreateTask: React.FC = () => {
       {/* TextField for description task */}
       <TextField
         // required
-        handleChange={handleChange}
+        onChange={handleChange}
         type='text'
         name='description'
         label={'Task description '}
@@ -60,7 +60,7 @@ export const FormCreateTask: React.FC = () => {
       {/* TextField for target date task */}
       <TextField
         // required
-        handleChange={handleChange}
+        onChange={handleChange}
         type='datetime-local'
         name='targetDate'
         label={'Target Date '}
@@ -68,7 +68,7 @@ export const FormCreateTask: React.FC = () => {
 
       {/* Select priority for task */}
       <Select
-        handleChange={handleChange}
+        onChange={handleChange}
         name='priority'
         options={PriorityTypes}
         label={'Priority'}

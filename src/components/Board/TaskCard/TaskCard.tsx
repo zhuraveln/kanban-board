@@ -13,7 +13,8 @@ import { setCurrentTask } from '../../../redux/board/actions'
 
 export const TaskCard: React.FC<ITaskCardProps> = props => {
   const dispatch = useAppDispatch()
-  // Destructuring props
+
+  // Task values
   const { index, id, number, title, priority } = props
 
   // Handler for click on Task card

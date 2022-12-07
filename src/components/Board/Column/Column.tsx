@@ -8,9 +8,9 @@ import { IColumnProps } from './types'
 import classes from './Column.module.scss'
 
 export const Column: React.FC<IColumnProps> = props => {
-  // Destructuring props
+  // Column values
   const { index, name, tasks } = props
-  const columnIndex = index
+  const columnIndex = index // need for TaskCard
   return (
     <div className={classes.container}>
       {/* Column name */}

@@ -3,12 +3,15 @@ import React from 'react'
 
 import { Button, Form, Select, TextField } from '../..'
 import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
-import { updateTask } from '../../../redux/board/actions'
+import { setCurrentTask, updateTask } from '../../../redux/board/actions'
 import { currentTaskSelector } from '../../../redux/board/selectors'
+import {
+  ModalContentTypes,
+  setModalContent
+} from '../../../redux/modal/actions'
 import { CurrentTaskItem } from '../../../redux/board/types'
 
-import { closeModal } from '../../../redux/modal/actions'
-import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
+import { PriorityTypes } from '../FormCreateBoard/types'
 import { UpdateTaskFormFields } from './types'
 import { updatedTask } from './updatedTask'
 
@@ -20,19 +23,19 @@ export const FormUpdateTask: React.FC = () => {
 
   // Custom Hook for collect all values from form fields
   const [values, handleChange, handleSubmit] = useFormData({
-    title: '',
-    description: '',
-    targetDate: dayjs('01.01.2023 09:00'),
-    priority: PriorityTypes.LOW
+    title: task?.title,
+    description: task?.description,
+    targetDate: dayjs(task?.targetDate).format('YYYY-MM-DDThh:mm'),
+    priority: task?.priority
   })
 
   // Handler for submit form
   const onSubmit = (data: UpdateTaskFormFields) => {
     if (task) {
-      // Create updated Task object
-      const newUpdatedTask: CurrentTaskItem = new updatedTask(data, task)
-      dispatch(updateTask(newUpdatedTask))
-      dispatch(closeModal())
+      const newUpdatedTask: CurrentTaskItem = new updatedTask(data, task) // create updated Task object
+      dispatch(updateTask(newUpdatedTask)) // update Task in state
+      dispatch(setCurrentTask(newUpdatedTask)) // set updated Task to 'CurrentTask' in state
+      dispatch(setModalContent(ModalContentTypes.FULL_TASK)) // open modal window with updated Task
     }
   }
 
@@ -41,7 +44,8 @@ export const FormUpdateTask: React.FC = () => {
       {/* TextField for title task */}
       <TextField
         required
-        handleChange={handleChange}
+        onChange={handleChange}
+        defaultValue={task?.title}
         type='text'
         name='title'
         label={'Task title '}
@@ -50,8 +54,8 @@ export const FormUpdateTask: React.FC = () => {
 
       {/* TextField for description task */}
       <TextField
-        // required
-        handleChange={handleChange}
+        onChange={handleChange}
+        defaultValue={task?.description}
         type='text'
         name='description'
         label={'Task description '}
@@ -60,8 +64,8 @@ export const FormUpdateTask: React.FC = () => {
 
       {/* TextField for target date task */}
       <TextField
-        // required
-        handleChange={handleChange}
+        onChange={handleChange}
+        defaultValue={dayjs(task?.targetDate).format('YYYY-MM-DDThh:mm')}
         type='datetime-local'
         name='targetDate'
         label={'Target Date '}
@@ -69,14 +73,15 @@ export const FormUpdateTask: React.FC = () => {
 
       {/* Select priority for task */}
       <Select
-        handleChange={handleChange}
-        name='priority'
         options={PriorityTypes}
+        onChange={handleChange}
+        defaultValue={task?.priority}
+        name='priority'
         label={'Priority'}
       />
 
-      {/* Button for create new Task */}
-      <Button type={'submit'}>Create new task</Button>
+      {/* Button for update Task */}
+      <Button type={'submit'}>Update task</Button>
     </Form>
   )
 }
