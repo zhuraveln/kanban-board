@@ -5,7 +5,7 @@ export const testBoard = [
   {
     id: 'lb57o0r4dnc2apyt1qe',
     name: 'test',
-    tasksCounter: 3,
+    createdTasksCounter: 3,
     columns: [
       {
         id: 'lbasdgvaw7h8ostgupotncl',
@@ -20,6 +20,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.LOW,
             status: 'Queue',
+            comments: [],
             subtasks: []
           }
         ]
@@ -37,6 +38,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.MEDIUM,
             status: 'Development',
+            comments: [{ id: 'b57w7', title: 'first comment' }],
             subtasks: [
               {
                 id: 'lb5dupjkcl',
@@ -65,6 +67,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.HIGH,
             status: 'Done',
+            comments: [{ id: 'sdjykmytghm', title: 'comment' }],
             subtasks: []
           }
         ]
@@ -98,7 +101,7 @@ export const testBoard = [
 //               }
 //             })
 //           ],
-//           tasksCounter: board.tasksCounter + 1 // Increment tasksCounter for each Task create
+//           createdTasksCounter: board.createdTasksCounter + 1 // Increment createdTasksCounter for each Task create
 //         }
 //       } else {
 //         return board

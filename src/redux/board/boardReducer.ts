@@ -34,6 +34,12 @@ export const boardReducer = (
 
     //----------------------------------------------------------------
 
+    // CREATE A NEW COMMENT FOR TASK
+    case BoardActionsTypes.CREATE_NEW_COMMENT:
+      return { ...state, boards: [...immBoard.createNewComment(state, action)] }
+
+    //----------------------------------------------------------------
+
     // CHANGE SUBTASK STATUS
     case BoardActionsTypes.CHANGE_SUBTASK_STATUS:
       return {

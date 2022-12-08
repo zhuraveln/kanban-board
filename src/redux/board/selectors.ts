@@ -8,7 +8,7 @@ export const currentBoardSelector = () => (state: RootState) =>
   state.board.boards[Number(state.board.currentBoardIndex)]
 
 /** Selector for getting tasks counter in current board from state */
-export const tasksCounterSelector = () => (state: RootState) =>
+export const createdTasksCounterSelector = () => (state: RootState) =>
   state.board.boards[Number(state.board.currentBoardIndex)]
 
 /** Selector for getting current task from state */

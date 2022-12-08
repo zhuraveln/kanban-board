@@ -8,7 +8,7 @@ export interface ModalState {
 
 // Modal Actions Types
 export enum ModalActionsTypes {
-  SET_CONTENT_TYPE = 'SET_CONTENT_TYPE',
+  SET_MODAL_CONTENT_TYPE = 'SET_MODAL_CONTENT_TYPE',
   CLOSE_MODAL = 'CLOSE_MODAL'
 }
 
@@ -17,7 +17,7 @@ export type ModalAction = CloseModalAction | SetModalContentAction
 
 // Interface for Set Modal Content and open modal
 export interface SetModalContentAction {
-  type: ModalActionsTypes.SET_CONTENT_TYPE
+  type: ModalActionsTypes.SET_MODAL_CONTENT_TYPE
   payload: ModalContentTypes
 }
 

@@ -23,8 +23,8 @@ export const FormUpdateTask: React.FC = () => {
 
   // Getting current Task from Redux state
   const task = useAppSelector(currentTaskSelector())
-  // Get actual subtasks if client update Task after create Subtasks in FullTask
-  const { subtasks } = useAppSelector(getTaskSelector())
+  // Get actual subtasks and comments if client update Task after create Subtasks or comments in FullTask
+  const { subtasks, comments } = useAppSelector(getTaskSelector())
 
   // Custom Hook for collect all values from form fields
   const { handleChange, handleSubmit } = useFormData({
@@ -39,7 +39,8 @@ export const FormUpdateTask: React.FC = () => {
     if (task) {
       const newUpdatedTask: CurrentTaskItem = new updatedTask(data, {
         ...task,
-        subtasks: subtasks
+        subtasks,
+        comments
       }) // create updated Task object
       dispatch(updateTask(newUpdatedTask)) // update Task in Redux state
       dispatch(setCurrentTask(newUpdatedTask)) // set updated Task to 'CurrentTask' in Redux state

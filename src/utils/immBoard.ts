@@ -1,17 +1,18 @@
 import { immArr } from './immArr'
+import { BoardItem } from '../components/Forms/FormCreateBoard/types'
 import {
   BoardState,
   ChangeSubTaskStatusAction,
+  CreateNewCommentAction,
   CreateNewSubTaskAction,
   CreateNewTaskAction,
   ReorderTasksOnDragDropAction,
   UpdateTaskAction
 } from '../redux/board/types'
-import { BoardItem } from '../components/Forms/FormCreateBoard/types'
 
 /** Custom class for immutable work with Board state */
 export class immBoard {
-  /** Return immutable Boards with new Task */
+  /** Return immutable Boards with a new Task */
   static createNewTask = (
     state: BoardState,
     action: CreateNewTaskAction
@@ -22,7 +23,7 @@ export class immBoard {
     return [
       ...immArr.replace(boards, index, {
         ...boards[index],
-        tasksCounter: boards[index].tasksCounter + 1, // increment tasksCounter for each Task create
+        createdTasksCounter: boards[index].createdTasksCounter + 1, // increment createdTasksCounter for each Task create
         columns: [
           ...immArr.replace(boards[index].columns, 0, {
             ...boards[index].columns[0],
@@ -33,7 +34,7 @@ export class immBoard {
     ]
   }
 
-  /** Return immutable Boards with new SubTask */
+  /** Return immutable Boards with a new SubTask */
   static createNewSubTask = (
     state: BoardState,
     action: CreateNewSubTaskAction
@@ -72,7 +73,46 @@ export class immBoard {
     ]
   }
 
-  /** Return immutable Boards with new SubTask */
+  /** Return immutable Boards with a new comment for Task */
+  static createNewComment = (
+    state: BoardState,
+    action: CreateNewCommentAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+    const indexCurrentColumn = Number(state.currentTask?.columnIndex) // current column index
+    const indexCurrentTask = Number(state.currentTask?.index) // current task index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          ...immArr.replace(boards[index].columns, indexCurrentColumn, {
+            ...boards[index].columns[indexCurrentColumn],
+            tasks: [
+              ...immArr.replace(
+                boards[index].columns[indexCurrentColumn].tasks,
+                indexCurrentTask,
+                {
+                  ...boards[index].columns[indexCurrentColumn].tasks[
+                    indexCurrentTask
+                  ],
+                  comments: [
+                    ...boards[index].columns[indexCurrentColumn].tasks[
+                      indexCurrentTask
+                    ].comments,
+                    action.payload
+                  ]
+                }
+              )
+            ]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with new SubTask Status */
   static changeSubTaskStatus = (
     state: BoardState,
     action: ChangeSubTaskStatusAction
@@ -107,7 +147,7 @@ export class immBoard {
                         ...boards[index].columns[indexCurrentColumn].tasks[
                           indexCurrentTask
                         ].subtasks[indexCurrentSubTask],
-                        isComplete: !action.payload.isComplete
+                        isComplete: action.payload.isComplete
                       }
                     )
                   ]

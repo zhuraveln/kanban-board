@@ -1,7 +1,13 @@
 import dayjs from 'dayjs'
 import React from 'react'
 
-import { Button, SubTaskCard } from '../..'
+import {
+  Button,
+  CommentCard,
+  FormCreateComment,
+  FormCreateSubTask,
+  SubTaskCard
+} from '../..'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { getTaskSelector } from '../../../redux/board/selectors'
@@ -9,7 +15,6 @@ import {
   ModalContentTypes,
   setModalContent
 } from '../../../redux/modal/actions'
-import { FormCreateSubTask } from '../../Forms/FormCreateSubTask/FormCreateSubTask'
 
 import classes from './FullTask.module.scss'
 
@@ -18,8 +23,9 @@ export const FullTask: React.FC = () => {
   // Getting current Task from Redux state
   const task = useAppSelector(getTaskSelector())
 
-  // State for visible input 'create new subtask'
-  const [visibleInput, setVisibleInput] = React.useState(false)
+  // State for visible input 'create new subtask, comments'
+  const [visibleSubTaskInput, setVisibleSubTaskInput] = React.useState(false)
+  const [visibleCommentInput, setVisibleCommentInput] = React.useState(false)
 
   // Calculation days and hours in work
   const daysInWork = dayjs().diff(task?.dateCreation, 'day')
@@ -33,7 +39,12 @@ export const FullTask: React.FC = () => {
 
   // Handler for click 'add Subtask' button
   const onClickAddSubtask = () => {
-    setVisibleInput(true)
+    setVisibleSubTaskInput(true)
+  }
+
+  // Handler for click 'add Comment' button
+  const onClickAddComment = () => {
+    setVisibleCommentInput(true)
   }
 
   return (
@@ -61,11 +72,11 @@ export const FullTask: React.FC = () => {
         <>
           <p>Subtasks:</p>
           {/* Button for create Subtask */}
-          {!visibleInput && (
+          {!visibleSubTaskInput && (
             <Button onClick={onClickAddSubtask}>+Add subtask</Button>
           )}
-          {visibleInput && (
-            <FormCreateSubTask setVisibleInput={setVisibleInput} />
+          {visibleSubTaskInput && (
+            <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
           )}
           <div>
             {task?.subtasks?.map((subtask, index) => (
@@ -77,12 +88,44 @@ export const FullTask: React.FC = () => {
         <>
           {/* Render if Task hasn't Subtasks */}
           {/* Render button for create SubTask if input for create SubTask is hide */}
-          {!visibleInput && (
+          {!visibleSubTaskInput && (
             <Button onClick={onClickAddSubtask}>+Add subtask</Button>
           )}
           {/* Render input for create SubTask */}
-          {visibleInput && (
-            <FormCreateSubTask setVisibleInput={setVisibleInput} />
+          {visibleSubTaskInput && (
+            <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
+          )}
+        </>
+      )}
+
+      {/* COMMENTS CARDS */}
+      {/* Render if Task has Comments */}
+      {task?.comments?.length && task.comments ? (
+        <>
+          <p>Comments:</p>
+          {/* Button for create Comments */}
+          {!visibleCommentInput && (
+            <Button onClick={onClickAddComment}>+Add comment</Button>
+          )}
+          {visibleCommentInput && (
+            <FormCreateComment setVisibleInput={setVisibleCommentInput} />
+          )}
+          <div>
+            {task.comments.map(comment => (
+              <CommentCard {...comment} key={comment.id} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Render if Task hasn't Comments */}
+          {/* Render button for create Comments if input for create Comments is hide */}
+          {!visibleCommentInput && (
+            <Button onClick={onClickAddComment}>+Add comment</Button>
+          )}
+          {/* Render input for create Comments */}
+          {visibleCommentInput && (
+            <FormCreateComment setVisibleInput={setVisibleCommentInput} />
           )}
         </>
       )}

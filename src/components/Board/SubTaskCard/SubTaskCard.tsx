@@ -1,22 +1,26 @@
 import React from 'react'
+
+import { TextField } from '../../UI/InputTextField/TextField'
+
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { changeSubTaskStatus } from '../../../redux/board/actions'
 import { getSubTaskSelector } from '../../../redux/board/selectors'
-import { TextField } from '../../UI/InputTextField/TextField'
+
+import { ISubTaskCardProps } from './types'
 
 import classes from './SubTaskCard.module.scss'
-import { ISubTaskCardProps } from './types'
 
 export const SubTaskCard: React.FC<ISubTaskCardProps> = props => {
   const dispatch = useAppDispatch()
 
   const { index } = props // subtask index from props
 
-  // Getting current SubTask from Redux state
+  // Getting current SubTask values from Redux state
   const { title, isComplete } = useAppSelector(getSubTaskSelector(index))
 
+  // Handler for click on Subtask card
   const onClickHandler = () => {
-    dispatch(changeSubTaskStatus({ isComplete, index }))
+    dispatch(changeSubTaskStatus({ isComplete: !isComplete, index })) // change subtask status
   }
 
   return (

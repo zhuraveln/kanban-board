@@ -13,7 +13,7 @@ export const modalReducer = (
     //----------------------------------------------------------------
 
     // SET MODAL CONTENT AND OPEN MODAL
-    case ModalActionsTypes.SET_CONTENT_TYPE:
+    case ModalActionsTypes.SET_MODAL_CONTENT_TYPE:
       return { ...state, modalContent: action.payload, isModalOpen: true }
 
     //----------------------------------------------------------------

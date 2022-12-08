@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
 
-import { tasksCounterSelector } from '../../../redux/board/selectors'
+import { createdTasksCounterSelector } from '../../../redux/board/selectors'
 import { closeModal } from '../../../redux/modal/actions'
 import { createNewTask } from '../../../redux/board/actions'
 
@@ -17,7 +17,9 @@ export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()
 
   // Getting tasks counter for current board from Redux
-  const { tasksCounter } = useAppSelector(tasksCounterSelector())
+  const { createdTasksCounter: createdTasksCounter } = useAppSelector(
+    createdTasksCounterSelector()
+  )
 
   // Custom Hook for collect all values from form fields
   const { handleChange, handleSubmit } = useFormData({
@@ -29,7 +31,7 @@ export const FormCreateTask: React.FC = () => {
 
   // Handler for submit form
   const onSubmit = (data: CreateTaskFormFields) => {
-    const newTask: TaskItem = new Task(data, tasksCounter) // create new Task object
+    const newTask: TaskItem = new Task(data, createdTasksCounter) // create new Task object
     dispatch(createNewTask(newTask)) // create Task in Redux state
     dispatch(closeModal()) // close modal
   }

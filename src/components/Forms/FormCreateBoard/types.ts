@@ -10,7 +10,7 @@ export type BoardItem = {
   id: string
   name: string
   columns: ColumnItem[]
-  tasksCounter: number
+  createdTasksCounter: number
 }
 
 /** Types for Column Item */
@@ -31,15 +31,23 @@ export type TaskItem = {
   priority: PriorityTypes
   status: string
   subtasks: SubTaskItem[]
+  comments: CommentItem[]
 }
 
+/** Types for SubTask Item */
 export type SubTaskItem = {
   id: string
   title: string
   isComplete: boolean
 }
 
-/**  Priority Types */
+/** Types for Comment Item */
+export type CommentItem = {
+  id: string
+  title: string
+}
+
+/**  Priority Types for Task*/
 export enum PriorityTypes {
   LOW = 'LOW',
   MEDIUM = 'MEDIUM',

@@ -8,7 +8,7 @@ import { ColumnItem, CreateBoardFormFields, PriorityTypes } from './types'
 export class Board {
   readonly id: string = uniqId()
   public name: string
-  readonly tasksCounter: number = 3
+  readonly createdTasksCounter: number = 3
   readonly columns: ColumnItem[] = [
     {
       id: uniqId(),
@@ -23,6 +23,7 @@ export class Board {
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
           status: 'Queue',
+          comments: [{ id: 'b57w7', title: 'first comment' }],
           subtasks: []
         }
       ]
@@ -40,6 +41,7 @@ export class Board {
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
           status: 'Development',
+          comments: [{ id: 'tktkqwdq', title: 'first comment' }],
           subtasks: []
         }
       ]
@@ -57,6 +59,7 @@ export class Board {
           targetDate: dayjs('05/12/2022 18:00'),
           priority: PriorityTypes.LOW,
           status: 'Done',
+          comments: [{ id: '6i776mtyj', title: 'first comment' }],
           subtasks: []
         }
       ]

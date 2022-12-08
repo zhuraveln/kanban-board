@@ -16,7 +16,7 @@ export enum ModalContentTypes {
 export const setModalContent = (
   payload: ModalContentTypes
 ): SetModalContentAction => ({
-  type: ModalActionsTypes.SET_CONTENT_TYPE,
+  type: ModalActionsTypes.SET_MODAL_CONTENT_TYPE,
   payload
 })
 

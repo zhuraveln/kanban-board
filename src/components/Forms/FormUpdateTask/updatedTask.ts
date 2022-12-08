@@ -1,7 +1,11 @@
 import { Dayjs } from 'dayjs'
 import { CurrentTaskItem } from '../../../redux/board/types'
 
-import { PriorityTypes, SubTaskItem } from '../FormCreateBoard/types'
+import {
+  CommentItem,
+  PriorityTypes,
+  SubTaskItem
+} from '../FormCreateBoard/types'
 import { UpdateTaskFormFields } from './types'
 
 /** Class for create updated Task */
@@ -16,6 +20,7 @@ export class updatedTask {
   public targetDate: Dayjs
   public priority: PriorityTypes
   public status: string
+  public comments: CommentItem[]
   public subtasks: SubTaskItem[]
 
   constructor(data: UpdateTaskFormFields, task: CurrentTaskItem) {
@@ -29,6 +34,7 @@ export class updatedTask {
     this.targetDate = data.targetDate
     this.priority = data.priority
     this.status = task.priority
+    this.comments = task.comments
     this.subtasks = task.subtasks
   }
 }
