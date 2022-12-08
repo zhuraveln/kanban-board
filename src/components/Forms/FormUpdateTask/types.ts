@@ -7,5 +7,4 @@ export type UpdateTaskFormFields = {
   description: string
   targetDate: Dayjs
   priority: PriorityTypes
-  subtasks: SubTaskItem[]
 }

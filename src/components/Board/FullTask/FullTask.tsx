@@ -57,7 +57,7 @@ export const FullTask: React.FC = () => {
 
       {/* SUBTASK CARDS */}
       {/* Render if Task has Subtasks */}
-      {task?.subtasks ? (
+      {task?.subtasks?.length && task.subtasks ? (
         <>
           <p>Subtasks:</p>
           {/* Button for create Subtask */}

@@ -4,7 +4,10 @@ import React from 'react'
 import { Button, Form, Select, TextField } from '../..'
 import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
 import { setCurrentTask, updateTask } from '../../../redux/board/actions'
-import { currentTaskSelector } from '../../../redux/board/selectors'
+import {
+  currentTaskSelector,
+  getTaskSelector
+} from '../../../redux/board/selectors'
 import {
   ModalContentTypes,
   setModalContent
@@ -20,6 +23,8 @@ export const FormUpdateTask: React.FC = () => {
 
   // Getting current Task from Redux state
   const task = useAppSelector(currentTaskSelector())
+  // Get actual subtasks if client update Task after create Subtasks in FullTask
+  const { subtasks } = useAppSelector(getTaskSelector())
 
   // Custom Hook for collect all values from form fields
   const { handleChange, handleSubmit } = useFormData({
@@ -32,7 +37,10 @@ export const FormUpdateTask: React.FC = () => {
   // Handler for submit form
   const onSubmit = (data: UpdateTaskFormFields) => {
     if (task) {
-      const newUpdatedTask: CurrentTaskItem = new updatedTask(data, task) // create updated Task object
+      const newUpdatedTask: CurrentTaskItem = new updatedTask(data, {
+        ...task,
+        subtasks: subtasks
+      }) // create updated Task object
       dispatch(updateTask(newUpdatedTask)) // update Task in Redux state
       dispatch(setCurrentTask(newUpdatedTask)) // set updated Task to 'CurrentTask' in Redux state
       dispatch(setModalContent(ModalContentTypes.FULL_TASK)) // open modal window with updated Task

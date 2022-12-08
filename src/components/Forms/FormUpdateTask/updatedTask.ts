@@ -29,6 +29,6 @@ export class updatedTask {
     this.targetDate = data.targetDate
     this.priority = data.priority
     this.status = task.priority
-    this.subtasks = data.subtasks
+    this.subtasks = task.subtasks
   }
 }

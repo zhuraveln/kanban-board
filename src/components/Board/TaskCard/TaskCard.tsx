@@ -3,13 +3,14 @@ import { Draggable } from 'react-beautiful-dnd'
 
 import { ITaskCardProps } from './types'
 
-import classes from './TaskCard.module.scss'
 import { useAppDispatch } from '../../../hooks'
 import {
   ModalContentTypes,
   setModalContent
 } from '../../../redux/modal/actions'
 import { setCurrentTask } from '../../../redux/board/actions'
+
+import classes from './TaskCard.module.scss'
 
 export const TaskCard: React.FC<ITaskCardProps> = props => {
   const dispatch = useAppDispatch()

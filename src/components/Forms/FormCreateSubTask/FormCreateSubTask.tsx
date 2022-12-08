@@ -23,23 +23,22 @@ export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
   const onSubmit = (data: CreateSubTaskFormFields) => {
     const newSubTask: SubTaskItem = new SubTask(data) // create new Board object
     dispatch(createNewSubTask(newSubTask)) // create Subtask in Redux state
-    setVisibleInput(false) // hide input for create new Subtask in FULLTask component
+    setVisibleInput(false) // hide input for create new Subtask in FullTask component
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} style={{ flexDirection: 'row' }}>
       {/* Input for title Subtask */}
       <TextField
         required
         onChange={handleChange}
         type='text'
         name='title'
-        label={'Title Subtask'}
         placeholder={'title'}
       />
 
       {/* Button for create new Subtask */}
-      <Button type={'submit'}>Create new subtask</Button>
+      <Button type={'submit'}>+</Button>
     </Form>
   )
 }

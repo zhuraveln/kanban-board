@@ -2,8 +2,15 @@
   display: flex;
   border: 1px solid rgb(0, 0, 0);
   padding: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
 
   .checkbox {
     margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background-color: rgb(254, 208, 152);
   }
 }
