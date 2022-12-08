@@ -8,8 +8,8 @@ import {
 // Interface for Board state
 export interface BoardState {
   boards: BoardItem[]
-  currentBoardIndex: null | number
-  currentTask: null | CurrentTaskItem
+  currentBoardIndex: number | null
+  currentTask: CurrentTaskItem | null
 }
 
 export type CurrentTaskItem = TaskItem & {
@@ -22,6 +22,7 @@ export enum BoardActionsTypes {
   CREATE_NEW_BOARD = 'CREATE_NEW_BOARD',
   CREATE_NEW_TASK = 'CREATE_NEW_TASK',
   CREATE_NEW_SUBTASK = 'CREATE_NEW_SUBTASK',
+  CHANGE_SUBTASK_STATUS = 'CHANGE_SUBTASK_STATUS',
   UPDATE_TASK = 'UPDATE_TASK',
   SET_CURRENT_BOARD_INDEX = 'SET_CURRENT_BOARD_INDEX',
   SET_CURRENT_TASK = 'SET_CURRENT_TASK',
@@ -33,6 +34,7 @@ export type BoardAction =
   | CreateNewBoardAction
   | CreateNewTaskAction
   | CreateNewSubTaskAction
+  | ChangeSubTaskStatusAction
   | UpdateTaskAction
   | SetCurrentBoardIndexAction
   | SetCurrentTaskAction
@@ -54,6 +56,12 @@ export interface CreateNewTaskAction {
 export interface CreateNewSubTaskAction {
   type: BoardActionsTypes.CREATE_NEW_SUBTASK
   payload: SubTaskItem
+}
+
+// Interface for change SubTask status Action
+export interface ChangeSubTaskStatusAction {
+  type: BoardActionsTypes.CHANGE_SUBTASK_STATUS
+  payload: { isComplete: boolean; index: number }
 }
 
 // Interface for update Task Action

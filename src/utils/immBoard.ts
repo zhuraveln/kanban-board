@@ -1,6 +1,7 @@
 import { immArr } from './immArr'
 import {
   BoardState,
+  ChangeSubTaskStatusAction,
   CreateNewSubTaskAction,
   CreateNewTaskAction,
   ReorderTasksOnDragDropAction,
@@ -61,6 +62,54 @@ export class immBoard {
                       indexCurrentTask
                     ].subtasks,
                     action.payload
+                  ]
+                }
+              )
+            ]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with new SubTask */
+  static changeSubTaskStatus = (
+    state: BoardState,
+    action: ChangeSubTaskStatusAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+    const indexCurrentColumn = Number(state.currentTask?.columnIndex) // current column index
+    const indexCurrentTask = Number(state.currentTask?.index) // current task index
+    const indexCurrentSubTask = action.payload.index // current subtask index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          ...immArr.replace(boards[index].columns, indexCurrentColumn, {
+            ...boards[index].columns[indexCurrentColumn],
+            tasks: [
+              ...immArr.replace(
+                boards[index].columns[indexCurrentColumn].tasks,
+                indexCurrentTask,
+                {
+                  ...boards[index].columns[indexCurrentColumn].tasks[
+                    indexCurrentTask
+                  ],
+                  subtasks: [
+                    ...immArr.replace(
+                      boards[index].columns[indexCurrentColumn].tasks[
+                        indexCurrentTask
+                      ].subtasks,
+                      indexCurrentSubTask,
+                      {
+                        ...boards[index].columns[indexCurrentColumn].tasks[
+                          indexCurrentTask
+                        ].subtasks[indexCurrentSubTask],
+                        isComplete: !action.payload.isComplete
+                      }
+                    )
                   ]
                 }
               )

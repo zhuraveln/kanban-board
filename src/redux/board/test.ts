@@ -39,7 +39,7 @@ export const testBoard = [
             status: 'Development',
             subtasks: [
               {
-                id: 'lb5dsv1ngf8ostgupjkcl',
+                id: 'lb5dupjkcl',
                 title: 'new subtask 1',
                 isComplete: false
               },

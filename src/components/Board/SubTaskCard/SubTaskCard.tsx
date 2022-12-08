@@ -1,16 +1,22 @@
 import React from 'react'
-import { SubTaskItem } from '../../Forms/FormCreateBoard/types'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { changeSubTaskStatus } from '../../../redux/board/actions'
+import { getSubTaskSelector } from '../../../redux/board/selectors'
 import { TextField } from '../../UI/InputTextField/TextField'
 
 import classes from './SubTaskCard.module.scss'
+import { ISubTaskCardProps } from './types'
 
-export const SubTaskCard: React.FC<SubTaskItem> = props => {
-  const { title, isComplete } = props // subtask values
+export const SubTaskCard: React.FC<ISubTaskCardProps> = props => {
+  const dispatch = useAppDispatch()
 
-  const [checked, setChecked] = React.useState(isComplete)
+  const { index } = props // subtask index from props
+
+  // Getting current SubTask from Redux state
+  const { title, isComplete } = useAppSelector(getSubTaskSelector(index))
 
   const onClickHandler = () => {
-    setChecked(!checked)
+    dispatch(changeSubTaskStatus({ isComplete, index }))
   }
 
   return (
@@ -18,7 +24,7 @@ export const SubTaskCard: React.FC<SubTaskItem> = props => {
       <TextField
         type={'checkbox'}
         className={classes.checkbox}
-        checked={checked}
+        checked={isComplete}
         onChange={onClickHandler}
       />
       <div className={classes.title}>{title}</div>

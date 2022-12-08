@@ -20,3 +20,9 @@ export const getTaskSelector = () => (state: RootState) =>
   state.board.boards[Number(state.board.currentBoardIndex)].columns[
     Number(state.board.currentTask?.columnIndex)
   ].tasks[Number(state.board.currentTask?.index)]
+
+/** Selector for getting subtask by index from state */
+export const getSubTaskSelector = (index: number) => (state: RootState) =>
+  state.board.boards[Number(state.board.currentBoardIndex)].columns[
+    Number(state.board.currentTask?.columnIndex)
+  ].tasks[Number(state.board.currentTask?.index)].subtasks[index]

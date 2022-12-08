@@ -15,7 +15,8 @@ import {
   SetCurrentTaskAction,
   UpdateTaskAction,
   CurrentTaskItem,
-  CreateNewSubTaskAction
+  CreateNewSubTaskAction,
+  ChangeSubTaskStatusAction as ChangeSubTaskStatusAction
 } from './types'
 
 // Action for create a new Board
@@ -35,6 +36,15 @@ export const createNewSubTask = (
   payload: SubTaskItem
 ): CreateNewSubTaskAction => ({
   type: BoardActionsTypes.CREATE_NEW_SUBTASK,
+  payload
+})
+
+// Action for change Subtask status
+export const changeSubTaskStatus = (payload: {
+  isComplete: boolean
+  index: number
+}): ChangeSubTaskStatusAction => ({
+  type: BoardActionsTypes.CHANGE_SUBTASK_STATUS,
   payload
 })
 

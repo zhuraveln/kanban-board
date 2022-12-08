@@ -68,8 +68,8 @@ export const FullTask: React.FC = () => {
             <FormCreateSubTask setVisibleInput={setVisibleInput} />
           )}
           <div>
-            {task?.subtasks?.map(task => (
-              <SubTaskCard {...task} key={task.id} />
+            {task?.subtasks?.map((subtask, index) => (
+              <SubTaskCard {...subtask} key={subtask.id} index={index} />
             ))}
           </div>
         </>
