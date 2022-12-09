@@ -1,11 +1,11 @@
 import React from 'react'
 
-/** Custom Hook for collection all values in form fields  */
-export const useFormData = (initialValues: any) => {
+/** Custom Hook for collection all values from form fields  */
+export function useFormData<Type>(initialValues: Type) {
   const [values, setValues] = React.useState(initialValues)
 
   const handleChange = (e: any) => {
-    setValues((formValues: any) => ({
+    setValues((formValues: typeof initialValues) => ({
       ...formValues,
       [e.target.name]: e.target.value
     }))
@@ -15,6 +15,7 @@ export const useFormData = (initialValues: any) => {
     return (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       onSubmit(values)
+      setValues(initialValues)
     }
   }
 

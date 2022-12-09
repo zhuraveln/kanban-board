@@ -10,21 +10,21 @@ import { Comment } from './newComment'
 import { CommentItem } from '../FormCreateBoard/types'
 import { createNewComment } from '../../../redux/board/actions'
 
-export const FormCreateComment: React.FC<IFormCreateCommentProps> = ({
-  setVisibleInput
-}) => {
+export const FormCreateComment: React.FC<IFormCreateCommentProps> = props => {
   const dispatch = useAppDispatch()
 
-  // Custom Hook for collection all values in form fields
-  const { handleChange, handleSubmit } = useFormData({
-    title: '' // initial values for hook
+  const { parentId, setVisibleInput } = props // get values from props
+
+  // Custom Hook for collection all values from form fields
+  const { values, handleChange, handleSubmit } = useFormData({
+    body: '' // initial values for hook
   })
 
   // Handler for submit form
   const onSubmit = (data: CreateCommentFormFields) => {
-    const newComment: CommentItem = new Comment(data) // create new Board object
-    dispatch(createNewComment(newComment)) // create Subtask in Redux state
-    setVisibleInput(false) // hide input for create new Subtask in FullTask component
+    const newComment: CommentItem = new Comment(data, parentId) // create new Comment object
+    dispatch(createNewComment(newComment)) // create Comment in Redux state
+    setVisibleInput(prev => !prev) // hide input for create new Comment in Task component
   }
 
   return (
@@ -32,9 +32,10 @@ export const FormCreateComment: React.FC<IFormCreateCommentProps> = ({
       {/* Input for title Comment */}
       <TextField
         required
+        value={values.body}
         onChange={handleChange}
         type='text'
-        name='title'
+        name='body'
         placeholder={'comment'}
       />
 

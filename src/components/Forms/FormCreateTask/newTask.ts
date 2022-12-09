@@ -14,8 +14,8 @@ export class Task {
   readonly id: string = uniqId()
   readonly number: number
   public title: string
-  public description: string
-  readonly dateCreation: Dayjs = dayjs()
+  public description: string | null
+  readonly createdAt: Dayjs = dayjs()
   public targetDate: Dayjs | null
   public priority: PriorityTypes
   public status: string = 'Queue'
@@ -25,8 +25,8 @@ export class Task {
   constructor(data: CreateTaskFormFields, number: number) {
     this.number = number + 1
     this.title = data.title
-    this.description = data.description
-    this.targetDate = data.targetDate
+    this.description = data.description ? data.description : null
+    this.targetDate = data.targetDate ? data.targetDate : null
     this.priority = data.priority
   }
 }

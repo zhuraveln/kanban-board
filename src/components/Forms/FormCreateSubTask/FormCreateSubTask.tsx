@@ -15,17 +15,17 @@ export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
 }) => {
   const dispatch = useAppDispatch()
 
-  // Custom Hook for collection all values in form fields
-  const { handleChange, handleSubmit } = useFormData({
+  // Custom Hook for collection all values from form fields
+  const { values, handleChange, handleSubmit } = useFormData({
     title: '', // initial values for hook
     isComplete: false
   })
 
   // Handler for submit form
   const onSubmit = (data: CreateSubTaskFormFields) => {
-    const newSubTask: SubTaskItem = new SubTask(data) // create new Board object
+    const newSubTask: SubTaskItem = new SubTask(data) // create new Subtask object
     dispatch(createNewSubTask(newSubTask)) // create Subtask in Redux state
-    setVisibleInput(false) // hide input for create new Subtask in FullTask component
+    setVisibleInput(prev => !prev) // hide input for create new Subtask in Task component
   }
 
   return (
@@ -33,6 +33,7 @@ export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
       {/* Input for title Subtask */}
       <TextField
         required
+        value={values.title}
         onChange={handleChange}
         type='text'
         name='title'

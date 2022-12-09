@@ -16,7 +16,7 @@ export class updatedTask {
   readonly number: number
   public title: string
   public description: string
-  readonly dateCreation: Dayjs
+  readonly createdAt: Dayjs
   public targetDate: Dayjs
   public priority: PriorityTypes
   public status: string
@@ -30,7 +30,7 @@ export class updatedTask {
     this.number = task.number
     this.title = data.title
     this.description = data.description
-    this.dateCreation = task.dateCreation
+    this.createdAt = task.createdAt
     this.targetDate = data.targetDate
     this.priority = data.priority
     this.status = task.priority

@@ -3,12 +3,12 @@ import { Draggable } from 'react-beautiful-dnd'
 
 import { ITaskCardProps } from './types'
 
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch } from '../../../../hooks'
 import {
   ModalContentTypes,
   setModalContent
-} from '../../../redux/modal/actions'
-import { setCurrentTask } from '../../../redux/board/actions'
+} from '../../../../redux/modal/actions'
+import { setCurrentTask } from '../../../../redux/board/actions'
 
 import classes from './TaskCard.module.scss'
 

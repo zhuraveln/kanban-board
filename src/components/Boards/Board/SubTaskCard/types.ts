@@ -1,4 +1,4 @@
-import { SubTaskItem } from '../../Forms/FormCreateBoard/types'
+import { SubTaskItem } from '../../../Forms/FormCreateBoard/types'
 
 /** Interface for SubTask Card Props */
 export interface ISubTaskCardProps extends SubTaskItem {

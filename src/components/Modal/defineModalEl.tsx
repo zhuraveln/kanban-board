@@ -1,4 +1,4 @@
-import { FormCreateBoard, FormCreateTask, FormUpdateTask, FullTask } from '..'
+import { FormCreateBoard, FormCreateTask, FormUpdateTask, Task } from '..'
 import { ModalContentTypes } from '../../redux/modal/actions'
 
 export const defineModalEl = (
@@ -13,7 +13,7 @@ export const defineModalEl = (
       modalEl = <FormCreateTask />
       break
     case ModalContentTypes.FULL_TASK:
-      modalEl = <FullTask />
+      modalEl = <Task />
       break
     case ModalContentTypes.FORM_UPDATE_TASK:
       modalEl = <FormUpdateTask />

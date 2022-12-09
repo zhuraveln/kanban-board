@@ -22,11 +22,11 @@ export const BoardsList: React.FC = () => {
     <div className={classes.root}>
       {/* Create board area */}
       <div className={classes.createArea}>
-        {/* Button for Create new Board, open modal window */}
+        {/* Button for Create new Board */}
         <Button
           onClick={() =>
             dispatch(setModalContent(ModalContentTypes.FORM_CREATE_BOARD))
-          }
+          } // open modal window with form for create new board
         >
           Create board +
         </Button>

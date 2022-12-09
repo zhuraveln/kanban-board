@@ -2,19 +2,19 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
-import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../../hooks'
 import {
   ModalContentTypes,
   setModalContent
-} from '../../../redux/modal/actions'
-import { currentBoardSelector } from '../../../redux/board/selectors'
+} from '../../../../redux/modal/actions'
+import { currentBoardSelector } from '../../../../redux/board/selectors'
 
-import { Button, Column } from '../..'
+import { Button, Column } from '../../..'
 
 import {
   reorderTasksOnDragDrop,
   setCurrentBoardIndex
-} from '../../../redux/board/actions'
+} from '../../../../redux/board/actions'
 
 import classes from './Board.module.scss'
 

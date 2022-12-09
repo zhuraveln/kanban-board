@@ -1,4 +1,4 @@
-import { ColumnItem } from '../../Forms/FormCreateBoard/types'
+import { ColumnItem } from '../../../Forms/FormCreateBoard/types'
 
 /** Interface for Column Props */
 export interface IColumnProps extends ColumnItem {

@@ -13,8 +13,8 @@ import { closeModal } from '../../../redux/modal/actions'
 export const FormCreateBoard: React.FC = () => {
   const dispatch = useAppDispatch()
 
-  // Custom Hook for collection all values in form fields
-  const { handleChange, handleSubmit } = useFormData({
+  // Custom Hook for collection all values from form fields
+  const { values, handleChange, handleSubmit } = useFormData({
     name: '' // initial values for hook
   })
   const onSubmit = (data: CreateBoardFormFields) => {
@@ -28,11 +28,12 @@ export const FormCreateBoard: React.FC = () => {
       {/* Input for name board */}
       <TextField
         required
+        value={values.name}
         onChange={handleChange}
         type='text'
         name='name'
         label={'Board Name '}
-        placeholder={'TextField title'}
+        placeholder={'name'}
       />
 
       {/* Button for create new Board */}

@@ -22,10 +22,10 @@ export const FormCreateTask: React.FC = () => {
   )
 
   // Custom Hook for collect all values from form fields
-  const { handleChange, handleSubmit } = useFormData({
+  const { values, handleChange, handleSubmit } = useFormData({
     title: '', // initial values for hook
-    description: null,
-    targetDate: null,
+    description: '',
+    targetDate: '',
     priority: PriorityTypes.LOW
   })
 
@@ -41,32 +41,36 @@ export const FormCreateTask: React.FC = () => {
       {/* Input for title task */}
       <TextField
         required
+        value={values.title}
         onChange={handleChange}
         type='text'
         name='title'
-        label={'Task title '}
+        label={'Task title'}
         placeholder={'title'}
       />
 
       {/* Input for description task */}
       <TextField
+        value={values.description}
         onChange={handleChange}
         type='text'
         name='description'
-        label={'Task description '}
+        label={'Task description'}
         placeholder={'title'}
       />
 
       {/* Input for target date task */}
       <TextField
+        value={values.targetDate}
         onChange={handleChange}
         type='datetime-local'
         name='targetDate'
-        label={'Target Date '}
+        label={'Target Date'}
       />
 
       {/* Select priority for task */}
       <Select
+        value={values.priority}
         onChange={handleChange}
         name='priority'
         options={PriorityTypes}

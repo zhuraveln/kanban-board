@@ -212,9 +212,9 @@ export class immBoard {
               tasks: [
                 ...immArr.swap(
                   boards[index].columns[indexSourceColumn].tasks, // array of Tasks
-                  source.index, // index for remove
-                  destination.index, // index for insert
-                  boards[index].columns[indexSourceColumn].tasks[source.index] // element for insert
+                  source.index, // index to remove
+                  destination.index, // index to insert
+                  boards[index].columns[indexSourceColumn].tasks[source.index] // element to insert
                 )
               ]
             })

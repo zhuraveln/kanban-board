@@ -16,7 +16,7 @@ export const testBoard = [
             number: 1,
             title: 'task in Queue',
             description: 'description for task 1',
-            dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
+            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.LOW,
             status: 'Queue',
@@ -34,21 +34,30 @@ export const testBoard = [
             title: 'task in Development',
             number: 2,
             description: 'description for task 1',
-            dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
+            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.MEDIUM,
             status: 'Development',
-            comments: [{ id: 'b57w7', title: 'first comment' }],
+            comments: [
+              {
+                id: 'b57w7',
+                body: 'first comment',
+                parentId: null,
+                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
+              }
+            ],
             subtasks: [
               {
                 id: 'lb5dupjkcl',
                 title: 'new subtask 1',
-                isComplete: false
+                isComplete: false,
+                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
               },
               {
                 id: 'lb2hsv1n8ostgupjkcl',
                 title: 'new subtask 2',
-                isComplete: false
+                isComplete: false,
+                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
               }
             ]
           }
@@ -63,11 +72,18 @@ export const testBoard = [
             number: 3,
             title: 'task in Done',
             description: 'description for task 1',
-            dateCreation: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
+            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.HIGH,
             status: 'Done',
-            comments: [{ id: 'sdjykmytghm', title: 'comment' }],
+            comments: [
+              {
+                id: 'sdjykmytghm',
+                body: 'comment',
+                parentId: null,
+                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
+              }
+            ],
             subtasks: []
           }
         ]

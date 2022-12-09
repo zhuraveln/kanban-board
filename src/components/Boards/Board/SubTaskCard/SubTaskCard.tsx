@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { TextField } from '../../UI/InputTextField/TextField'
+import { TextField } from '../../../UI/InputTextField/TextField'
 
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { changeSubTaskStatus } from '../../../redux/board/actions'
-import { getSubTaskSelector } from '../../../redux/board/selectors'
+import { useAppDispatch, useAppSelector } from '../../../../hooks'
+import { changeSubTaskStatus } from '../../../../redux/board/actions'
+import { getSubTaskSelector } from '../../../../redux/board/selectors'
 
 import { ISubTaskCardProps } from './types'
 

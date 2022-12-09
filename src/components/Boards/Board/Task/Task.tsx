@@ -1,50 +1,54 @@
-import dayjs from 'dayjs'
 import React from 'react'
 
 import {
   Button,
-  CommentCard,
+  CommentsList,
   FormCreateComment,
   FormCreateSubTask,
   SubTaskCard
-} from '../..'
+} from '../../..'
 
-import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { getTaskSelector } from '../../../redux/board/selectors'
+import { useAppDispatch, useAppSelector } from '../../../../hooks'
+import { getTaskSelector } from '../../../../redux/board/selectors'
 import {
   ModalContentTypes,
   setModalContent
-} from '../../../redux/modal/actions'
+} from '../../../../redux/modal/actions'
+import { calcTimeInWork, dateFormat, sortByParentId } from '../../../../utils'
 
-import classes from './FullTask.module.scss'
+import classes from './Task.module.scss'
 
-export const FullTask: React.FC = () => {
+export const Task: React.FC = () => {
   const dispatch = useAppDispatch()
   // Getting current Task from Redux state
-  const task = useAppSelector(getTaskSelector())
+  const { comments, createdAt, description, targetDate, subtasks } =
+    useAppSelector(getTaskSelector())
 
   // State for visible input 'create new subtask, comments'
   const [visibleSubTaskInput, setVisibleSubTaskInput] = React.useState(false)
   const [visibleCommentInput, setVisibleCommentInput] = React.useState(false)
 
-  // Calculation days and hours in work
-  const daysInWork = dayjs().diff(task?.dateCreation, 'day')
-  const hoursInWork = dayjs().diff(task?.dateCreation, 'hour')
-  const timeInWork = `${daysInWork} d ${hoursInWork - daysInWork * 24} h`
+  // Getting a sorted object with comments by parentId
+  const sortedComments = React.useMemo(() => {
+    return sortByParentId(comments)
+  }, [comments])
 
-  // Handler for click 'update Task' button
-  const onClickUpdateTask = () => {
-    dispatch(setModalContent(ModalContentTypes.FORM_UPDATE_TASK))
+  /** Return replies comments by parentId */
+  const getReplies = (parentId: string) => {
+    return sortedComments[parentId]
   }
+
+  // Calculation time in work
+  const timeInWork = calcTimeInWork(createdAt)
 
   // Handler for click 'add Subtask' button
   const onClickAddSubtask = () => {
-    setVisibleSubTaskInput(true)
+    setVisibleSubTaskInput(prev => !prev)
   }
 
   // Handler for click 'add Comment' button
   const onClickAddComment = () => {
-    setVisibleCommentInput(true)
+    setVisibleCommentInput(prev => !prev)
   }
 
   return (
@@ -52,23 +56,24 @@ export const FullTask: React.FC = () => {
       <div className={classes.root}></div>
 
       {/* Button for update Task */}
-      <Button onClick={onClickUpdateTask}>Update task</Button>
-      <div className={classes.description}>{task?.description}</div>
-      <div>
-        Date Creation: {dayjs(task?.dateCreation).format('DD.MM.YYYY H:mm')}
-      </div>
+      <Button
+        onClick={() =>
+          dispatch(setModalContent(ModalContentTypes.FORM_UPDATE_TASK))
+        } // open modal window with form for update task
+      >
+        Update Task
+      </Button>
+
+      <div className={classes.description}>{description}</div>
+      <div>Date Creation: {dateFormat(createdAt)}</div>
       {/* Target date for Task */}
-      {task?.targetDate && (
-        <div>
-          Target Date: {dayjs(task?.targetDate).format('DD.MM.YYYY H:mm')}
-        </div>
-      )}
+      {targetDate && <div>Target Date: {dateFormat(targetDate)}</div>}
       {/* Time in work */}
       <div>In work: {timeInWork}</div>
 
       {/* SUBTASK CARDS */}
       {/* Render if Task has Subtasks */}
-      {task?.subtasks?.length && task.subtasks ? (
+      {subtasks?.length && subtasks ? (
         <>
           <p>Subtasks:</p>
           {/* Button for create Subtask */}
@@ -79,7 +84,7 @@ export const FullTask: React.FC = () => {
             <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
           )}
           <div>
-            {task?.subtasks?.map((subtask, index) => (
+            {subtasks?.map((subtask, index) => (
               <SubTaskCard {...subtask} key={subtask.id} index={index} />
             ))}
           </div>
@@ -100,7 +105,7 @@ export const FullTask: React.FC = () => {
 
       {/* COMMENTS CARDS */}
       {/* Render if Task has Comments */}
-      {task?.comments?.length && task.comments ? (
+      {comments?.length && comments ? (
         <>
           <p>Comments:</p>
           {/* Button for create Comments */}
@@ -108,12 +113,16 @@ export const FullTask: React.FC = () => {
             <Button onClick={onClickAddComment}>+Add comment</Button>
           )}
           {visibleCommentInput && (
-            <FormCreateComment setVisibleInput={setVisibleCommentInput} />
+            <FormCreateComment
+              parentId={null}
+              setVisibleInput={setVisibleCommentInput}
+            />
           )}
           <div>
-            {task.comments.map(comment => (
-              <CommentCard {...comment} key={comment.id} />
-            ))}
+            <CommentsList
+              comments={sortedComments[String(null)]}
+              getReplies={getReplies}
+            />
           </div>
         </>
       ) : (
@@ -125,7 +134,10 @@ export const FullTask: React.FC = () => {
           )}
           {/* Render input for create Comments */}
           {visibleCommentInput && (
-            <FormCreateComment setVisibleInput={setVisibleCommentInput} />
+            <FormCreateComment
+              parentId={null}
+              setVisibleInput={setVisibleCommentInput}
+            />
           )}
         </>
       )}

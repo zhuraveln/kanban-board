@@ -1,7 +1,7 @@
 import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 
-import { TaskCard } from '../..'
+import { TaskCard } from '../../..'
 
 import { IColumnProps } from './types'
 
