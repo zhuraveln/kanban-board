@@ -19,14 +19,16 @@ export class Task {
   public targetDate: Dayjs | null
   public priority: PriorityTypes
   public status: string = 'Queue'
+  public file: string | null
   public comments: CommentItem[] = []
   public subtasks: SubTaskItem[] = []
 
-  constructor(data: CreateTaskFormFields, number: number) {
+  constructor(data: CreateTaskFormFields, number: number, file: string | null) {
     this.number = number + 1
     this.title = data.title
     this.description = data.description ? data.description : null
     this.targetDate = data.targetDate ? data.targetDate : null
     this.priority = data.priority
+    this.file = file
   }
 }

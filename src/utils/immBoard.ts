@@ -10,7 +10,7 @@ import {
   UpdateTaskAction
 } from '../redux/board/types'
 
-/** Custom class for immutable work with Board state */
+/** Class for immutable work with Board state */
 export class immBoard {
   /** Return immutable Boards with a new Task */
   static createNewTask = (

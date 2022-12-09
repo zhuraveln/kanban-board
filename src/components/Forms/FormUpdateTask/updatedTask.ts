@@ -20,6 +20,7 @@ export class updatedTask {
   public targetDate: Dayjs
   public priority: PriorityTypes
   public status: string
+  public file: File | string | null
   public comments: CommentItem[]
   public subtasks: SubTaskItem[]
 
@@ -34,6 +35,7 @@ export class updatedTask {
     this.targetDate = data.targetDate
     this.priority = data.priority
     this.status = task.priority
+    this.file = task.file
     this.comments = task.comments
     this.subtasks = task.subtasks
   }

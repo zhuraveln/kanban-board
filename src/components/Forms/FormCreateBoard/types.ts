@@ -30,6 +30,7 @@ export type TaskItem = {
   targetDate: Dayjs | null
   priority: PriorityTypes
   status: string
+  file: File | string | null
   subtasks: SubTaskItem[]
   comments: CommentItem[]
 }

@@ -12,6 +12,7 @@ import { CreateTaskFormFields } from './types'
 import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
 
 import { Task } from './newTask'
+import FileAPI from '../../../API/FileAPI'
 
 export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -21,18 +22,24 @@ export const FormCreateTask: React.FC = () => {
     createdTasksCounterSelector()
   )
 
+  // State fo attach file
+  const [fileUpload, setFileUpload] = React.useState<File | null>(null)
+
   // Custom Hook for collect all values from form fields
   const { values, handleChange, handleSubmit } = useFormData({
     title: '', // initial values for hook
     description: '',
     targetDate: '',
+    file: '',
     priority: PriorityTypes.LOW
   })
 
   // Handler for submit form
-  const onSubmit = (data: CreateTaskFormFields) => {
-    const newTask: TaskItem = new Task(data, createdTasksCounter) // create new Task object
+  const onSubmit = async (data: CreateTaskFormFields) => {
+    const uploadedFile = await FileAPI.fetchUploadFile(fileUpload) // upload file to Firebase
+    const newTask: TaskItem = new Task(data, createdTasksCounter, uploadedFile) // create new Task object
     dispatch(createNewTask(newTask)) // create Task in Redux state
+    setFileUpload(null) // clear state of attach file
     dispatch(closeModal()) // close modal
   }
 
@@ -75,6 +82,15 @@ export const FormCreateTask: React.FC = () => {
         name='priority'
         options={PriorityTypes}
         label={'Priority'}
+      />
+
+      {/* Input to attach file for task */}
+      <TextField
+        // value={fileUpload}
+        onChange={e => setFileUpload(e.target.files ? e.target.files[0] : null)}
+        type='file'
+        name='file'
+        label={'Attach file'}
       />
 
       {/* Button for create new Task */}

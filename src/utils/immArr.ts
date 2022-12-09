@@ -1,4 +1,4 @@
-/** Custom class for immutable work with array */
+/** Class for immutable work with array */
 export class immArr {
   /** Immutable inserts element into array
    * @return new array

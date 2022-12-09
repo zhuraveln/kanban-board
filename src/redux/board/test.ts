@@ -20,6 +20,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.LOW,
             status: 'Queue',
+            file: null,
             comments: [],
             subtasks: []
           }
@@ -38,6 +39,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.MEDIUM,
             status: 'Development',
+            file: null,
             comments: [
               {
                 id: 'b57w7',
@@ -76,6 +78,7 @@ export const testBoard = [
             targetDate: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
             priority: PriorityTypes.HIGH,
             status: 'Done',
+            file: null,
             comments: [
               {
                 id: 'sdjykmytghm',
