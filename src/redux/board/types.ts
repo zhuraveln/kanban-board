@@ -26,6 +26,7 @@ export enum BoardActionsTypes {
   CREATE_NEW_COMMENT = 'CREATE_NEW_COMMENT',
   CHANGE_SUBTASK_STATUS = 'CHANGE_SUBTASK_STATUS',
   UPDATE_TASK = 'UPDATE_TASK',
+  DELETE_TASK_FILE_URL = 'DELETE_TASK_FILE_URL',
   SET_CURRENT_BOARD_INDEX = 'SET_CURRENT_BOARD_INDEX',
   SET_CURRENT_TASK = 'SET_CURRENT_TASK',
   REORDER_TASKS_ON_DRAG_DROP = 'REORDER_TASKS_ON_DRAG_DROP'
@@ -39,6 +40,7 @@ export type BoardAction =
   | CreateNewCommentAction
   | ChangeSubTaskStatusAction
   | UpdateTaskAction
+  | DeleteTaskFileURLAction
   | SetCurrentBoardIndexAction
   | SetCurrentTaskAction
   | ReorderTasksOnDragDropAction
@@ -76,6 +78,12 @@ export interface ChangeSubTaskStatusAction {
 // Interface for update Task Action
 export interface UpdateTaskAction {
   type: BoardActionsTypes.UPDATE_TASK
+  payload: CurrentTaskItem
+}
+
+// Interface for delete Task file URL Action
+export interface DeleteTaskFileURLAction {
+  type: BoardActionsTypes.DELETE_TASK_FILE_URL
   payload: CurrentTaskItem
 }
 

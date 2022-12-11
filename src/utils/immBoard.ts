@@ -6,6 +6,7 @@ import {
   CreateNewCommentAction,
   CreateNewSubTaskAction,
   CreateNewTaskAction,
+  DeleteTaskFileURLAction,
   ReorderTasksOnDragDropAction,
   UpdateTaskAction
 } from '../redux/board/types'
@@ -181,6 +182,41 @@ export class immBoard {
                 boards[index].columns[action.payload.columnIndex].tasks, // array of tasks
                 action.payload.index, // index of task for replace
                 action.payload // new updated task
+              )
+            ]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with deleted Task file URL */
+  static deleteTaskFileURL = (
+    state: BoardState,
+    action: DeleteTaskFileURLAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current Board index
+    const indexTask = action.payload.index // current Task index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          // array of columns and index of column for replace
+          ...immArr.replace(boards[index].columns, action.payload.columnIndex, {
+            // updated column
+            ...boards[index].columns[action.payload.columnIndex],
+            tasks: [
+              ...immArr.replace(
+                boards[index].columns[action.payload.columnIndex].tasks, // array of tasks
+                action.payload.index, // index of task for replace
+                {
+                  ...boards[index].columns[action.payload.columnIndex].tasks[
+                    indexTask
+                  ],
+                  file: null
+                } // new updated task
               )
             ]
           })

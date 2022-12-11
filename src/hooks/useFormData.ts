@@ -5,10 +5,17 @@ export function useFormData<Type>(initialValues: Type) {
   const [values, setValues] = React.useState(initialValues)
 
   const handleChange = (e: any) => {
-    setValues((formValues: typeof initialValues) => ({
-      ...formValues,
-      [e.target.name]: e.target.value
-    }))
+    if (e.target.files) {
+      setValues((formValues: typeof initialValues) => ({
+        ...formValues,
+        [e.target.name]: e.target.files[0]
+      }))
+    } else {
+      setValues((formValues: typeof initialValues) => ({
+        ...formValues,
+        [e.target.name]: e.target.value
+      }))
+    }
   }
 
   const handleSubmit = (onSubmit: (data: any) => void) => {
@@ -19,5 +26,5 @@ export function useFormData<Type>(initialValues: Type) {
     }
   }
 
-  return { values, handleChange, handleSubmit }
+  return { values, handleChange, handleSubmit, setValues }
 }

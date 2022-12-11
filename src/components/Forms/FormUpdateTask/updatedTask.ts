@@ -17,14 +17,18 @@ export class updatedTask {
   public title: string
   public description: string
   readonly createdAt: Dayjs
-  public targetDate: Dayjs
+  public finishAt: Dayjs
   public priority: PriorityTypes
   public status: string
-  public file: File | string | null
+  public file: string | null
   public comments: CommentItem[]
   public subtasks: SubTaskItem[]
 
-  constructor(data: UpdateTaskFormFields, task: CurrentTaskItem) {
+  constructor(
+    data: UpdateTaskFormFields,
+    task: CurrentTaskItem,
+    file: string | null
+  ) {
     this.id = task.id
     this.index = task.index
     this.columnIndex = task.columnIndex
@@ -32,10 +36,10 @@ export class updatedTask {
     this.title = data.title
     this.description = data.description
     this.createdAt = task.createdAt
-    this.targetDate = data.targetDate
+    this.finishAt = data.finishAt
     this.priority = data.priority
     this.status = task.priority
-    this.file = task.file
+    this.file = file
     this.comments = task.comments
     this.subtasks = task.subtasks
   }

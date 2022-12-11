@@ -18,28 +18,22 @@ export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()
 
   // Getting tasks counter for current board from Redux
-  const { createdTasksCounter: createdTasksCounter } = useAppSelector(
-    createdTasksCounterSelector()
-  )
-
-  // State fo attach file
-  const [fileUpload, setFileUpload] = React.useState<File | null>(null)
+  const { createdTasksCounter } = useAppSelector(createdTasksCounterSelector())
 
   // Custom Hook for collect all values from form fields
   const { values, handleChange, handleSubmit } = useFormData({
     title: '', // initial values for hook
     description: '',
     targetDate: '',
-    file: '',
+    file: null,
     priority: PriorityTypes.LOW
   })
 
   // Handler for submit form
   const onSubmit = async (data: CreateTaskFormFields) => {
-    const uploadedFile = await FileAPI.fetchUploadFile(fileUpload) // upload file to Firebase
+    const uploadedFile = await FileAPI.fetchUploadFile(data.file) // upload file to Firebase
     const newTask: TaskItem = new Task(data, createdTasksCounter, uploadedFile) // create new Task object
     dispatch(createNewTask(newTask)) // create Task in Redux state
-    setFileUpload(null) // clear state of attach file
     dispatch(closeModal()) // close modal
   }
 
@@ -86,8 +80,7 @@ export const FormCreateTask: React.FC = () => {
 
       {/* Input to attach file for task */}
       <TextField
-        // value={fileUpload}
-        onChange={e => setFileUpload(e.target.files ? e.target.files[0] : null)}
+        onChange={handleChange}
         type='file'
         name='file'
         label={'Attach file'}

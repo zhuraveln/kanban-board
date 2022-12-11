@@ -5,6 +5,7 @@ import { PriorityTypes } from '../FormCreateBoard/types'
 export type CreateTaskFormFields = {
   title: string
   description: string
-  targetDate: Dayjs
+  finishAt: Dayjs
+  file: File | null
   priority: PriorityTypes
 }

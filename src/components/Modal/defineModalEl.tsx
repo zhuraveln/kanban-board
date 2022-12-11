@@ -1,5 +1,5 @@
 import { FormCreateBoard, FormCreateTask, FormUpdateTask, Task } from '..'
-import { ModalContentTypes } from '../../redux/modal/actions'
+import { ModalContentTypes } from './types'
 
 export const defineModalEl = (
   modalContentTypes: ModalContentTypes | null

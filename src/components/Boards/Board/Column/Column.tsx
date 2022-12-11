@@ -12,7 +12,7 @@ export const Column: React.FC<IColumnProps> = props => {
   const { index, name, tasks } = props
   const columnIndex = index // need for TaskCard
   return (
-    <div className={classes.container}>
+    <div className={classes.root}>
       {/* Column name */}
       <h2>{name}</h2>
       <Droppable droppableId={String(index)}>

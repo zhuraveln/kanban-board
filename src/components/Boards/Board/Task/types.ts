@@ -6,6 +6,6 @@ export interface ITaskProps extends TaskItem {
 }
 
 /** Interface for comments group */
-export interface CommentsGroup {
+export interface ICommentsGroup {
   [key: string]: CommentItem[]
 }

@@ -1,3 +1,3 @@
-# TODO test (UpTrader)
+# Kanban board
 
 in progress...

@@ -5,8 +5,14 @@ import { uniqId } from '../utils'
 
 /** Class for work with Storage (Firebase) */
 export default class FileAPI {
-  /** Upload File to Firebase Storage*/
-  static async fetchUploadFile(file: File | null) {
+  /** Upload File to Firebase Storage
+   * @return Uploaded file URL
+   */
+  static async fetchUploadFile(file: File | null | string) {
+    if (typeof file === 'string') {
+      return file
+    }
+
     if (file) {
       // Create Ref for folder 'doc' in Storage
       const imageRef = ref(storage, `doc/${file.name + uniqId()}`)
@@ -15,12 +21,12 @@ export default class FileAPI {
       const response = await uploadBytes(imageRef, file)
 
       // Create Ref for uploaded file
-      const upLoadedImageRef = ref(storage, response.metadata.fullPath)
+      const uploadedFileRef = ref(storage, response.metadata.fullPath)
 
       // Get URL for uploaded file
-      const upLoadedFileURL = await getDownloadURL(upLoadedImageRef)
+      const uploadedFileURL = await getDownloadURL(uploadedFileRef)
 
-      return upLoadedFileURL
+      return uploadedFileURL
     }
 
     return null

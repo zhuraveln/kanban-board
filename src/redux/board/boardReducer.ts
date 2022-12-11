@@ -55,6 +55,15 @@ export const boardReducer = (
 
     //----------------------------------------------------------------
 
+    // DELETE TASK FILE URL
+    case BoardActionsTypes.DELETE_TASK_FILE_URL:
+      return {
+        ...state,
+        boards: [...immBoard.deleteTaskFileURL(state, action)]
+      }
+
+    //----------------------------------------------------------------
+
     // SET CURRENT BOARD INDEX
     case BoardActionsTypes.SET_CURRENT_BOARD_INDEX:
       return { ...state, currentBoardIndex: action.payload }

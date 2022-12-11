@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 import { useAppDispatch, useAppSelector } from '../../../../hooks'
-import {
-  ModalContentTypes,
-  setModalContent
-} from '../../../../redux/modal/actions'
+import { setModalContent } from '../../../../redux/modal/actions'
 import { currentBoardSelector } from '../../../../redux/board/selectors'
 
 import { Button, Column } from '../../..'
@@ -17,6 +14,7 @@ import {
 } from '../../../../redux/board/actions'
 
 import classes from './Board.module.scss'
+import { ModalContentTypes } from '../../../Modal/types'
 
 export const Board: React.FC = () => {
   const navigate = useNavigate()

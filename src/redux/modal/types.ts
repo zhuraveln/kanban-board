@@ -1,4 +1,4 @@
-import { ModalContentTypes } from './actions'
+import { ModalContentTypes } from '../../components/Modal/types'
 
 // Interface for Board State
 export interface ModalState {

@@ -10,19 +10,23 @@ import {
 
 import { useAppDispatch, useAppSelector } from '../../../../hooks'
 import { getTaskSelector } from '../../../../redux/board/selectors'
-import {
-  ModalContentTypes,
-  setModalContent
-} from '../../../../redux/modal/actions'
+import { setModalContent } from '../../../../redux/modal/actions'
 import { calcTimeInWork, dateFormat, sortByParentId } from '../../../../utils'
+import { ModalContentTypes } from '../../../Modal/types'
 
 import classes from './Task.module.scss'
 
 export const Task: React.FC = () => {
   const dispatch = useAppDispatch()
   // Getting current Task from Redux state
-  const { comments, createdAt, description, targetDate, subtasks } =
-    useAppSelector(getTaskSelector())
+  const {
+    comments,
+    createdAt,
+    description,
+    finishAt: targetDate,
+    subtasks,
+    file
+  } = useAppSelector(getTaskSelector())
 
   // State for visible input 'create new subtask, comments'
   const [visibleSubTaskInput, setVisibleSubTaskInput] = React.useState(false)
@@ -70,6 +74,15 @@ export const Task: React.FC = () => {
       {targetDate && <div>Target Date: {dateFormat(targetDate)}</div>}
       {/* Time in work */}
       <div>In work: {timeInWork}</div>
+
+      {/* Attached file */}
+      {file && (
+        <div>
+          <a href={String(file)} target='_blank' rel='noreferrer'>
+            Attached file
+          </a>
+        </div>
+      )}
 
       {/* SUBTASK CARDS */}
       {/* Render if Task has Subtasks */}

@@ -16,11 +16,11 @@ export const Modal: React.FC = () => {
     <div
       className={
         isModalOpen ? `${classes.root} ${classes.active}` : classes.root
-      }
+      } // backdrop
       onClick={() => dispatch(closeModal())}
     >
+      {/* Modal window */}
       <div className={classes.window} onClick={e => e.stopPropagation()}>
-        {/* Content into modal window */}
         <div className={classes.content}>{defineModalEl(modalContent)}</div>
       </div>
     </div>
