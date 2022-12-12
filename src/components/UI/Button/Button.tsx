@@ -1,12 +1,26 @@
 import React from 'react'
 
-import { IButtonProps } from './types'
-
 import classes from './Button.module.scss'
 
-export const Button: React.FC<IButtonProps> = ({ children, ...props }) => {
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: string
+  size?: 'small' | 'medium'
+}
+
+export const Button: React.FC<IButton> = ({
+  children,
+  size = 'small',
+  ...props
+}) => {
   return (
-    <button className={classes.root} {...props}>
+    <button
+      className={
+        size === 'small'
+          ? `${classes.root} ${classes.small}`
+          : `${classes.root} ${classes.medium}`
+      }
+      {...props}
+    >
       {children}
     </button>
   )

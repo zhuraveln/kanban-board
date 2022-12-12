@@ -24,7 +24,7 @@ export const FormCreateTask: React.FC = () => {
   const { values, handleChange, handleSubmit } = useFormData({
     title: '', // initial values for hook
     description: '',
-    targetDate: '',
+    finishBy: '',
     file: null,
     priority: PriorityTypes.LOW
   })
@@ -39,6 +39,9 @@ export const FormCreateTask: React.FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* Title for Form*/}
+      <h2>Create Task</h2>
+
       {/* Input for title task */}
       <TextField
         required
@@ -47,7 +50,6 @@ export const FormCreateTask: React.FC = () => {
         type='text'
         name='title'
         label={'Task title'}
-        placeholder={'title'}
       />
 
       {/* Input for description task */}
@@ -57,15 +59,14 @@ export const FormCreateTask: React.FC = () => {
         type='text'
         name='description'
         label={'Task description'}
-        placeholder={'title'}
       />
 
       {/* Input for target date task */}
       <TextField
-        value={values.targetDate}
+        value={values.finishBy}
         onChange={handleChange}
         type='datetime-local'
-        name='targetDate'
+        name='finishBy'
         label={'Target Date'}
       />
 

@@ -1,5 +1,8 @@
-import { ICommentsGroup } from '../components/Boards/Board/Task/types'
 import { CommentItem } from '../components/Forms/FormCreateBoard/types'
+
+interface ICommentsGroup {
+  [key: string]: CommentItem[]
+}
 
 /** Creating a sorted object with comments by 'parentId' key */
 export const sortByParentId = (comments: CommentItem[]) => {

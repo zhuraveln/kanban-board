@@ -16,7 +16,7 @@ export class Task {
   public title: string
   public description: string | null
   readonly createdAt: Dayjs = dayjs()
-  public finishAt: Dayjs | null
+  public finishBy: Dayjs | null
   public priority: PriorityTypes
   public status: string = 'Queue'
   public file: string | null
@@ -27,7 +27,7 @@ export class Task {
     this.number = number + 1
     this.title = data.title
     this.description = data.description ? data.description : null
-    this.finishAt = data.finishAt ? data.finishAt : null
+    this.finishBy = data.finishBy ? data.finishBy : null
     this.priority = data.priority
     this.file = file
   }

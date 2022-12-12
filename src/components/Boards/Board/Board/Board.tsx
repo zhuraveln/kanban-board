@@ -14,7 +14,7 @@ import {
 } from '../../../../redux/board/actions'
 
 import classes from './Board.module.scss'
-import { ModalContentTypes } from '../../../Modal/types'
+import { ModalContentTypes } from '../../../Modal/defineModalEl'
 
 export const Board: React.FC = () => {
   const navigate = useNavigate()
@@ -42,11 +42,18 @@ export const Board: React.FC = () => {
 
   return (
     <div className={classes.root}>
-      {/* Button for return to Boards list */}
-      <Button onClick={onClickReturnToBoardList}>Back to Board List</Button>
+      <div className={classes.header}>
+        {/* Button for return to Boards list */}
+        <Button
+          onClick={onClickReturnToBoardList}
+          style={{ background: 'rgb(132, 141, 255)' }}
+        >
+          Back to Boards List
+        </Button>
 
-      {/* Button for create new Task, open modal window */}
-      <Button onClick={onClickCreateNewTask}>Create new Task</Button>
+        {/* Button for create new Task, open modal window */}
+        <Button onClick={onClickCreateNewTask}>Create new Task</Button>
+      </div>
 
       {/* Board's columns */}
       <DragDropContext onDragEnd={onDragEndHandler}>

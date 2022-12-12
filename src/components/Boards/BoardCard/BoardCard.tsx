@@ -20,9 +20,7 @@ export const BoardCard: React.FC<BoardCardProps> = ({ name, boardIndex }) => {
 
   return (
     <div className={classes.root} onClick={onClickBoardCard}>
-      <div className={classes.title}>
-        <h4>{name}</h4>
-      </div>
+      <h4>{name}</h4>
     </div>
   )
 }

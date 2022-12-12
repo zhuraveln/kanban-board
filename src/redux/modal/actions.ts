@@ -1,4 +1,4 @@
-import { ModalContentTypes } from '../../components/Modal/types'
+import { ModalContentTypes } from '../../components/Modal/defineModalEl'
 import {
   CloseModalAction,
   ModalActionsTypes,

@@ -1,13 +1,15 @@
 import React from 'react'
 
-import { ITextFieldProps } from './types'
-
 import classes from './TextField.module.scss'
 
-export const TextField: React.FC<ITextFieldProps> = ({ label, ...props }) => {
+interface ITextField extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string
+}
+
+export const TextField: React.FC<ITextField> = ({ label, ...props }) => {
   return (
     <div className={classes.root}>
-      <p>{label}</p>
+      <p className={classes.label}>{label}</p>
       <input className={classes.input} autoComplete={'off'} {...props} />
     </div>
   )

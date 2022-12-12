@@ -1,5 +1,11 @@
 import { FormCreateBoard, FormCreateTask, FormUpdateTask, Task } from '..'
-import { ModalContentTypes } from './types'
+
+export enum ModalContentTypes {
+  FORM_CREATE_BOARD = 'FORM_CREATE_BOARD',
+  FORM_CREATE_TASK = 'FORM_CREATE_TASK',
+  FORM_UPDATE_TASK = 'FORM_UPDATE_TASK',
+  FULL_TASK = 'FULL_TASK'
+}
 
 export const defineModalEl = (
   modalContentTypes: ModalContentTypes | null

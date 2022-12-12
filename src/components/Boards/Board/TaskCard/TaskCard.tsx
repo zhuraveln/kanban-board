@@ -1,20 +1,27 @@
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
 
-import { ITaskCardProps } from './types'
+import { dateFormat } from '../../../../utils'
+import { TaskItem } from '../../../Forms/FormCreateBoard/types'
 
 import { useAppDispatch } from '../../../../hooks'
 import { setModalContent } from '../../../../redux/modal/actions'
 import { setCurrentTask } from '../../../../redux/board/actions'
 
-import classes from './TaskCard.module.scss'
-import { ModalContentTypes } from '../../../Modal/types'
+import { ModalContentTypes } from '../../../Modal/defineModalEl'
 
-export const TaskCard: React.FC<ITaskCardProps> = props => {
+import classes from './TaskCard.module.scss'
+
+interface ITaskCard extends TaskItem {
+  index: number // index of Task in array for drag and drop functional, and update functional in Redux
+  columnIndex: number // index of Column for update task functional in Redux
+}
+
+export const TaskCard: React.FC<ITaskCard> = props => {
   const dispatch = useAppDispatch()
 
-  // Task values
-  const { index, id, number, title, priority } = props
+  const { index, id, number, title, priority, finishBy, subtasks, comments } =
+    props // Task values
 
   // Handler for click on Task card
   const onClickTaskCard = () => {
@@ -32,9 +39,28 @@ export const TaskCard: React.FC<ITaskCardProps> = props => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className={classes.title}>#{number}</div>
-          <div className={classes.title}>{title}</div>
-          <div>Priority: {priority}</div>
+          {/* Header */}
+          <div className={classes.header}>
+            <h3 className={classes.title}>{title}</h3>
+            <div className={classes.number}>#{number}</div>
+          </div>
+
+          {/* Body */}
+          <div className={classes.body}>
+            <p>
+              Subtasks: ({subtasks.length}) Comments: ({comments.length})
+            </p>
+          </div>
+
+          {/* Footer */}
+          <div className={classes.footer}>
+            <div className={classes.finishBy}>
+              {finishBy
+                ? `Finish before: ${dateFormat(finishBy)}`
+                : 'Not finish date'}
+            </div>
+            <div className={classes.priority}>{priority}</div>
+          </div>
         </div>
       )}
     </Draggable>

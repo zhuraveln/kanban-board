@@ -8,7 +8,7 @@ import { BoardCard, Button } from '../..'
 import { setModalContent } from '../../../redux/modal/actions'
 
 import classes from './BoardsList.module.scss'
-import { ModalContentTypes } from '../../Modal/types'
+import { ModalContentTypes } from '../../Modal/defineModalEl'
 
 export const BoardsList: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -22,11 +22,12 @@ export const BoardsList: React.FC = () => {
       <div className={classes.createArea}>
         {/* Button for Create new Board */}
         <Button
+          size='medium'
           onClick={() =>
             dispatch(setModalContent(ModalContentTypes.FORM_CREATE_BOARD))
           } // open modal window with form for create new board
         >
-          Create board +
+          Add board
         </Button>
       </div>
 

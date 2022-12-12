@@ -1,2 +1,72 @@
 .root {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    .titlePriority {
+      display: flex;
+      .title {
+        margin-right: 7px;
+      }
+      .priority {
+        color: gray;
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+
+    .title {
+      font-size: 22px;
+      color: rgb(92, 92, 92);
+      margin-right: 5px;
+    }
+
+    .input {
+      display: flex;
+      align-items: flex-end;
+      p {
+        font-size: 25px;
+      }
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+      margin-right: 25px;
+
+      .description {
+        .body {
+          max-height: 110px;
+          overflow: scroll;
+        }
+      }
+
+      .createdAt {
+        display: flex;
+        align-items: center;
+      }
+
+      .subtasks {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+    .right {
+      flex: 1;
+      gap: 7px;
+    }
+  }
 }

@@ -1,10 +1,12 @@
 .root {
-  margin-bottom: 10px;
+  .label {
+    color: rgb(131, 131, 131);
+  }
 
   .select {
     width: 100%;
     padding: 10px;
-    border: 1px solid rgb(139, 139, 139);
-    border-radius: 8px;
+    border: 1px solid rgb(213, 213, 213);
+    border-radius: 5px;
   }
 }

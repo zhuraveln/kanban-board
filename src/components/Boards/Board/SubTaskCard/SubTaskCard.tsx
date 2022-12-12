@@ -6,11 +6,15 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks'
 import { changeSubTaskStatus } from '../../../../redux/board/actions'
 import { getSubTaskSelector } from '../../../../redux/board/selectors'
 
-import { ISubTaskCardProps } from './types'
+import { SubTaskItem } from '../../../Forms/FormCreateBoard/types'
 
 import classes from './SubTaskCard.module.scss'
 
-export const SubTaskCard: React.FC<ISubTaskCardProps> = props => {
+interface ISubTaskCard extends SubTaskItem {
+  index: number // index of SubTask in array for update status functional in Redux
+}
+
+export const SubTaskCard: React.FC<ISubTaskCard> = props => {
   const dispatch = useAppDispatch()
 
   const { index } = props // subtask index from props
@@ -28,10 +32,11 @@ export const SubTaskCard: React.FC<ISubTaskCardProps> = props => {
       <TextField
         type={'checkbox'}
         className={classes.checkbox}
+        style={{ padding: '25px' }}
         checked={isComplete}
         onChange={onClickHandler}
       />
-      <div className={classes.title}>{title}</div>
+      <div className={isComplete ? classes.complete : ''}>{title}</div>
     </div>
   )
 }

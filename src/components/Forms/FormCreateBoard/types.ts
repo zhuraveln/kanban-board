@@ -27,7 +27,7 @@ export type TaskItem = {
   title: string
   description: string | null
   createdAt: Dayjs
-  finishAt: Dayjs | null
+  finishBy: Dayjs | null
   priority: PriorityTypes
   status: string
   file: File | string | null

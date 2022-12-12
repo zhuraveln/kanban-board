@@ -1,16 +1,23 @@
 .root {
   display: flex;
-  border: 1px solid rgb(0, 0, 0);
-  padding: 5px;
+  background-color: rgb(160, 166, 254);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
   cursor: pointer;
   transition: all 0.5s;
 
   .checkbox {
     margin-right: 10px;
+    transform: scale(1.5);
     cursor: pointer;
   }
 
+  .complete {
+    text-decoration: line-through;
+  }
+
   &:hover {
-    background-color: rgb(254, 208, 152);
+    background-color: rgb(124, 133, 255);
   }
 }

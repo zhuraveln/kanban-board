@@ -18,8 +18,9 @@ import { PriorityTypes } from '../FormCreateBoard/types'
 import { UpdateTaskFormFields } from './types'
 import { updatedTask } from './updatedTask'
 import FileAPI from '../../../API/FileAPI'
-import { ModalContentTypes } from '../../Modal/types'
+
 import { dateFormat } from '../../../utils'
+import { ModalContentTypes } from '../../Modal/defineModalEl'
 
 export const FormUpdateTask: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -35,7 +36,7 @@ export const FormUpdateTask: React.FC = () => {
   const { handleChange, handleSubmit, setValues } = useFormData({
     title: task?.title, // initial values for hook
     description: task?.description,
-    targetDate: dateFormat(task?.finishAt),
+    finishBy: dateFormat(task?.finishBy),
     file: file,
     priority: task?.priority
   })
@@ -61,6 +62,9 @@ export const FormUpdateTask: React.FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* Title for Form*/}
+      <h2>Update Task</h2>
+
       {/* Input for title task */}
       <TextField
         required
@@ -69,7 +73,6 @@ export const FormUpdateTask: React.FC = () => {
         type='text'
         name='title'
         label={'Task title '}
-        placeholder={'title'}
       />
 
       {/* Input for description task */}
@@ -79,15 +82,14 @@ export const FormUpdateTask: React.FC = () => {
         type='text'
         name='description'
         label={'Task description '}
-        placeholder={'title'}
       />
 
       {/* Input for target date task */}
       <TextField
         onChange={handleChange}
-        defaultValue={dateFormat(task?.finishAt)}
+        defaultValue={dateFormat(task?.finishBy)}
         type='datetime-local'
-        name='targetDate'
+        name='finishBy'
         label={'Target Date '}
       />
 

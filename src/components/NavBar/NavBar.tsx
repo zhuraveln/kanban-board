@@ -6,7 +6,7 @@ export const NavBar = () => {
   return (
     <div className={classes.root}>
       <div className={classes.title}>
-        <h1>TODO test (UpTrader)</h1>
+        <h1>kanban board</h1>
       </div>
     </div>
   )

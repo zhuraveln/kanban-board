@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
   .columns {
     display: flex;
     justify-content: space-between;

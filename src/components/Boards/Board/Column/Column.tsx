@@ -2,19 +2,24 @@ import React from 'react'
 import { Droppable } from 'react-beautiful-dnd'
 
 import { TaskCard } from '../../..'
-
-import { IColumnProps } from './types'
+import { ColumnItem } from '../../../Forms/FormCreateBoard/types'
 
 import classes from './Column.module.scss'
 
-export const Column: React.FC<IColumnProps> = props => {
-  // Column values
-  const { index, name, tasks } = props
+interface IColumn extends ColumnItem {
+  index: number
+}
+
+export const Column: React.FC<IColumn> = props => {
+  const { index, name, tasks } = props // column values
   const columnIndex = index // need for TaskCard
+
   return (
     <div className={classes.root}>
-      {/* Column name */}
-      <h2>{name}</h2>
+      {/* Column name, tasks counter */}
+      <h2 className={classes.title}>
+        {name} ({tasks.length})
+      </h2>
       <Droppable droppableId={String(index)}>
         {provided => (
           <div

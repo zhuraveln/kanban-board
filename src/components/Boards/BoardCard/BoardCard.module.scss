@@ -1,21 +1,22 @@
 .root {
-  width: 200px;
-  height: 200px;
-  background-color: beige;
-  border: 1px solid rgb(132, 255, 202);
-  border-radius: 10px;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  width: 220px;
+  height: 220px;
+  border: none;
+  background-color: rgb(166, 220, 255);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px;
+  border-radius: 15px;
   margin-right: 20px;
   transition: all 0.4s;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover {
-    transform: scale(105%);
+    transform: scale(103%);
   }
-}
-
-.title {
-  margin-top: 15px;
 }

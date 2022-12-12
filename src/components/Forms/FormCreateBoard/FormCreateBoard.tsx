@@ -25,6 +25,9 @@ export const FormCreateBoard: React.FC = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* Title for Form*/}
+      <h2>Create Board</h2>
+
       {/* Input for name board */}
       <TextField
         required
@@ -32,8 +35,7 @@ export const FormCreateBoard: React.FC = () => {
         onChange={handleChange}
         type='text'
         name='name'
-        label={'Board Name '}
-        placeholder={'name'}
+        label={'Board name '}
       />
 
       {/* Button for create new Board */}

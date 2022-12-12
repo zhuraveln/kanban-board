@@ -5,12 +5,19 @@ import { useFormData } from '../../../hooks/useFormData'
 
 import { Button, Form, TextField } from '../..'
 
-import { CreateSubTaskFormFields, IFormCreateSubTaskProps } from './types'
 import { SubTask } from './newSubTask'
 import { SubTaskItem } from '../FormCreateBoard/types'
 import { createNewSubTask } from '../../../redux/board/actions'
 
-export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
+export type CreateSubTaskFormFields = {
+  title: string
+}
+
+interface IFormCreateSubTask {
+  setVisibleInput: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const FormCreateSubTask: React.FC<IFormCreateSubTask> = ({
   setVisibleInput
 }) => {
   const dispatch = useAppDispatch()
@@ -29,7 +36,10 @@ export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} style={{ flexDirection: 'row' }}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{ flexDirection: 'row', gap: '3px' }}
+    >
       {/* Input for title Subtask */}
       <TextField
         required
@@ -41,7 +51,9 @@ export const FormCreateSubTask: React.FC<IFormCreateSubTaskProps> = ({
       />
 
       {/* Button for create new Subtask */}
-      <Button type={'submit'}>+</Button>
+      <Button type={'submit'} style={{ padding: '5px 17px' }}>
+        +
+      </Button>
     </Form>
   )
 }

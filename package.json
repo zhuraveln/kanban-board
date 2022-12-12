@@ -1,21 +1,17 @@
 {
-  "name": "to-do-test-uptrader",
+  "name": "kanban-board",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tinymce/tinymce-react": "^4.2.0",
-    "axios": "^1.2.0",
-    "dayjs": "^1.11.6",
-    "firebase": "^9.15.0",
     "react": "^18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-redux": "^8.0.5",
     "react-router-dom": "6.4.3",
     "react-scripts": "5.0.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-saga": "^1.2.1",
+    "firebase": "^9.15.0",
+    "dayjs": "^1.11.6",
     "sass": "^1.56.1"
   },
   "scripts": {
@@ -55,7 +51,7 @@
     "typescript": "^4.9.3"
   },
   "main": "index.js",
-  "repository": "https://github.com/zhuraveln/to-do-test-uptrader",
+  "repository": "https://github.com/zhuraveln/kanban-board",
   "author": "Zhuravel Nikita",
   "license": "MIT"
 }

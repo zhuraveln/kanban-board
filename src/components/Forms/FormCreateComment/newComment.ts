@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { uniqId } from '../../../utils/uniqId'
-import { CreateCommentFormFields } from './types'
+import { CreateCommentFormFields } from './FormCreateComment'
 
 /** Class for create new Subtask */
 export class Comment {

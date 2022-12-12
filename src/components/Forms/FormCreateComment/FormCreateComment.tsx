@@ -5,12 +5,20 @@ import { useFormData } from '../../../hooks/useFormData'
 
 import { Button, Form, TextField } from '../..'
 
-import { CreateCommentFormFields, IFormCreateCommentProps } from './types'
 import { Comment } from './newComment'
 import { CommentItem } from '../FormCreateBoard/types'
 import { createNewComment } from '../../../redux/board/actions'
 
-export const FormCreateComment: React.FC<IFormCreateCommentProps> = props => {
+export type CreateCommentFormFields = {
+  body: string
+}
+
+interface IFormCreateComment {
+  parentId: null | string
+  setVisibleInput: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const FormCreateComment: React.FC<IFormCreateComment> = props => {
   const dispatch = useAppDispatch()
 
   const { parentId, setVisibleInput } = props // get values from props
@@ -28,7 +36,10 @@ export const FormCreateComment: React.FC<IFormCreateCommentProps> = props => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} style={{ flexDirection: 'row' }}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{ flexDirection: 'row', gap: '3px' }}
+    >
       {/* Input for title Comment */}
       <TextField
         required
@@ -40,7 +51,9 @@ export const FormCreateComment: React.FC<IFormCreateCommentProps> = props => {
       />
 
       {/* Button for create new Comment */}
-      <Button type={'submit'}>+</Button>
+      <Button type={'submit'} style={{ padding: '5px 17px' }}>
+        +
+      </Button>
     </Form>
   )
 }
