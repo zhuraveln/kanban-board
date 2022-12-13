@@ -1,1 +1,10 @@
-export { default as Avatar } from './img/avatar.png'
+// img
+export { default as mainLogo } from './img/main-logo.png'
+export { default as avatarIcon } from './img/avatar-icon.png'
+export { default as createBoardIcon } from './img/create-board-icon.png'
+export { default as createTaskIcon } from './img/create-task-icon.png'
+export { default as changeTaskIcon } from './img/change-task-icon.png'
+export { default as returnIcon } from './img/return-icon.png'
+export { default as priorityIcon } from './img/priority-icon.png'
+export { default as createdAtIcon } from './img/created-at-icon.png'
+export { default as deleteIcon } from './img/delete-icon.png'

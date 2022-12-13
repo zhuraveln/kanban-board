@@ -15,6 +15,7 @@ import {
 
 import classes from './Board.module.scss'
 import { ModalContentTypes } from '../../../Modal/defineModalEl'
+import { createTaskIcon, returnIcon } from '../../../../assets'
 
 export const Board: React.FC = () => {
   const navigate = useNavigate()
@@ -48,11 +49,17 @@ export const Board: React.FC = () => {
           onClick={onClickReturnToBoardList}
           style={{ background: 'rgb(132, 141, 255)' }}
         >
+          <img src={returnIcon} alt='return' />
           Back to Boards List
         </Button>
 
+        <h2 className={classes.boardName}>{board.name}</h2>
+
         {/* Button for create new Task, open modal window */}
-        <Button onClick={onClickCreateNewTask}>Create new Task</Button>
+        <Button onClick={onClickCreateNewTask}>
+          <img src={createTaskIcon} alt='createTask' />
+          Create new Task
+        </Button>
       </div>
 
       {/* Board's columns */}

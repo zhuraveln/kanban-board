@@ -20,6 +20,19 @@
     padding: 13px;
   }
 
+  .children {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+    }
+  }
+
   &:hover {
     background: rgb(75, 87, 255);
   }

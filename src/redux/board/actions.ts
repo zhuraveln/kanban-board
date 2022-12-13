@@ -19,7 +19,8 @@ import {
   CreateNewSubTaskAction,
   ChangeSubTaskStatusAction as ChangeSubTaskStatusAction,
   CreateNewCommentAction,
-  DeleteTaskFileURLAction
+  DeleteTaskFileURLAction,
+  DeleteTaskAction
 } from './types'
 
 // Action for create a new Board
@@ -63,6 +64,11 @@ export const changeSubTaskStatus = (payload: {
 export const updateTask = (payload: CurrentTaskItem): UpdateTaskAction => ({
   type: BoardActionsTypes.UPDATE_TASK,
   payload
+})
+
+// Action for delete Task
+export const deleteTask = (): DeleteTaskAction => ({
+  type: BoardActionsTypes.DELETE_TASK
 })
 
 // Action for delete Task File URL

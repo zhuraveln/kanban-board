@@ -3,7 +3,6 @@ import React from 'react'
 import classes from './Button.module.scss'
 
 interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string
   size?: 'small' | 'medium'
 }
 
@@ -21,7 +20,7 @@ export const Button: React.FC<IButton> = ({
       }
       {...props}
     >
-      {children}
+      <div className={classes.children}>{children}</div>
     </button>
   )
 }

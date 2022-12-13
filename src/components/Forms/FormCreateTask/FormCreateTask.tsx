@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dayjs } from 'dayjs'
 
 import { useAppDispatch, useAppSelector, useFormData } from '../../../hooks'
 
@@ -8,11 +9,18 @@ import { createNewTask } from '../../../redux/board/actions'
 
 import { Button, Form, Select, TextField } from '../..'
 
-import { CreateTaskFormFields } from './types'
 import { PriorityTypes, TaskItem } from '../FormCreateBoard/types'
 
 import { Task } from './newTask'
 import FileAPI from '../../../API/FileAPI'
+
+export type CreateTaskFormFields = {
+  title: string
+  description: string
+  finishBy: Dayjs
+  file: File | null
+  priority: PriorityTypes
+}
 
 export const FormCreateTask: React.FC = () => {
   const dispatch = useAppDispatch()

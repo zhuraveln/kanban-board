@@ -11,6 +11,7 @@ import { setCurrentTask } from '../../../../redux/board/actions'
 import { ModalContentTypes } from '../../../Modal/defineModalEl'
 
 import classes from './TaskCard.module.scss'
+import { priorityIcon } from '../../../../assets'
 
 interface ITaskCard extends TaskItem {
   index: number // index of Task in array for drag and drop functional, and update functional in Redux
@@ -59,7 +60,10 @@ export const TaskCard: React.FC<ITaskCard> = props => {
                 ? `Finish before: ${dateFormat(finishBy)}`
                 : 'Not finish date'}
             </div>
-            <div className={classes.priority}>{priority}</div>
+            <div className={classes.priority}>
+              <img src={priorityIcon} alt='priority' />
+              {priority}
+            </div>
           </div>
         </div>
       )}

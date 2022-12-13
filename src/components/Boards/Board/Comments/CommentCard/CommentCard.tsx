@@ -1,6 +1,6 @@
 import React from 'react'
 import { CommentsList, FormCreateComment } from '../../../..'
-import { Avatar } from '../../../../../assets'
+import { avatarIcon } from '../../../../../assets'
 import { dateFormat } from '../../../../../utils'
 
 import { CommentItem } from '../../../../Forms/FormCreateBoard/types'
@@ -22,7 +22,7 @@ export const CommentCard: React.FC<IComment> = props => {
   return (
     <div className={classes.root}>
       <div className={classes.header}>
-        <img src={Avatar} className={classes.avatar} alt='Avatar'></img>
+        <img src={avatarIcon} className={classes.avatar} alt='Avatar'></img>
         <div className={classes.user}>Surprised avocado</div>
         <div className={classes.createdAt}>{dateFormat(createdAt)}</div>
       </div>

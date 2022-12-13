@@ -9,6 +9,7 @@ import { setModalContent } from '../../../redux/modal/actions'
 
 import classes from './BoardsList.module.scss'
 import { ModalContentTypes } from '../../Modal/defineModalEl'
+import { createBoardIcon } from '../../../assets'
 
 export const BoardsList: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -27,6 +28,8 @@ export const BoardsList: React.FC = () => {
             dispatch(setModalContent(ModalContentTypes.FORM_CREATE_BOARD))
           } // open modal window with form for create new board
         >
+          {/* Add board */}
+          <img src={createBoardIcon} alt='createBoard' />
           Add board
         </Button>
       </div>

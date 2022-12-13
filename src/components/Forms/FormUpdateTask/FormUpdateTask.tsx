@@ -63,7 +63,7 @@ export const FormUpdateTask: React.FC = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       {/* Title for Form*/}
-      <h2>Update Task</h2>
+      <h2>Change task details</h2>
 
       {/* Input for title task */}
       <TextField
@@ -134,7 +134,7 @@ export const FormUpdateTask: React.FC = () => {
       )}
 
       {/* Button for update Task */}
-      <Button type={'submit'}>Update task</Button>
+      <Button type={'submit'}>Save changes</Button>
     </Form>
   )
 }

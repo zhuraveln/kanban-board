@@ -6,6 +6,10 @@ interface ICommentsGroup {
 
 /** Creating a sorted object with comments by 'parentId' key */
 export const sortByParentId = (comments: CommentItem[]) => {
+  if (!comments) {
+    return {}
+  }
+
   const group: ICommentsGroup = {} // create a new group
   comments.forEach(comment => {
     group[String(comment.parentId)] ||= [] // create a new array with 'parentId' key if he is not

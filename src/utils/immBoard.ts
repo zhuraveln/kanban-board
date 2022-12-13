@@ -6,6 +6,7 @@ import {
   CreateNewCommentAction,
   CreateNewSubTaskAction,
   CreateNewTaskAction,
+  DeleteTaskAction,
   DeleteTaskFileURLAction,
   ReorderTasksOnDragDropAction,
   UpdateTaskAction
@@ -29,6 +30,34 @@ export class immBoard {
           ...immArr.replace(boards[index].columns, 0, {
             ...boards[index].columns[0],
             tasks: [...boards[index].columns[0].tasks, action.payload]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with removed Task */
+  static deleteTask = (
+    state: BoardState,
+    action: DeleteTaskAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+    const indexCurrentColumn = Number(state.currentTask?.columnIndex) // current column index
+    const indexCurrentTask = Number(state.currentTask?.index) // current column index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          ...immArr.replace(boards[index].columns, indexCurrentColumn, {
+            ...boards[index].columns[indexCurrentColumn],
+            tasks: [
+              ...immArr.remove(
+                boards[index].columns[indexCurrentColumn].tasks,
+                indexCurrentTask
+              )
+            ]
           })
         ]
       })

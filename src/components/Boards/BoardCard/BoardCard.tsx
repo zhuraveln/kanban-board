@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
 import { setCurrentBoardIndex } from '../../../redux/board/actions'
-
-import { BoardCardProps } from './types'
+import { BoardItem } from '../../Forms/FormCreateBoard/types'
 
 import classes from './BoardCard.module.scss'
 
-export const BoardCard: React.FC<BoardCardProps> = ({ name, boardIndex }) => {
+interface BoardCard extends BoardItem {
+  boardIndex: number
+}
+
+export const BoardCard: React.FC<BoardCard> = ({ name, boardIndex }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 

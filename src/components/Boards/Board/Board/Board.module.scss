@@ -5,7 +5,14 @@
   .header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    padding-bottom: 17px;
+    border-bottom: 2px solid rgb(130, 130, 130);
+    margin-bottom: 17px;
+
+    .boardName {
+      align-self: flex-end;
+      font-size: 33px;
+    }
   }
 
   .columns {
