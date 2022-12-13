@@ -15,3 +15,6 @@ export { uniqId } from './uniqId'
 
 // dateFormat
 export { dateFormat } from './dateFormat'
+
+// work with local storage
+export { loadFromLocalStorage, saveToLocalStorage } from './localStorage'
