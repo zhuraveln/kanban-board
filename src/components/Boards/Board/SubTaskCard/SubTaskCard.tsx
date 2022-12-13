@@ -9,6 +9,7 @@ import { getSubTaskSelector } from '../../../../redux/board/selectors'
 import { SubTaskItem } from '../../../Forms/FormCreateBoard/types'
 
 import classes from './SubTaskCard.module.scss'
+import { dateFormat } from '../../../../utils'
 
 interface ISubTaskCard extends SubTaskItem {
   index: number // index of SubTask in array for update status functional in Redux
@@ -20,7 +21,9 @@ export const SubTaskCard: React.FC<ISubTaskCard> = props => {
   const { index } = props // subtask index from props
 
   // Getting current SubTask values from Redux state
-  const { title, isComplete } = useAppSelector(getSubTaskSelector(index))
+  const { title, createdAt, isComplete } = useAppSelector(
+    getSubTaskSelector(index)
+  )
 
   // Handler for click on Subtask card
   const onClickHandler = () => {
@@ -29,14 +32,20 @@ export const SubTaskCard: React.FC<ISubTaskCard> = props => {
 
   return (
     <div className={classes.root} onClick={onClickHandler}>
-      <TextField
-        type={'checkbox'}
-        className={classes.checkbox}
-        style={{ padding: '25px' }}
-        checked={isComplete}
-        onChange={onClickHandler}
-      />
-      <div className={isComplete ? classes.complete : ''}>{title}</div>
+      {/* Checkbox and title for Subtask */}
+      <div className={classes.body}>
+        <TextField
+          type={'checkbox'}
+          className={classes.checkbox}
+          style={{ padding: '25px' }}
+          checked={isComplete}
+          onChange={onClickHandler}
+        />
+        <div className={isComplete ? classes.complete : ''}>{title}</div>
+      </div>
+
+      {/* Subtask created date */}
+      <div className={classes.createdAt}>{dateFormat(createdAt)}</div>
     </div>
   )
 }

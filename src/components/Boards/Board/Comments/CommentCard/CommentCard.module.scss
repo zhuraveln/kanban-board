@@ -1,8 +1,40 @@
 .root {
-  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
   transition: all 0.5s;
 
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+    }
+
+    .user {
+      font-weight: 500;
+    }
+
+    .createdAt {
+      color: grey;
+    }
+  }
+
+  .body {
+    font-size: 18px;
+  }
+
   .replies {
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 100%;
+    padding-left: 20px;
+    border-left: 2px solid rgb(205, 205, 205);
   }
 }

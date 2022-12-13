@@ -175,7 +175,7 @@ export const Task: React.FC = () => {
                     setVisibleInput={setVisibleCommentInput}
                   />
                 )}
-                <div>
+                <div className={classes.comments}>
                   <CommentsList
                     comments={sortedComments[String(null)]}
                     getReplies={getReplies}

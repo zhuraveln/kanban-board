@@ -1,13 +1,19 @@
 import React from 'react'
 import { CommentsList, FormCreateComment } from '../../../..'
+import { Avatar } from '../../../../../assets'
+import { dateFormat } from '../../../../../utils'
 
-import { ICommentProps } from './types'
+import { CommentItem } from '../../../../Forms/FormCreateBoard/types'
 import { Button } from '../../../../UI/Button/Button'
 
 import classes from './CommentCard.module.scss'
 
-export const CommentCard: React.FC<ICommentProps> = props => {
-  const { body, id, getReplies } = props // get values from props
+interface IComment extends CommentItem {
+  getReplies: (parentId: string) => CommentItem[]
+}
+
+export const CommentCard: React.FC<IComment> = props => {
+  const { id, body, createdAt, getReplies } = props // get values from props
 
   const [visibleCommentInput, setVisibleCommentInput] = React.useState(false)
 
@@ -15,10 +21,20 @@ export const CommentCard: React.FC<ICommentProps> = props => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.title}>{body}</div>
-      <Button onClick={() => setVisibleCommentInput(prev => !prev)}>
-        Reply
-      </Button>
+      <div className={classes.header}>
+        <img src={Avatar} className={classes.avatar} alt='Avatar'></img>
+        <div className={classes.user}>Surprised avocado</div>
+        <div className={classes.createdAt}>{dateFormat(createdAt)}</div>
+      </div>
+      <div className={classes.body}>{body}</div>
+      <div className={classes.footer}>
+        <Button
+          onClick={() => setVisibleCommentInput(prev => !prev)}
+          style={{ padding: '5px 5px', textTransform: 'none' }}
+        >
+          Reply
+        </Button>
+      </div>
       {visibleCommentInput && (
         <FormCreateComment
           parentId={id}
