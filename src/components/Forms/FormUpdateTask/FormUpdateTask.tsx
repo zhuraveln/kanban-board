@@ -21,6 +21,7 @@ import FileAPI from '../../../API/FileAPI'
 import { dateFormat } from '../../../utils'
 import { ModalContentTypes } from '../../Modal/defineModalEl'
 import { Dayjs } from 'dayjs'
+import { deleteIcon } from '../../../assets'
 
 export type UpdateTaskFormFields = {
   title: string
@@ -111,10 +112,20 @@ export const FormUpdateTask: React.FC = () => {
       {/* Attached file */}
       {file ? (
         <div>
-          <a href={String(file)} target='_blank' rel='noreferrer'>
+          <a
+            href={String(file)}
+            target='_blank'
+            rel='noreferrer'
+            style={{ marginRight: '5px' }}
+          >
             Attached file
           </a>
           <Button
+            style={{
+              backgroundColor: 'rgb(232, 106, 106)',
+              padding: '5px ',
+              transform: 'scale(0.8)'
+            }}
             type={'button'}
             onClick={() => {
               if (task) {
@@ -126,7 +137,7 @@ export const FormUpdateTask: React.FC = () => {
               }
             }}
           >
-            Delete File
+            <img src={deleteIcon} alt='deleteIcon' />
           </Button>
         </div>
       ) : (

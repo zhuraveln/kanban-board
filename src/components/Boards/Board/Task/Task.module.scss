@@ -47,6 +47,11 @@
       margin-right: 5px;
     }
 
+    .date {
+      align-self: flex-end;
+      font-size: 20px;
+    }
+
     .input {
       display: flex;
       align-items: flex-end;
@@ -61,11 +66,29 @@
       gap: 7px;
       flex: 1;
       margin-right: 25px;
+      padding-right: 25px;
+      border-right: 1px solid #eee;
 
       .description {
         .body {
           max-height: 110px;
           overflow: scroll;
+        }
+      }
+
+      .finishBy {
+        display: flex;
+      }
+
+      .subTaskInput {
+        display: flex;
+
+        .title {
+          font-size: 30px;
+        }
+
+        input {
+          padding: 6.2px 10px;
         }
       }
 
@@ -83,8 +106,20 @@
       flex-direction: column;
       gap: 7px;
 
+      .commentInput {
+        display: flex;
+
+        .title {
+          font-size: 30px;
+        }
+
+        input {
+          padding: 6.2px 10px;
+        }
+      }
+
       .comments {
-        max-height: 400px;
+        max-height: 500px;
         overflow: scroll;
       }
     }

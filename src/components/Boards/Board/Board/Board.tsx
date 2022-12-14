@@ -41,7 +41,11 @@ export const Board: React.FC = () => {
     <div className={classes.root}>
       <div className={classes.header}>
         {/* Button for return to Boards list */}
-        <Button onClick={onClickReturnToBoardList} style={{ opacity: '0.6' }}>
+        <Button
+          onClick={onClickReturnToBoardList}
+          size='medium'
+          style={{ opacity: '0.6' }}
+        >
           <img src={returnIcon} alt='return' />
           Boards List
         </Button>
@@ -65,9 +69,10 @@ export const Board: React.FC = () => {
           onClick={() =>
             dispatch(setModalContent(ModalContentTypes.FORM_CREATE_TASK))
           }
+          size='medium'
         >
           <img src={createTaskIcon} alt='createTask' />
-          Create new Task
+          New Task
         </Button>
       </div>
 

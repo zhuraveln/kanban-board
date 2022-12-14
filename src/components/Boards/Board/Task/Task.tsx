@@ -102,10 +102,12 @@ export const Task: React.FC = () => {
           {/* Left side */}
           <div className={classes.left}>
             {/* Task description */}
-            <div className={classes.description}>
-              <p className={classes.title}>Description:</p>
-              <div className={classes.body}>{task?.description}</div>
-            </div>
+            {task?.description && (
+              <div className={classes.description}>
+                <p className={classes.title}>Description:</p>
+                <div className={classes.body}>{task?.description}</div>
+              </div>
+            )}
 
             {/* Attached file */}
             {task?.file && (
@@ -116,109 +118,84 @@ export const Task: React.FC = () => {
               </div>
             )}
 
-            {/* Target date for Task */}
+            {/* Finish before date for Task */}
             {task?.finishBy && (
-              <div className={classes.createdAt}>
-                <p className={classes.title}>Finish Before:</p>{' '}
-                {dateFormat(task?.finishBy)}
+              <div className={classes.finishBy}>
+                <p className={classes.title}>Finish Before:</p>
+                <p className={classes.date}>{dateFormat(task?.finishBy)}</p>
               </div>
             )}
 
             {/* Time in work */}
-            <div className={classes.createdAt}>
-              <p className={classes.title}>In work:</p> {timeInWork}
+            <div className={classes.finishBy} style={{ marginBottom: '10px ' }}>
+              <p className={classes.title}>In work:</p>
+              <p className={classes.date}>{timeInWork}</p>
             </div>
 
-            {/* SUBTASK CARDS */}
-            {/* Render if Task has Subtasks */}
-            {task?.subtasks?.length && task?.subtasks ? (
-              <>
-                <div className={classes.input}>
-                  <p className={classes.title}>Subtasks</p>{' '}
-                  {/* Button for create Subtask */}
-                  {!visibleSubTaskInput && (
-                    <Button
-                      onClick={() => setVisibleSubTaskInput(prev => !prev)}
-                      style={{ padding: '5px 10px' }}
-                    >
-                      +
-                    </Button>
-                  )}
-                </div>
+            {/* SUBTASKS */}
+            <div className={classes.subTaskInput}>
+              {/* Title */}
+              <p className={classes.title}>Subtasks:</p>
 
-                {visibleSubTaskInput && (
-                  <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
-                )}
-                <div className={classes.subtasks}>
-                  {task?.subtasks?.map((subtask, index) => (
-                    <SubTaskCard {...subtask} key={subtask.id} index={index} />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Render if Task hasn't Subtasks */}
-                {/* Render button for create SubTask if input for create SubTask is hide */}
-                {!visibleSubTaskInput && (
-                  <Button onClick={() => setVisibleSubTaskInput(prev => !prev)}>
-                    +Add subtask
-                  </Button>
-                )}
-                {/* Render input for create SubTask */}
-                {visibleSubTaskInput && (
-                  <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
-                )}
-              </>
+              {/* Button for create Subtask */}
+              {!visibleSubTaskInput && (
+                <Button
+                  onClick={() => setVisibleSubTaskInput(prev => !prev)}
+                  style={{ padding: '5px 10px' }}
+                >
+                  +
+                </Button>
+              )}
+
+              {/* Input for create Subtask */}
+              {visibleSubTaskInput && (
+                <FormCreateSubTask setVisibleInput={setVisibleSubTaskInput} />
+              )}
+            </div>
+
+            {/* Subtasks cards */}
+            {task?.subtasks?.length > 0 && (
+              <div className={classes.subtasks}>
+                {task.subtasks.map((subtask, index) => (
+                  <SubTaskCard {...subtask} key={subtask.id} index={index} />
+                ))}
+              </div>
             )}
           </div>
 
           <div className={classes.right}>
-            {/* COMMENTS CARDS */}
-            {/* Render if Task has Comments */}
-            {task?.comments?.length && task?.comments ? (
-              <>
-                <div className={classes.input}>
-                  <p className={classes.title}>Comments</p>
-                  {/* Button for create Comments */}
-                  {!visibleCommentInput && (
-                    <Button
-                      onClick={() => setVisibleCommentInput(prev => !prev)}
-                      style={{ padding: '5px 10px' }}
-                    >
-                      +
-                    </Button>
-                  )}
-                </div>
-                {visibleCommentInput && (
-                  <FormCreateComment
-                    parentId={null}
-                    setVisibleInput={setVisibleCommentInput}
-                  />
-                )}
-                <div className={classes.comments}>
-                  <CommentsList
-                    comments={sortedComments[String(null)]}
-                    getReplies={getReplies}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                {/* Render if Task hasn't Comments */}
-                {/* Render button for create Comments if input for create Comments is hide */}
-                {!visibleCommentInput && (
-                  <Button onClick={() => setVisibleCommentInput(prev => !prev)}>
-                    +Add comment
-                  </Button>
-                )}
-                {/* Render input for create Comments */}
-                {visibleCommentInput && (
-                  <FormCreateComment
-                    parentId={null}
-                    setVisibleInput={setVisibleCommentInput}
-                  />
-                )}
-              </>
+            {/* COMMENTS */}
+            <div className={classes.commentInput}>
+              {/* Title */}
+              <p className={classes.title}>Comments:</p>
+
+              {/* Button for create Subtask */}
+              {!visibleCommentInput && (
+                <Button
+                  onClick={() => setVisibleCommentInput(prev => !prev)}
+                  style={{ padding: '5px 10px' }}
+                >
+                  +
+                </Button>
+              )}
+
+              {/* Input for create Comment */}
+              {visibleCommentInput && (
+                <FormCreateComment
+                  parentId={null}
+                  setVisibleInput={setVisibleCommentInput}
+                />
+              )}
+            </div>
+
+            {/* Comments cards */}
+            {task?.comments?.length > 0 && (
+              <div className={classes.comments}>
+                <CommentsList
+                  comments={sortedComments[String(null)]}
+                  getReplies={getReplies}
+                />
+              </div>
             )}
           </div>
         </div>
