@@ -45,19 +45,9 @@ export const Task: React.FC = () => {
   // Calculation time in work
   const timeInWork = calcTimeInWork(task?.createdAt)
 
-  // Handler for click 'add Subtask' button
-  const onClickAddSubtask = () => {
-    setVisibleSubTaskInput(prev => !prev)
-  }
-
-  // Handler for click 'add Comment' button
-  const onClickAddComment = () => {
-    setVisibleCommentInput(prev => !prev)
-  }
-
   // Handler for click 'delete Task' button
   const onClickDeleteTask = () => {
-    if (window.confirm('Are you sure to delete Task?')) {
+    if (window.confirm('Are you sure to delete this Task?')) {
       dispatch(closeModal())
       setTimeout(() => dispatch(deleteTask()), 650)
     }
@@ -85,13 +75,13 @@ export const Task: React.FC = () => {
             </div>
           </div>
 
-          {/* Button for update and delete Task */}
+          {/* Buttons for update and delete Task */}
           <div style={{ display: 'flex', gap: '3px' }}>
             {/* Update */}
             <Button
               onClick={() =>
                 dispatch(setModalContent(ModalContentTypes.FORM_UPDATE_TASK))
-              } // open modal window with form for update task?
+              } // open modal window with form for update task
             >
               <img src={changeTaskIcon} alt='changeTask' />
               Change
@@ -148,7 +138,7 @@ export const Task: React.FC = () => {
                   {/* Button for create Subtask */}
                   {!visibleSubTaskInput && (
                     <Button
-                      onClick={onClickAddSubtask}
+                      onClick={() => setVisibleSubTaskInput(prev => !prev)}
                       style={{ padding: '5px 10px' }}
                     >
                       +
@@ -170,7 +160,9 @@ export const Task: React.FC = () => {
                 {/* Render if Task hasn't Subtasks */}
                 {/* Render button for create SubTask if input for create SubTask is hide */}
                 {!visibleSubTaskInput && (
-                  <Button onClick={onClickAddSubtask}>+Add subtask</Button>
+                  <Button onClick={() => setVisibleSubTaskInput(prev => !prev)}>
+                    +Add subtask
+                  </Button>
                 )}
                 {/* Render input for create SubTask */}
                 {visibleSubTaskInput && (
@@ -190,7 +182,7 @@ export const Task: React.FC = () => {
                   {/* Button for create Comments */}
                   {!visibleCommentInput && (
                     <Button
-                      onClick={onClickAddComment}
+                      onClick={() => setVisibleCommentInput(prev => !prev)}
                       style={{ padding: '5px 10px' }}
                     >
                       +
@@ -215,7 +207,9 @@ export const Task: React.FC = () => {
                 {/* Render if Task hasn't Comments */}
                 {/* Render button for create Comments if input for create Comments is hide */}
                 {!visibleCommentInput && (
-                  <Button onClick={onClickAddComment}>+Add comment</Button>
+                  <Button onClick={() => setVisibleCommentInput(prev => !prev)}>
+                    +Add comment
+                  </Button>
                 )}
                 {/* Render input for create Comments */}
                 {visibleCommentInput && (

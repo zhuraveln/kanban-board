@@ -9,6 +9,7 @@
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 10px;
+  transition: background-color 0.4s;
   cursor: pointer !important;
 
   .header {
@@ -42,5 +43,10 @@
         margin-right: 3px;
       }
     }
+  }
+
+  &:hover,
+  &:active {
+    background-color: darken(rgb(166, 220, 255), 10%);
   }
 }

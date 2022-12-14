@@ -1,10 +1,5 @@
 import { Dayjs } from 'dayjs'
 
-/** Types for fields for create board form */
-export type CreateBoardFormFields = {
-  name: string
-}
-
 /** Types for Board Item */
 export type BoardItem = {
   id: string

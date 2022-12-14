@@ -49,9 +49,24 @@ export const boardReducer = (
 
     //----------------------------------------------------------------
 
+    // UPDATE BOARD
+    case BoardActionsTypes.UPDATE_BOARD:
+      return { ...state, boards: [...immBoard.updateBoard(state, action)] }
+
+    //----------------------------------------------------------------
+
     // UPDATE TASK
     case BoardActionsTypes.UPDATE_TASK:
       return { ...state, boards: [...immBoard.updateTask(state, action)] }
+
+    //----------------------------------------------------------------
+
+    // DELETE BOARD
+    case BoardActionsTypes.DELETE_BOARD:
+      return {
+        ...state,
+        boards: [...immBoard.deleteBoard(state, action)]
+      }
 
     //----------------------------------------------------------------
 
@@ -60,6 +75,15 @@ export const boardReducer = (
       return {
         ...state,
         boards: [...immBoard.deleteTask(state, action)]
+      }
+
+    //----------------------------------------------------------------
+
+    // DELETE SUBTASK
+    case BoardActionsTypes.DELETE_SUBTASK:
+      return {
+        ...state,
+        boards: [...immBoard.deleteSubTask(state, action)]
       }
 
     //----------------------------------------------------------------

@@ -6,9 +6,12 @@ import {
   CreateNewCommentAction,
   CreateNewSubTaskAction,
   CreateNewTaskAction,
+  DeleteBoardAction,
+  DeleteSubTaskAction,
   DeleteTaskAction,
   DeleteTaskFileURLAction,
   ReorderTasksOnDragDropAction,
+  UpdateBoardAction,
   UpdateTaskAction
 } from '../redux/board/types'
 
@@ -36,6 +39,17 @@ export class immBoard {
     ]
   }
 
+  /** Return immutable Boards with removed Board */
+  static deleteBoard = (
+    state: BoardState,
+    action: DeleteBoardAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+
+    return [...immArr.remove(boards, index)]
+  }
+
   /** Return immutable Boards with removed Task */
   static deleteTask = (
     state: BoardState,
@@ -56,6 +70,47 @@ export class immBoard {
               ...immArr.remove(
                 boards[index].columns[indexCurrentColumn].tasks,
                 indexCurrentTask
+              )
+            ]
+          })
+        ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with removed SubTask */
+  static deleteSubTask = (
+    state: BoardState,
+    action: DeleteSubTaskAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current board index
+    const indexCurrentColumn = Number(state.currentTask?.columnIndex) // current column index
+    const indexCurrentTask = Number(state.currentTask?.index) // current column index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        columns: [
+          ...immArr.replace(boards[index].columns, indexCurrentColumn, {
+            ...boards[index].columns[indexCurrentColumn],
+            tasks: [
+              ...immArr.replace(
+                boards[index].columns[indexCurrentColumn].tasks,
+                indexCurrentTask,
+                {
+                  ...boards[index].columns[indexCurrentColumn].tasks[
+                    indexCurrentTask
+                  ],
+                  subtasks: [
+                    ...immArr.remove(
+                      boards[index].columns[indexCurrentColumn].tasks[
+                        indexCurrentTask
+                      ].subtasks,
+                      action.payload
+                    )
+                  ]
+                }
               )
             ]
           })
@@ -186,6 +241,22 @@ export class immBoard {
             ]
           })
         ]
+      })
+    ]
+  }
+
+  /** Return immutable Boards with updated Board */
+  static updateBoard = (
+    state: BoardState,
+    action: UpdateBoardAction
+  ): BoardItem[] => {
+    const boards = state.boards // Boards in state
+    const index = Number(state.currentBoardIndex) // current Board index
+
+    return [
+      ...immArr.replace(boards, index, {
+        ...boards[index],
+        name: action.payload.name
       })
     ]
   }

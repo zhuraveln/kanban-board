@@ -7,8 +7,12 @@ import { useFormData } from '../../../hooks/useFormData'
 
 import { Button, Form, TextField } from '../..'
 
-import { BoardItem, CreateBoardFormFields } from './types'
+import { BoardItem } from './types'
 import { closeModal } from '../../../redux/modal/actions'
+
+export type CreateBoardFormFields = {
+  name: string
+}
 
 export const FormCreateBoard: React.FC = () => {
   const dispatch = useAppDispatch()

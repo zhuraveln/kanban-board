@@ -1,8 +1,15 @@
-import { FormCreateBoard, FormCreateTask, FormUpdateTask, Task } from '..'
+import {
+  FormCreateBoard,
+  FormCreateTask,
+  FormUpdateBoard,
+  FormUpdateTask,
+  Task
+} from '..'
 
 export enum ModalContentTypes {
   FORM_CREATE_BOARD = 'FORM_CREATE_BOARD',
   FORM_CREATE_TASK = 'FORM_CREATE_TASK',
+  FORM_UPDATE_BOARD = 'FORM_UPDATE_BOARD',
   FORM_UPDATE_TASK = 'FORM_UPDATE_TASK',
   FULL_TASK = 'FULL_TASK'
 }
@@ -23,6 +30,9 @@ export const defineModalEl = (
       break
     case ModalContentTypes.FORM_UPDATE_TASK:
       modalEl = <FormUpdateTask />
+      break
+    case ModalContentTypes.FORM_UPDATE_BOARD:
+      modalEl = <FormUpdateBoard />
       break
 
     default:

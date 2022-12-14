@@ -12,6 +12,9 @@
     margin-bottom: 10px;
 
     .info {
+      .title {
+        font-size: 33px;
+      }
       display: flex;
       gap: 13px;
 
@@ -19,9 +22,6 @@
         width: 23px;
         height: 23px;
         margin-right: 3px;
-      }
-
-      .title {
       }
 
       .priority {

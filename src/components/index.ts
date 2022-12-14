@@ -15,6 +15,7 @@ export { CommentCard } from './Boards/Board/Comments/CommentCard/CommentCard'
 export { FormCreateBoard } from './Forms/FormCreateBoard/FormCreateBoard'
 export { FormCreateTask } from './Forms/FormCreateTask/FormCreateTask'
 export { FormUpdateTask } from './Forms/FormUpdateTask/FormUpdateTask'
+export { FormUpdateBoard } from './Forms/FormUpdateBoard/FormUpdateBoard'
 export { FormCreateSubTask } from './Forms/FormCreateSubTask/FormCreateSubTask'
 export { FormCreateComment } from './Forms/FormCreateComment/FormCreateComment'
 

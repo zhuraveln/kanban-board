@@ -1,8 +1,7 @@
-import dayjs from 'dayjs'
-
 import { uniqId } from '../../../utils/uniqId'
+import { CreateBoardFormFields } from './FormCreateBoard'
 
-import { ColumnItem, CreateBoardFormFields, PriorityTypes } from './types'
+import { ColumnItem } from './types'
 
 /** Class for create new Board */
 export class Board {

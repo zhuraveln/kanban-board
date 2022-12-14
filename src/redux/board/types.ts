@@ -25,8 +25,11 @@ export enum BoardActionsTypes {
   CREATE_NEW_SUBTASK = 'CREATE_NEW_SUBTASK',
   CREATE_NEW_COMMENT = 'CREATE_NEW_COMMENT',
   CHANGE_SUBTASK_STATUS = 'CHANGE_SUBTASK_STATUS',
+  UPDATE_BOARD = 'UPDATE_BOARD',
   UPDATE_TASK = 'UPDATE_TASK',
+  DELETE_BOARD = 'DELETE_BOARD',
   DELETE_TASK = 'DELETE_TASK',
+  DELETE_SUBTASK = 'DELETE_SUBTASK',
   DELETE_TASK_FILE_URL = 'DELETE_TASK_FILE_URL',
   SET_CURRENT_BOARD_INDEX = 'SET_CURRENT_BOARD_INDEX',
   SET_CURRENT_TASK = 'SET_CURRENT_TASK',
@@ -40,8 +43,11 @@ export type BoardAction =
   | CreateNewSubTaskAction
   | CreateNewCommentAction
   | ChangeSubTaskStatusAction
+  | UpdateBoardAction
   | UpdateTaskAction
+  | DeleteBoardAction
   | DeleteTaskAction
+  | DeleteSubTaskAction
   | DeleteTaskFileURLAction
   | SetCurrentBoardIndexAction
   | SetCurrentTaskAction
@@ -77,15 +83,32 @@ export interface ChangeSubTaskStatusAction {
   payload: { isComplete: boolean; index: number }
 }
 
+// Interface for update Board Action
+export interface UpdateBoardAction {
+  type: BoardActionsTypes.UPDATE_BOARD
+  payload: BoardItem
+}
+
 // Interface for update Task Action
 export interface UpdateTaskAction {
   type: BoardActionsTypes.UPDATE_TASK
   payload: CurrentTaskItem
 }
 
+// Interface for delete Board Action
+export interface DeleteBoardAction {
+  type: BoardActionsTypes.DELETE_BOARD
+}
+
 // Interface for delete Task Action
 export interface DeleteTaskAction {
   type: BoardActionsTypes.DELETE_TASK
+}
+
+// Interface for delete SubTask Action
+export interface DeleteSubTaskAction {
+  type: BoardActionsTypes.DELETE_SUBTASK
+  payload: number
 }
 
 // Interface for delete Task file URL Action

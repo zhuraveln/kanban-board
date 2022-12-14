@@ -6,7 +6,7 @@ import {
   PriorityTypes,
   SubTaskItem
 } from '../FormCreateBoard/types'
-import { UpdateTaskFormFields } from './types'
+import { UpdateTaskFormFields } from './FormUpdateTask'
 
 /** Class for create updated Task */
 export class updatedTask {

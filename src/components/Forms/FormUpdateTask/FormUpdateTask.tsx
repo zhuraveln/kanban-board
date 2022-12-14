@@ -15,12 +15,20 @@ import { setModalContent } from '../../../redux/modal/actions'
 import { CurrentTaskItem } from '../../../redux/board/types'
 
 import { PriorityTypes } from '../FormCreateBoard/types'
-import { UpdateTaskFormFields } from './types'
 import { updatedTask } from './updatedTask'
 import FileAPI from '../../../API/FileAPI'
 
 import { dateFormat } from '../../../utils'
 import { ModalContentTypes } from '../../Modal/defineModalEl'
+import { Dayjs } from 'dayjs'
+
+export type UpdateTaskFormFields = {
+  title: string
+  description: string
+  finishBy: Dayjs
+  file: File | null
+  priority: PriorityTypes
+}
 
 export const FormUpdateTask: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -29,8 +37,6 @@ export const FormUpdateTask: React.FC = () => {
   const task = useAppSelector(currentTaskSelector())
   // Get actual subtasks and comments if client update Task after create Subtasks or Comments
   const { subtasks, comments, file } = useAppSelector(getTaskSelector())
-
-  // const [uploadedFileURL]
 
   // Custom Hook for collect all values from form fields
   const { handleChange, handleSubmit, setValues } = useFormData({
