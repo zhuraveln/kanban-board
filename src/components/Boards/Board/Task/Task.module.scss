@@ -70,14 +70,30 @@
       border-right: 1px solid #eee;
 
       .description {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
         .body {
           max-height: 110px;
           overflow: scroll;
         }
       }
 
+      .attachedFile {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
+      }
+
       .finishBy {
         display: flex;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
+      }
+
+      .timeInWork {
+        display: flex;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 7px;
+        margin-bottom: 15px;
       }
 
       .subTaskInput {

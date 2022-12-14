@@ -14,7 +14,7 @@ export { sortByParentId } from './sortComments'
 export { uniqId } from './uniqId'
 
 // dateFormat
-export { dateFormat } from './dateFormat'
+export { dateFormat, dateFormatPicker } from './dateFormat'
 
 // work with local storage
 export { loadFromLocalStorage, saveToLocalStorage } from './localStorage'

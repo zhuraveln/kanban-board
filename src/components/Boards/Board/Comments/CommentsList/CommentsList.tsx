@@ -15,7 +15,7 @@ export const CommentsList: React.FC<ICommentsList> = props => {
   return (
     <div className={classes.root}>
       {/* Comments List */}
-      {comments.map(comment => (
+      {comments?.map(comment => (
         <CommentCard {...comment} getReplies={getReplies} key={comment.id} />
       ))}
     </div>

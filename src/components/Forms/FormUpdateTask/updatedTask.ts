@@ -1,5 +1,6 @@
-import { Dayjs } from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs'
 import { CurrentTaskItem } from '../../../redux/board/types'
+import { dateFormat } from '../../../utils'
 
 import {
   CommentItem,

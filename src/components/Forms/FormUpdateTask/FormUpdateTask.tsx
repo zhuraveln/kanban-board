@@ -18,10 +18,11 @@ import { PriorityTypes } from '../FormCreateBoard/types'
 import { updatedTask } from './updatedTask'
 import FileAPI from '../../../API/FileAPI'
 
-import { dateFormat } from '../../../utils'
+import { dateFormatPicker } from '../../../utils'
 import { ModalContentTypes } from '../../Modal/defineModalEl'
 import { Dayjs } from 'dayjs'
 import { deleteIcon } from '../../../assets'
+import { modalSelector } from '../../../redux/modal/selectors'
 
 export type UpdateTaskFormFields = {
   title: string
@@ -34,17 +35,19 @@ export type UpdateTaskFormFields = {
 export const FormUpdateTask: React.FC = () => {
   const dispatch = useAppDispatch()
 
+  const { isModalOpen } = useAppSelector(modalSelector)
+
   // Getting current Task from Redux state
   const task = useAppSelector(currentTaskSelector())
   // Get actual subtasks and comments if client update Task after create Subtasks or Comments
-  const { subtasks, comments, file } = useAppSelector(getTaskSelector())
+  const actualTask = useAppSelector(getTaskSelector())
 
   // Custom Hook for collect all values from form fields
   const { handleChange, handleSubmit, setValues } = useFormData({
     title: task?.title, // initial values for hook
     description: task?.description,
-    finishBy: dateFormat(task?.finishBy),
-    file: file,
+    finishBy: dateFormatPicker(task?.finishBy),
+    file: actualTask?.file,
     priority: task?.priority
   })
 
@@ -56,8 +59,8 @@ export const FormUpdateTask: React.FC = () => {
         data,
         {
           ...task,
-          subtasks,
-          comments
+          subtasks: actualTask?.subtasks,
+          comments: actualTask?.comments
         },
         uploadedFileURL
       ) // create updated Task object
@@ -94,7 +97,7 @@ export const FormUpdateTask: React.FC = () => {
       {/* Input for target date task */}
       <TextField
         onChange={handleChange}
-        defaultValue={dateFormat(task?.finishBy)}
+        defaultValue={dateFormatPicker(task?.finishBy)}
         type='datetime-local'
         name='finishBy'
         label={'Target Date '}
@@ -110,10 +113,10 @@ export const FormUpdateTask: React.FC = () => {
       />
 
       {/* Attached file */}
-      {file ? (
+      {actualTask?.file ? (
         <div>
           <a
-            href={String(file)}
+            href={String(actualTask?.file)}
             target='_blank'
             rel='noreferrer'
             style={{ marginRight: '5px' }}

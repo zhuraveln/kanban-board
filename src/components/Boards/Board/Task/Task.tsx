@@ -111,7 +111,7 @@ export const Task: React.FC = () => {
 
             {/* Attached file */}
             {task?.file && (
-              <div>
+              <div className={classes.attachedFile}>
                 <a href={String(task?.file)} target='_blank' rel='noreferrer'>
                   Attached file
                 </a>
@@ -127,7 +127,7 @@ export const Task: React.FC = () => {
             )}
 
             {/* Time in work */}
-            <div className={classes.finishBy} style={{ marginBottom: '10px ' }}>
+            <div className={classes.timeInWork}>
               <p className={classes.title}>In work:</p>
               <p className={classes.date}>{timeInWork}</p>
             </div>
@@ -156,7 +156,7 @@ export const Task: React.FC = () => {
             {/* Subtasks cards */}
             {task?.subtasks?.length > 0 && (
               <div className={classes.subtasks}>
-                {task.subtasks.map((subtask, index) => (
+                {task?.subtasks?.map((subtask, index) => (
                   <SubTaskCard {...subtask} key={subtask.id} index={index} />
                 ))}
               </div>

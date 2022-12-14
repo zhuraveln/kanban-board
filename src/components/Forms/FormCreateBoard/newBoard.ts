@@ -7,7 +7,7 @@ import { ColumnItem } from './types'
 export class Board {
   readonly id: string = uniqId()
   public name: string
-  readonly createdTasksCounter: number = 3
+  readonly createdTasksCounter: number = 0
   readonly columns: ColumnItem[] = [
     {
       id: uniqId(),
