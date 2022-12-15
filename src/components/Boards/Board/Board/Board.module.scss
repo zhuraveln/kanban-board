@@ -5,6 +5,7 @@
   .header {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     padding-bottom: 17px;
     border-bottom: 2px solid rgb(130, 130, 130);
     margin-bottom: 17px;
@@ -34,5 +35,23 @@
   .columns {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
+  }
+
+  @media (max-width: 1175px) {
+    .columns {
+      overflow: scroll;
+    }
+  }
+
+  @media (max-width: 631px) {
+    .header {
+      flex-wrap: wrap;
+
+      .boardName {
+        order: 1;
+        margin: auto;
+      }
+    }
   }
 }

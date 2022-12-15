@@ -2,9 +2,9 @@ import dayjs from 'dayjs'
 import {
   BoardItem,
   PriorityTypes
-} from '../../components/Forms/FormCreateBoard/types'
+} from '../components/Forms/FormCreateBoard/types'
 
-export const testBoards2 = [
+export const startBoards = [
   {
     id: 'lb57o0r4dnc2apyt1qe',
     name: 'Magic project 🔮',
@@ -154,6 +154,91 @@ export const testBoards2 = [
                 createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
               }
             ]
+          },
+          {
+            id: 'lbopimhhg5109kbdnxm',
+            number: 15,
+            title: 'New features',
+            description: 'Think about new features that could be user-friendly',
+            createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm'),
+            finishBy: null,
+            priority: PriorityTypes.MEDIUM,
+            status: 'Development',
+            file: null,
+            comments: [
+              {
+                id: 'lbopm5av8mq5j1taffa',
+                parentId: null,
+                body: 'What do you think about me?',
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              }
+            ],
+            subtasks: [
+              {
+                id: 'lbopjlbw60y10wnktwh',
+                title: 'Explore other projects',
+                isComplete: false,
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              },
+              {
+                id: 'lbopkm1xqzwbtyei4jo',
+                title: 'Conduct surveys',
+                isComplete: false,
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              }
+            ]
+          },
+          {
+            id: 'lbopwu54kvit651mvdd',
+            number: 16,
+            title: 'New ideas',
+            description:
+              'Write down your ideas for new applications in subtask',
+            createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm'),
+            finishBy: null,
+            priority: PriorityTypes.LOW,
+            status: 'Development',
+            file: null,
+            comments: [
+              {
+                id: 'lbopyou71ddexjojdie',
+                parentId: null,
+                body: 'More ideas!',
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              },
+              {
+                id: 'lbopz23ywvxpon601a',
+                parentId: 'lbopyou71ddexjojdie',
+                body: 'Even more ideas...',
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              },
+              {
+                id: 'lbopzd9y8wfryuqr65h',
+                parentId: 'lbopz23ywvxpon601a',
+                body: 'Are you recording?',
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              }
+            ],
+            subtasks: [
+              {
+                id: 'lbopzzet6a9hbx0giue',
+                title: 'First idea',
+                isComplete: false,
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              },
+              {
+                id: 'lboq059t9eunde4kbn',
+                title: 'Second idea',
+                isComplete: false,
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              },
+              {
+                id: 'lboq0gva4aityiuyfy5',
+                title: 'Third idea',
+                isComplete: false,
+                createdAt: dayjs('2022-12-14T13:10:25.667Z', 'DD.MM.YYYY H:mm')
+              }
+            ]
           }
         ]
       },
@@ -244,238 +329,3 @@ export const testBoards2 = [
     ]
   }
 ] as BoardItem[]
-
-export const testBoards = [
-  {
-    id: 'lb57o0r4dnc2apyt1qe',
-    name: 'test',
-    createdTasksCounter: 3,
-    columns: [
-      {
-        id: 'lbasdgvaw7h8ostgupotncl',
-        name: 'Queue',
-        tasks: [
-          {
-            id: 'lb57w721tstgupfdbfotncl',
-            number: 1,
-            title: 'task in Queue',
-            description: 'description for task 1',
-            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            finishBy: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.LOW,
-            status: 'Queue',
-            file: null,
-            comments: [],
-            subtasks: []
-          }
-        ]
-      },
-      {
-        id: 'lasvasv7w723tbostgupotncl',
-        name: 'Development',
-        tasks: [
-          {
-            id: 'lb57w7h8ostgsdvsdbotncl',
-            title: 'task in Development',
-            number: 2,
-            description: 'description for task 1',
-            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            finishBy: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.MEDIUM,
-            status: 'Development',
-            file: null,
-            comments: [
-              {
-                id: 'b57w7',
-                body: 'first comment',
-                parentId: null,
-                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
-              }
-            ],
-            subtasks: [
-              {
-                id: 'lb5dupjkcl',
-                title: 'new subtask 1',
-                isComplete: false,
-                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
-              },
-              {
-                id: 'lb2hsv1n8ostgupjkcl',
-                title: 'new subtask 2',
-                isComplete: false,
-                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'lb57w7h8ostgupasvvaasvqwg1cl',
-        name: 'Done',
-        tasks: [
-          {
-            id: 'lb571ngf8ostgupotncl',
-            number: 3,
-            title: 'task in Done',
-            description: 'description for task 1',
-            createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm'),
-            finishBy: dayjs('12.05.2022 18:00', 'DD.MM.YYYY H:mm'),
-            priority: PriorityTypes.HIGH,
-            status: 'Done',
-            file: null,
-            comments: [
-              {
-                id: 'sdjykmytghm',
-                body: 'comment',
-                parentId: null,
-                createdAt: dayjs('12.01.2022 18:00', 'DD.MM.YYYY H:mm')
-              }
-            ],
-            subtasks: []
-          }
-        ]
-      }
-    ]
-  }
-]
-
-//----------------------------------------------------------------
-
-// CREATE A NEW TASK
-
-// return {
-//   ...state,
-//   boards: [
-//     ...state.boards.map((board, index) => {
-//       // Find current board
-//       if (index === state.currentBoardIndex) {
-//         return {
-//           ...board,
-//           columns: [
-//             ...board.columns.map(column => {
-//               // Find 'Queue' column
-//               if (column.name === 'Queue') {
-//                 return {
-//                   ...column,
-//                   tasks: [...column.tasks, action.payload] // Adding a new task
-//                 }
-//               } else {
-//                 return column
-//               }
-//             })
-//           ],
-//           createdTasksCounter: board.createdTasksCounter + 1 // Increment createdTasksCounter for each Task create
-//         }
-//       } else {
-//         return board
-//       }
-//     })
-//   ]
-// }
-
-//----------------------------------------------------------------
-
-// // REORDER TASKS BY DRAG AND DROP
-// case BoardActionsTypes.REORDER_TASKS_ON_DRAG_DROP:
-//   // Draggable location parameters from 'beautiful drag and drop'
-//   const { source, destination } = action.payload
-
-//   // Reorder tasks in current column
-//   if (source.droppableId === destination?.droppableId) {
-//     return {
-//       ...state,
-//       boards: [
-//         ...state.boards.map((board, index) => {
-//           // Find current board
-//           if (index === state.currentBoardIndex) {
-//             return {
-//               ...board,
-//               columns: [
-//                 ...board.columns.map((column, index) => {
-//                   // Find current column
-//                   if (String(index) === source.droppableId) {
-//                     // Create new Task List
-//                     const newTasksList = [...column.tasks]
-//                     // Remove source Task in new Task list
-//                     newTasksList.splice(source.index, 1)
-//                     // Getting source task
-//                     const sourceTask = column.tasks[source.index]
-//                     // Moving source Task to new place
-//                     newTasksList.splice(destination.index, 0, sourceTask)
-
-//                     return {
-//                       ...column,
-//                       tasks: [...newTasksList] // Adding new Tasks list
-//                     }
-//                   } else {
-//                     return column
-//                   }
-//                 })
-//               ]
-//             }
-//           } else {
-//             return board
-//           }
-//         })
-//       ]
-//     }
-//   }
-
-//   // Reorder tasks in other column
-//   if (source.droppableId !== destination?.droppableId) {
-//     return {
-//       ...state,
-//       boards: [
-//         ...state.boards.map((board, index) => {
-//           // Find current board
-//           if (index === state.currentBoardIndex) {
-//             return {
-//               ...board,
-//               columns: [
-//                 ...board.columns.map((column, index) => {
-//                   // Find old column
-//                   if (String(index) === source.droppableId) {
-//                     // Create new source Task List
-//                     const newSourseTasksList = [...column.tasks]
-//                     // Remove source Task in new sourse Task list
-//                     newSourseTasksList.splice(source.index, 1)
-
-//                     return {
-//                       ...column,
-//                       tasks: [...newSourseTasksList] // Adding new sourse Tasks list
-//                     }
-//                     // Find new column
-//                   } else if (String(index) === destination?.droppableId) {
-//                     // Create new destination Task List
-//                     const newDestinationTasksList = [...column.tasks]
-//                     // Getting source task
-//                     const sourceTask =
-//                       board.columns[Number(source.droppableId)].tasks[
-//                         source.index
-//                       ]
-//                     // Moving source Task to new place
-//                     newDestinationTasksList.splice(
-//                       destination.index,
-//                       0,
-//                       sourceTask
-//                     )
-
-//                     return {
-//                       ...column,
-//                       tasks: [...newDestinationTasksList] // Adding new destination Tasks list
-//                     }
-//                   } else {
-//                     return column
-//                   }
-//                 })
-//               ]
-//             }
-//           } else {
-//             return board
-//           }
-//         })
-//       ]
-//     }
-//   }
-
-//   return state

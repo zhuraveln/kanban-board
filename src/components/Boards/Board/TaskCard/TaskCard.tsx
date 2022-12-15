@@ -56,9 +56,7 @@ export const TaskCard: React.FC<ITaskCard> = props => {
           {/* Footer */}
           <div className={classes.footer}>
             <div className={classes.finishBy}>
-              {finishBy
-                ? `Finish before: ${dateFormat(finishBy)}`
-                : 'Not finish date'}
+              {finishBy ? `Finish: ${dateFormat(finishBy)}` : 'Not finish date'}
             </div>
             <div className={classes.priority}>
               <img src={priorityIcon} alt='priority' />

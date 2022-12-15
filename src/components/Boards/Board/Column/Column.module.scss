@@ -11,4 +11,28 @@
     min-height: 500px;
     border-radius: 5px;
   }
+
+  @media (max-width: 1370px) {
+    .tasksList {
+      width: 370px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .tasksList {
+      width: 350px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .tasksList {
+      width: 320px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .tasksList {
+      width: 280px;
+    }
+  }
 }

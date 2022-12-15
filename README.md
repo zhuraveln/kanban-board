@@ -6,24 +6,25 @@ SPA by 💙 **React JS**
 
 - Typescript
 - React
-- Redux (no toolkit)
+- Redux (not toolkit)
 - SCSS / CSS Modules
-- Utils – dayjs
+- Libraries – React Router, react-beautiful-dnd, dayjs
 
-## 🗃 Backend
+## 🗃 Backend / data storage
 
 - Firebase (Storage) – for attached files
+- Local storage - for boards, tasks, subtasks, etc...
 
 ## ⚡️ Features
 
-- Custom Hook for collection all values from form fields _(like React Hook Form)_
-- Reusable UI Components _(like MUI)_
-- Real beautiful Drag-and-drop!
+- Custom Hook for collection all values from form fields _(like [React Hook Form](https://github.com/react-hook-form/react-hook-form))_
+- Reusable UI Components _(like [MUI](https://github.com/mui))_
+- Real beautiful Drag-and-drop! _(check demo ⬇️)_
 - Adaptive layout for all devices
 
 ## 👀 Demo
 
-- deployed project - **[to-do-list](https://kanban-board-alpha.vercel.app/)**
+- deployed project - **[kanban-board](https://kanban-board-alpha.vercel.app/board/Magic%20project%20%F0%9F%94%AE)**
 
   ![board-page](/src/assets/demo/Demo-1.png)
   ![full-task-in-modal](/src/assets/demo/Demo-2.png)

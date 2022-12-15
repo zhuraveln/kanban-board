@@ -16,6 +16,16 @@
     display: flex;
     justify-content: space-between;
 
+    .title {
+      // display: -webkit-box;
+      // -webkit-line-clamp: 1;
+      // -webkit-box-orient: vertical;
+      // overflow: hidden;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .number {
       color: gray;
     }

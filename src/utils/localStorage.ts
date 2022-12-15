@@ -4,7 +4,11 @@ import { RootState } from '../redux/store'
 export function loadFromLocalStorage(key: string) {
   try {
     const serializedState = localStorage.getItem(key)
-    if (serializedState === null) return undefined
+
+    if (serializedState === null) {
+      return undefined
+    }
+
     return JSON.parse(serializedState)
   } catch (err) {
     console.log(err)
@@ -15,6 +19,7 @@ export function loadFromLocalStorage(key: string) {
 export function saveToLocalStorage(state: RootState, key: string) {
   try {
     const serializedState = JSON.stringify(state)
+
     localStorage.setItem(key, serializedState)
   } catch (err) {
     console.log(err)

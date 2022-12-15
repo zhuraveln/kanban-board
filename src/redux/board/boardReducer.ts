@@ -1,11 +1,10 @@
-import { BoardItem } from '../../components/Forms/FormCreateBoard/types'
 import { immBoard } from '../../utils/immBoard'
-import { testBoards, testBoards2 } from './test'
+import { startBoards } from '../../assets/startBoards'
 
 import { BoardAction, BoardActionsTypes, BoardState } from './types'
 
 const initialState: BoardState = {
-  boards: testBoards2,
+  boards: startBoards,
   currentBoardIndex: 0,
   currentTask: null
 }

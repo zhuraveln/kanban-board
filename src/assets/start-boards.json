@@ -4,7 +4,7 @@
       {
         "id": "lb57o0r4dnc2apyt1qe",
         "name": "Magic project 🔮",
-        "createdTasksCounter": 14,
+        "createdTasksCounter": 16,
         "columns": [
           {
             "id": "lbasdgvaw7h8ostgupotncl",
@@ -18,7 +18,7 @@
                 "title": "Learn new libraries",
                 "description": null,
                 "createdAt": "2022-12-14T14:37:01.360Z",
-                "finishBy": "2023-01-13T05:40",
+                "finishBy": "2023-01-13T02:40:00.000Z",
                 "priority": "HIGH",
                 "status": "LOW",
                 "file": null,
@@ -58,7 +58,7 @@
                   {
                     "id": "lbnrhz57y4so40u3g0p",
                     "title": "React Hook Form",
-                    "isComplete": false,
+                    "isComplete": true,
                     "createdAt": "2022-12-14T14:42:42.091Z"
                   },
                   {
@@ -117,9 +117,9 @@
                 "title": "Create new magic",
                 "description": "New magic must be in holy school of magic. You can only use improvised means and not resort to the help of senior comrades. Good luck! The whole world is counting on you! Let me know when you're ready to show your work!",
                 "createdAt": "2022-12-01T15:00:00.000Z",
-                "finishBy": "2022-12-31T11:30",
+                "finishBy": "2022-12-31T08:30:00.000Z",
                 "priority": "HIGH",
-                "status": "HIGH",
+                "status": "Development",
                 "file": null,
                 "comments": [
                   {
@@ -149,6 +149,90 @@
                     "createdAt": "2022-12-14T13:10:25.667Z"
                   }
                 ]
+              },
+              {
+                "id": "lbopimhhg5109kbdnxm",
+                "number": 15,
+                "title": "New features",
+                "description": "Think about new features that could be user-friendly",
+                "createdAt": "2022-12-15T06:34:59.285Z",
+                "finishBy": null,
+                "priority": "MEDIUM",
+                "status": "Development",
+                "file": null,
+                "comments": [
+                  {
+                    "id": "lbopm5av8mq5j1taffa",
+                    "parentId": null,
+                    "body": "What do you think about me?",
+                    "createdAt": "2022-12-15T06:37:43.639Z"
+                  }
+                ],
+                "subtasks": [
+                  {
+                    "id": "lbopjlbw60y10wnktwh",
+                    "title": "Explore other projects",
+                    "isComplete": false,
+                    "createdAt": "2022-12-15T06:35:44.444Z"
+                  },
+                  {
+                    "id": "lbopkm1xqzwbtyei4jo",
+                    "title": "Conduct surveys",
+                    "isComplete": false,
+                    "createdAt": "2022-12-15T06:36:32.037Z"
+                  }
+                ]
+              },
+              {
+                "id": "lbopwu54kvit651mvdd",
+                "number": 16,
+                "title": "New ideas",
+                "description": "Write down your ideas for new applications in subtask",
+                "createdAt": "2022-12-15T06:46:02.392Z",
+                "finishBy": null,
+                "priority": "LOW",
+                "status": "Development",
+                "file": null,
+                "comments": [
+                  {
+                    "id": "lbopyou71ddexjojdie",
+                    "parentId": null,
+                    "body": "More ideas!",
+                    "createdAt": "2022-12-15T06:47:28.831Z"
+                  },
+                  {
+                    "id": "lbopz23ywvxpon601a",
+                    "parentId": "lbopyou71ddexjojdie",
+                    "body": "Even more ideas...",
+                    "createdAt": "2022-12-15T06:47:46.030Z"
+                  },
+                  {
+                    "id": "lbopzd9y8wfryuqr65h",
+                    "parentId": "lbopz23ywvxpon601a",
+                    "body": "Are you recording?",
+                    "createdAt": "2022-12-15T06:48:00.502Z"
+                  }
+                ],
+                "subtasks": [
+                  {
+                    "id": "lbopzzet6a9hbx0giue",
+                    "title": "First idea",
+                    "isComplete": false,
+                    "createdAt": "2022-12-15T06:48:29.189Z"
+                  },
+                  {
+                    "id": "lboq059t9eunde4kbn",
+                    "title": "Second idea",
+                    "isComplete": false,
+                    "createdAt": "2022-12-15T06:48:36.785Z"
+                  },
+                  {
+                    "id": "lboq0gva4aityiuyfy5",
+                    "title": "Third idea",
+                    "isComplete": false,
+                    "createdAt": "2022-12-15T06:48:51.814Z"
+                  }
+                ]
               }
             ]
           },
@@ -158,8 +242,6 @@
             "tasks": [
               {
                 "id": "lbnrzl0m558m23auvew",
-                "index": 1,
-                "columnIndex": 2,
                 "number": 14,
                 "title": "Watch an interesting movies",
                 "description": "Choose any and watch them",
@@ -211,7 +293,7 @@
                 "title": "Build your own road",
                 "description": "Nothing is impossible! I wish you good luck my dear friend!",
                 "createdAt": "2022-12-14T14:27:54.479Z",
-                "finishBy": "2022-12-31T11:59",
+                "finishBy": "2022-12-31T08:59:00.000Z",
                 "priority": "HIGH",
                 "status": "HIGH",
                 "file": null,
@@ -240,47 +322,21 @@
         ]
       }
     ],
-    "currentBoardIndex": 1,
+    "currentBoardIndex": 0,
     "currentTask": {
-      "id": "lb57w721tstgupfdbfotncl",
-      "index": 0,
-      "columnIndex": 1,
-      "number": 1,
-      "title": "Create new magic",
-      "description": "New magic must be in holy school of magic. You can only use improvised means and not resort to the help of senior comrades. Good luck! The whole world is counting on you! Let me know when you're ready to show your work!",
-      "createdAt": "2022-12-01T15:00:00.000Z",
-      "finishBy": "2022-12-31T11:30",
-      "priority": "HIGH",
-      "status": "HIGH",
+      "id": "lbopwu54kvit651mvdd",
+      "number": 16,
+      "title": "New ideas",
+      "description": "Write down your ideas for new applications in subtask",
+      "createdAt": "2022-12-15T06:46:02.392Z",
+      "finishBy": null,
+      "priority": "LOW",
+      "status": "Development",
       "file": null,
-      "comments": [
-        {
-          "id": "lbno1jke2oy3vu2wqvo",
-          "parentId": null,
-          "body": "How can I do magic if I'm an avocado?",
-          "createdAt": "2022-12-14T13:05:56.558Z"
-        },
-        {
-          "id": "lbno2c9p035qx55e8y0p",
-          "parentId": "lbno1jke2oy3vu2wqvo",
-          "body": "There is nothing impossible, I will try!",
-          "createdAt": "2022-12-14T13:06:33.757Z"
-        }
-      ],
-      "subtasks": [
-        {
-          "id": "lbno3stpmr2w4bc2txm",
-          "title": "Watch tutorial on youtube",
-          "isComplete": false,
-          "createdAt": "2022-12-14T13:07:41.869Z"
-        },
-        {
-          "id": "lbno7b7niczsc7h4sgj",
-          "title": "do something...",
-          "isComplete": true,
-          "createdAt": "2022-12-14T13:10:25.667Z"
-        }
-      ]
+      "comments": [],
+      "subtasks": [],
+      "index": 2,
+      "columnIndex": 1
     }
   },
   "modal": {
