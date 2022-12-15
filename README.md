@@ -24,7 +24,7 @@ SPA by 💙 **React JS**
 
 ## 👀 Demo
 
-- deployed project - **[kanban-board](https://kanban-board-alpha.vercel.app/board/Magic%20project%20%F0%9F%94%AE)**
+- deployed project - **[kanban-board](https://kanban-board-alpha.vercel.app/)**
 
   ![board-page](/src/assets/demo/Demo-1.png)
   ![full-task-in-modal](/src/assets/demo/Demo-2.png)

@@ -58,25 +58,23 @@ export const Task: React.FC = () => {
       <div className={classes.root}>
         {/* HEADER */}
         <div className={classes.header}>
-          <div className={classes.info}>
-            {/* Task title */}
-            <h2 className={classes.title}>{task?.title}</h2>
+          {/* Task title */}
+          <h2 className={classes.title}>{task?.title}</h2>
 
-            {/* Task priority */}
-            <h2 className={classes.priority}>
-              <img src={priorityIcon} alt='priorityIcon' />
-              {task?.priority}
-            </h2>
+          {/* Task priority */}
+          <h2 className={classes.priority}>
+            <img src={priorityIcon} alt='priorityIcon' />
+            {task?.priority}
+          </h2>
 
-            {/* Task Date Creation */}
-            <div className={classes.createdAt}>
-              <img src={createdAtIcon} alt='createdAtIcon' />
-              {dateFormat(task?.createdAt)}
-            </div>
+          {/* Task Date Creation */}
+          <div className={classes.createdAt}>
+            <img src={createdAtIcon} alt='createdAtIcon' />
+            {dateFormat(task?.createdAt)}
           </div>
 
           {/* Buttons for update and delete Task */}
-          <div style={{ display: 'flex', gap: '3px' }}>
+          <div className={classes.buttons}>
             {/* Update */}
             <Button
               onClick={() =>

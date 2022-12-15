@@ -20,6 +20,9 @@
 
   .window {
     min-width: 500px;
+    max-height: 600px;
+    overflow: scroll;
+    margin: 25px;
     background-color: #fff;
     border-radius: 10px;
 
@@ -29,6 +32,25 @@
 
     .content {
       padding: 40px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .window {
+      min-width: 400px;
+      max-height: 500px;
+      .content {
+        padding: 30px;
+      }
+    }
+  }
+
+  @media (max-width: 420px) {
+    .window {
+      min-width: 350px;
+      .content {
+        padding: 25px;
+      }
     }
   }
 }

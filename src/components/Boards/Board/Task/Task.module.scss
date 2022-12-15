@@ -1,40 +1,41 @@
 .root {
   display: flex;
   flex-direction: column;
-  width: 900px;
 
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 10px;
 
-    .info {
-      .title {
-        font-size: 33px;
-      }
+    img {
+      width: 23px;
+      height: 23px;
+      margin-right: 3px;
+    }
+
+    .title {
+      font-size: 33px;
+    }
+
+    .priority {
       display: flex;
-      gap: 13px;
+      align-items: center;
+      color: gray;
+    }
 
-      img {
-        width: 23px;
-        height: 23px;
-        margin-right: 3px;
-      }
+    .createdAt {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+    }
 
-      .priority {
-        display: flex;
-        align-items: center;
-        color: gray;
-      }
-
-      .createdAt {
-        display: flex;
-        align-items: center;
-        font-size: 22px;
-      }
+    .buttons {
+      display: flex;
+      gap: 3px;
     }
   }
 
@@ -116,6 +117,7 @@
         gap: 5px;
       }
     }
+
     .right {
       flex: 1;
       display: flex;
@@ -137,6 +139,32 @@
       .comments {
         max-height: 500px;
         overflow: scroll;
+      }
+    }
+  }
+
+  @media (max-width: 910px) {
+    .header {
+      flex-wrap: wrap;
+
+      .buttons {
+        .priority {
+          order: 1;
+        }
+      }
+    }
+
+    .body {
+      flex-direction: column;
+
+      .left {
+        border: none;
+        margin-right: 0;
+        padding-right: 0;
+
+        .subtasks {
+          margin-bottom: 20px;
+        }
       }
     }
   }

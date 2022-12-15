@@ -11,12 +11,16 @@
   background-color: rgb(166, 220, 255);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px;
   border-radius: 15px;
-  margin-right: 20px;
   transition: all 0.4s;
   cursor: pointer;
   overflow: hidden;
 
   &:hover {
     transform: scale(103%);
+  }
+
+  @media (max-width: 770px) {
+    width: 165px;
+    height: 165px;
   }
 }
