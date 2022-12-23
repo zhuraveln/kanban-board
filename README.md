@@ -1,19 +1,14 @@
 # 👻 Kanban board (Drag-and-drop)
 
-SPA by 💙 **React JS**
+SPA by 💙 **React**
 
 ## 🛠 Tech Stack
 
 - Typescript
 - React
 - Redux (not toolkit)
-- SCSS / CSS Modules
+- SCSS / SCSS Modules
 - Libraries – React Router, react-beautiful-dnd, dayjs
-
-## 🗃 Backend / data storage
-
-- Firebase (Storage) – for attached files
-- Local storage - for boards, tasks, subtasks, etc...
 
 ## ⚡️ Features
 
@@ -21,6 +16,11 @@ SPA by 💙 **React JS**
 - Reusable UI Components _(like [MUI](https://github.com/mui))_
 - Real beautiful Drag-and-drop! _(check demo ⬇️)_
 - Adaptive layout for all devices
+
+## 🗃 Backend / data storage
+
+- Firebase (Storage) – for attached files
+- Local storage - for boards, tasks, subtasks, etc...
 
 ## 👀 Demo
 

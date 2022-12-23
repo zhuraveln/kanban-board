@@ -32,6 +32,9 @@ export const BoardsList: React.FC = () => {
           <img src={createBoardIcon} alt='createBoard' />
           Add board
         </Button>
+
+        {/* Header for boards list */}
+        <h2 className={classes.header}>Boards</h2>
       </div>
 
       {/* Board list */}

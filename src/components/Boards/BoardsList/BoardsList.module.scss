@@ -2,7 +2,16 @@
 }
 
 .createArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+  padding-bottom: 17px;
+  border-bottom: 2px solid rgb(130, 130, 130);
+
+  .header {
+    font-size: 33px;
+  }
 }
 
 .boardList {

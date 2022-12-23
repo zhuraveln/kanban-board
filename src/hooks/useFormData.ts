@@ -11,8 +11,8 @@ export function useFormData<Type>(initialValues: Type) {
         [e.target.name]: e.target.files[0]
       }))
     } else {
-      setValues((formValues: typeof initialValues) => ({
-        ...formValues,
+      setValues((values: typeof initialValues) => ({
+        ...values,
         [e.target.name]: e.target.value
       }))
     }
