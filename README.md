@@ -14,6 +14,7 @@ SPA by 💙 **React**
 
 - Custom Hook for collection all values from form fields _(like [React Hook Form](https://github.com/react-hook-form/react-hook-form))_
 - Reusable UI Components _(like [MUI](https://github.com/mui))_
+- Cascading comments (like in Reddit)
 - Real beautiful Drag-and-drop! _(check demo ⬇️)_
 - Adaptive layout for all devices
 
